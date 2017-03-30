@@ -1,7 +1,9 @@
-package com.palprotech.eduappparentsstudents;
+package com.palprotech.eduappparentsstudents.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+import com.palprotech.eduappparentsstudents.R;
 
 public class MainActivity extends AppCompatActivity {
 
