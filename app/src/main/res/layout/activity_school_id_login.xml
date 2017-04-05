@@ -3,21 +3,57 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/school_login_bg">
 
-    <EditText
-        android:id="@+id/inputInsId"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_marginBottom="20dp"
-        android:padding="10dp"
-        android:layout_margin="10dp"
-        android:layout_height="wrap_content" />
-    <Button
-        android:id="@+id/btnSubmit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text=""/>
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name_display"
+            android:textColor="@color/white"
+            android:textSize="75sp"
+            android:textStyle="bold"
+            android:layout_marginTop="41dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/textView" />
+
+        <ImageView
+            android:id="@+id/btnSubmit"
+            android:layout_width="45dp"
+            android:layout_height="48dp"
+            android:gravity="center_horizontal"
+            android:src="@drawable/login_next_icon"
+            android:layout_marginBottom="58dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+
+        <ImageView
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:src="@drawable/hp_logo"
+            android:id="@+id/imageView"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+
+        <EditText
+            android:id="@+id/inputInsId"
+            android:layout_width="236dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/textborder"
+            android:hint="@string/school_id_login"
+            android:fontFamily="sans-serif"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/light_font"
+            android:layout_marginTop="35dp"
+            android:layout_below="@+id/imageView"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
 
 </LinearLayout>

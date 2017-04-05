@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">EduAppParentsStudents</string>
+    <string name="app_name">EduAppTeacher</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="error_occured">Failed to connect to the server. Please try again.</string>
@@ -7,5 +7,34 @@
     <string name="alert_button_ok">Ok</string>
     <string name="alert_button_cancel">Cancel</string>
     <string name="progress_loading">Loading...</string>
+
+    <string name="app_name_display">EDU</string>
+
+    <string name="drawer_open">Drawer open</string>
+    <string name="drawer_close">Drawer close</string>
+
+    <!--School Id login-->
+    <!---->
+    <string name="school_id_login">School ID</string>
+
+    <!--User login-->
+    <!---->
+    <string name="user_name">Username</string>
+    <string name="password">Password</string>
+
+    <!--Dashboard-->
+    <!---->
+    <string name="attendance">ATTENDANCE</string>
+    <string name="class_test">CLASS TEST &amp; HOMEWORK</string>
+    <string name="exam">EXAM &amp; RESULT</string>
+    <string name="time_table">TIME TABLE</string>
+    <string name="events">EVENTS</string>
+    <string name="communication">COMMUNICATION</string>
+
+    <!--Edit Profile-->
+    <!---->
+    <string name="mail">E-mail ID</string>
+    <string name="address">Address</string>
+    <string name="phone">Phone</string>
 
 </resources>
