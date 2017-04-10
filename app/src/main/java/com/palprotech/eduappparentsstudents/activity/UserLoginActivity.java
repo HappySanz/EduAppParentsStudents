@@ -7,18 +7,28 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.palprotech.eduappparentsstudents.helper.AlertDialogHelper;
-import com.palprotech.eduappparentsstudents.utils.CommonUtils;
-import com.palprotech.eduappparentsstudents.interfaces.DialogClickListener;
-import com.palprotech.eduappparentsstudents.utils.EduAppConstants;
-import com.palprotech.eduappparentsstudents.serviceinterfaces.ISignUpServiceListener;
-import com.palprotech.eduappparentsstudents.helper.ProgressDialogHelper;
+
 import com.palprotech.eduappparentsstudents.R;
+import com.palprotech.eduappparentsstudents.helper.AlertDialogHelper;
+import com.palprotech.eduappparentsstudents.helper.ProgressDialogHelper;
+import com.palprotech.eduappparentsstudents.interfaces.DialogClickListener;
 import com.palprotech.eduappparentsstudents.servicehelpers.SignUpServiceHelper;
+import com.palprotech.eduappparentsstudents.serviceinterfaces.ISignUpServiceListener;
+import com.palprotech.eduappparentsstudents.utils.CommonUtils;
+import com.palprotech.eduappparentsstudents.utils.EduAppConstants;
+import com.palprotech.eduappparentsstudents.utils.PreferenceStorage;
+import com.squareup.picasso.Picasso;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+/**
+ * Created by Admin on 22-03-2017.
+ */
 
 public class UserLoginActivity extends AppCompatActivity implements View.OnClickListener, ISignUpServiceListener, DialogClickListener {
 
@@ -29,14 +39,25 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
 
     private EditText inputUsername, inputPassword;
     private Button btnLogin;
+    private TextView txtInsName;
+    private ImageView mProfileImage = null;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_login);
+//        mProfileImage = (ImageView) findViewById(R.id.image_institute_pic);
+        SetUI();
+    }
+
+    private void SetUI() {
 
         inputUsername = (EditText) findViewById(R.id.inputUsername);
         inputPassword = (EditText) findViewById(R.id.inputPassword);
+        mProfileImage = (ImageView) findViewById(R.id.image_institute_pic);
+        txtInsName = (TextView) findViewById(R.id.txtInstituteName);
+        txtInsName.setText(PreferenceStorage.getInstituteName(getApplicationContext()));
+
         btnLogin = (Button) findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(this);
 
@@ -44,17 +65,36 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
         signUpServiceHelper.setSignUpServiceListener(this);
         progressDialogHelper = new ProgressDialogHelper(this);
 
+        String url = PreferenceStorage.getInstituteLogoPicUrl(this);
+        if ((url == null) || (url.isEmpty())) {
+           /* if ((loginMode == 1) || (loginMode == 3)) {
+                url = PreferenceStorage.getSocialNetworkProfileUrl(this);
+            } */
+        }
+        if (((url != null) && !(url.isEmpty()))) {
+            Picasso.with(this).load(url).placeholder(R.drawable.profile_pic).error(R.drawable.profile_pic).into(mProfileImage);
+        }
+
     }
 
+
     @Override
+
     public void onClick(View v) {
 
         if (CommonUtils.isNetworkAvailable(this)) {
             if (v == btnLogin) {
 
+                if (btnLogin == null) {
+                    btnLogin = (Button) findViewById(v.getId());
+                } else {
+                    btnLogin.setBackgroundResource(R.drawable.round_btn_color);
+                    btnLogin.setTextColor(getResources().getColor(R.color.white));
+                    btnLogin = (Button) findViewById(v.getId());
+                }
+
                 JSONObject jsonObject = new JSONObject();
                 try {
-//                    jsonObject.put(EduAppConstants.PARAMS_FUNC_NAME, EduAppConstants.SIGN_IN_PARAMS_FUNC_NAME);
                     jsonObject.put(EduAppConstants.PARAMS_USER_NAME, inputUsername.getText().toString());
                     jsonObject.put(EduAppConstants.PARAMS_PASSWORD, inputPassword.getText().toString());
 
@@ -63,7 +103,7 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
                 }
 
                 progressDialogHelper.showProgressDialog(getString(R.string.progress_loading));
-                signUpServiceHelper.makeSignUpServiceCall(jsonObject.toString());
+                signUpServiceHelper.makeUserLoginServiceCall(jsonObject.toString());
             }
 
         } else {
@@ -116,10 +156,19 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
         progressDialogHelper.hideProgressDialog();
         if (validateSignInResponse(response)) {
             try {
-                JSONObject userData = response.getJSONObject("userData");
+                JSONArray getData = response.getJSONArray("userData");
+                JSONObject userData = getData.getJSONObject(0);
                 String user_id = null;
                 Log.d(TAG, "userData dictionary" + userData.toString());
                 if (userData != null) {
+                    user_id = userData.getString("user_id");
+                    String SchoolId = userData.getString("school_id");
+                    String Name = userData.getString("name");
+                    String UserName = userData.getString("user_name");
+                    String UserImage = userData.getString("user_pic");
+                    String UserType = userData.getString("user_type");
+
+
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -135,3 +184,4 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
         AlertDialogHelper.showSimpleAlertDialog(this, error);
     }
 }
+

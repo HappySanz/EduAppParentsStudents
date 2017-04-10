@@ -17,4 +17,9 @@
 
     </style>
 
+    <style name="MySwitchTheme" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">@color/appColor</item>
+
+    </style>
+
 </resources>

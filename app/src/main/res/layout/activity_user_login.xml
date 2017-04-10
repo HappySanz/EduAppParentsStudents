@@ -1,53 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/lib/com.palprotech.eduappteacher"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     android:gravity="center"
     android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <com.palprotech.eduappteacher.customview.CircleImageView
+        android:id="@+id/image_institute_pic"
+        android:layout_width="120sp"
+        android:layout_height="120sp"
+        android:layout_marginTop="5sp"
+        android:fitsSystemWindows="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/profile_pic"
+        app:layout_collapseMode="parallax" />
 
-        <EditText
-            android:id="@+id/inputUsername"
-            android:layout_width="160dp"
-            android:layout_height="40dp"
-            android:background="@drawable/textcolorborder"
-            android:hint="@string/user_name"
-            android:paddingLeft="10dp"
-            android:textColor="#67368c"
-            android:textColorHint="#7767368c"
-            android:layout_centerVertical="true"
-            android:layout_alignLeft="@+id/inputPassword"
-            android:layout_alignStart="@+id/inputPassword" />
+    <TextView
+        android:id="@+id/txtInstituteName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30sp"
+        android:layout_marginTop="30sp"
+        android:text="@string/app_name" />
 
-        <EditText
-            android:id="@+id/inputPassword"
-            android:layout_width="160dp"
-            android:layout_height="40dp"
-            android:background="@drawable/textcolorborder"
-            android:inputType="textPassword"
-            android:hint="@string/password"
-            android:paddingLeft="10dp"
-            android:textColor="#67368c"
-            android:textColorHint="#7767368c"
-            android:layout_above="@+id/btnLogin"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="50dp" />
+    <EditText
+        android:id="@+id/inputUsername"
+        android:layout_width="230sp"
+        android:layout_height="40sp"
+        android:background="@drawable/textcolorborder"
+        android:hint="@string/user_name"
+        android:maxLines="1"
+        android:inputType="textEmailAddress"
+        android:layout_marginBottom="20sp"
+        android:paddingLeft="10sp"
+        android:textColor="@color/appColor"
+        android:textColorHint="#7767368c" />
 
-        <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="120dp"
-            android:layout_height="40dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="100dp"
-            android:background="@drawable/round_btn"
-            android:text="Sign in"
-            android:textColor="@color/appColor" />
+    <EditText
+        android:id="@+id/inputPassword"
+        android:layout_width="230sp"
+        android:layout_height="40sp"
+        android:layout_marginBottom="50sp"
+        android:background="@drawable/textcolorborder"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:paddingLeft="10sp"
+        android:textColor="@color/appColor"
+        android:textColorHint="#7767368c" />
 
-    </RelativeLayout>
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="120sp"
+        android:layout_height="40sp"
+        android:layout_marginBottom="100sp"
+        android:background="@drawable/round_btn_color"
+        android:onClick="@drawable/round_btn"
+        android:text="Sign in"
+        android:textColor="@color/white" />
 
 </LinearLayout>

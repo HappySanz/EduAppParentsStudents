@@ -37,4 +37,15 @@
     <string name="address">Address</string>
     <string name="phone">Phone</string>
 
+    <!--Create or Review Test-->
+    <!---->
+    <string name="create">Create Class Test / Homework</string>
+    <string name="view">View Class Test / Homework</string>
+    <string name="class_t">Class Test</string>
+    <string name="homework">Homework</string>
+    <string name="sclass">Class</string>
+    <string name="date">Date</string>
+    <string name="sub">Subject</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
 </resources>
