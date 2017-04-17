@@ -7,7 +7,7 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <com.palprotech.eduappteacher.customview.CircleImageView
+    <com.palprotech.eduappparentsstudents.customview.CircleImageView
         android:id="@+id/image_institute_pic"
         android:layout_width="120sp"
         android:layout_height="120sp"
@@ -50,6 +50,15 @@
         android:paddingLeft="10sp"
         android:textColor="@color/appColor"
         android:textColorHint="#7767368c" />
+    <TextView
+        android:id="@+id/txtforgot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30sp"
+        android:layout_marginTop="-40sp"
+        android:layout_marginLeft="60sp"
+        android:text="@string/forgot"
+        android:textColor="@color/appColor"/>
 
     <Button
         android:id="@+id/btnLogin"

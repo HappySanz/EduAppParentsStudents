@@ -8,6 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.palprotech.eduappparentsstudents.R;
 
+/**
+ * Created by Admin on 22-03-2017.
+ */
 
 public class SplashScreenActivity extends AppCompatActivity{
 
@@ -16,14 +19,14 @@ public class SplashScreenActivity extends AppCompatActivity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_splash_screen);
 
         new Handler().postDelayed(new Runnable() {
 
             @Override
             public void run() {
 
-                Intent i = new Intent(SplashScreenActivity.this, UserLoginActivity.class);
+                Intent i = new Intent(SplashScreenActivity.this, SchoolIdLoginActivity.class);
                 startActivity(i);
                 finish();
             }

@@ -1,21 +1,23 @@
 package com.palprotech.eduappparentsstudents.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
-import com.palprotech.eduappparentsstudents.helper.AlertDialogHelper;
-import com.palprotech.eduappparentsstudents.utils.CommonUtils;
-import com.palprotech.eduappparentsstudents.interfaces.DialogClickListener;
-import com.palprotech.eduappparentsstudents.utils.EduAppConstants;
-import com.palprotech.eduappparentsstudents.serviceinterfaces.ISignUpServiceListener;
-import com.palprotech.eduappparentsstudents.helper.ProgressDialogHelper;
 import com.palprotech.eduappparentsstudents.R;
+import com.palprotech.eduappparentsstudents.helper.AlertDialogHelper;
+import com.palprotech.eduappparentsstudents.helper.ProgressDialogHelper;
+import com.palprotech.eduappparentsstudents.interfaces.DialogClickListener;
 import com.palprotech.eduappparentsstudents.servicehelpers.SignUpServiceHelper;
+import com.palprotech.eduappparentsstudents.serviceinterfaces.ISignUpServiceListener;
+import com.palprotech.eduappparentsstudents.utils.CommonUtils;
+import com.palprotech.eduappparentsstudents.utils.EduAppConstants;
+import com.palprotech.eduappparentsstudents.utils.PreferenceStorage;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -32,14 +34,15 @@ public class SchoolIdLoginActivity extends AppCompatActivity implements View.OnC
     private ProgressDialogHelper progressDialogHelper;
 
     private EditText inputInstituteId;
-    private Button btnSubmit;
+    private ImageView btnSubmit;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_school_id_login);
+
         inputInstituteId = (EditText) findViewById(R.id.inputInsId);
-        btnSubmit = (Button) findViewById(R.id.btnSubmit);
+        btnSubmit = (ImageView) findViewById(R.id.btnSubmit);
         btnSubmit.setOnClickListener(this);
 
         signUpServiceHelper = new SignUpServiceHelper(this);
@@ -63,7 +66,7 @@ public class SchoolIdLoginActivity extends AppCompatActivity implements View.OnC
                 }
 
                 progressDialogHelper.showProgressDialog(getString(R.string.progress_loading));
-                signUpServiceHelper.makeSignUpServiceCall(jsonObject.toString());
+                signUpServiceHelper.makeInstituteLoginServiceCall(jsonObject.toString());
             }
         } else {
             AlertDialogHelper.showSimpleAlertDialog(this, "No Network connection");
@@ -90,7 +93,7 @@ public class SchoolIdLoginActivity extends AppCompatActivity implements View.OnC
 
                 if ((status != null)) {
                     if (((status.equalsIgnoreCase("activationError")) || (status.equalsIgnoreCase("alreadyRegistered")) ||
-                            (status.equalsIgnoreCase("notRegistered")) || (status.equalsIgnoreCase("error")))) {
+                            (status.equalsIgnoreCase("notRegistered")) || (status.equalsIgnoreCase("Error")))) {
                         signInsuccess = false;
                         Log.d(TAG, "Show error dialog");
                         AlertDialogHelper.showSimpleAlertDialog(this, msg);
@@ -114,13 +117,48 @@ public class SchoolIdLoginActivity extends AppCompatActivity implements View.OnC
         if (validateSignInResponse(response)) {
             try {
                 JSONObject userData = response.getJSONObject("userData");
-                String user_id = null;
+                String ins_id = null;
+
                 Log.d(TAG, "userData dictionary" + userData.toString());
                 if (userData != null) {
+                    ins_id = userData.getString("institute_id");
+
+                    PreferenceStorage.saveInstituteId(this, userData.getString("institute_id"));
+
+                    Log.d(TAG, "created user id" + ins_id);
+
+                    //need to re do this
+                    Log.d(TAG, "sign in response is" + response.toString());
+
+                    String instituteName = userData.getString("institute_name");
+                    String instituteCode = userData.getString("institute_code");
+                    String instituteCodeId = userData.getString("institute_code_id");
+                    String instituteLogo = userData.getString("institute_logo");
+                    String instituteLogoPicUrl = EduAppConstants.GET_SCHOOL_LOGO + instituteLogo;
+
+                    if ((instituteName != null) && !(instituteName.isEmpty()) && !instituteName.equalsIgnoreCase("null")) {
+                        PreferenceStorage.saveInstituteName(this, instituteName);
+                    }
+                    if ((instituteCode != null) && !(instituteCode.isEmpty()) && !instituteCode.equalsIgnoreCase("null")) {
+                        PreferenceStorage.saveInstituteCode(this, instituteCode);
+                    }
+                    if ((instituteCodeId != null) && !(instituteCodeId.isEmpty()) && !instituteCodeId.equalsIgnoreCase("null")) {
+                        PreferenceStorage.saveInstituteCodeId(this, instituteCodeId);
+                    }
+                    if ((instituteLogoPicUrl != null) && !(instituteLogoPicUrl.isEmpty()) && !instituteLogoPicUrl.equalsIgnoreCase("null")) {
+                        PreferenceStorage.saveInstituteLogoPic(this, instituteLogoPicUrl);
+                    }
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+
+
+            Intent intent = new Intent(this, UserLoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            finish();
+
         } else {
             Log.d(TAG, "Error while sign In");
         }
