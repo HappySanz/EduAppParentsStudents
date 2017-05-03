@@ -16,7 +16,7 @@
         android:layout_height="273dp"
         android:background="@color/appColor">
 
-        <com.palprotech.eduappteacher.customview.CircleImageView
+        <com.palprotech.eduappparentsstudents.customview.CircleImageView
             android:id="@+id/image_profile_pic"
             android:layout_width="100dp"
             android:layout_height="100dp"

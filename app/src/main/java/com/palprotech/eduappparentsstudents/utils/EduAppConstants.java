@@ -18,6 +18,7 @@ public class EduAppConstants {
 
     // USERS URL
     public static final String USER_LOGIN_API = "/api/login/adminlogin/";
+    public static final String USER_IMAGE_API = "/assets/admin/profile/";
 
     //Service Params
     public static String PARAM_MESSAGE = "msg";
@@ -44,14 +45,16 @@ public class EduAppConstants {
     public static final String KEY_INSTITUTE_ID = "institute_id";
     public static final String KEY_INSTITUTE_NAME = "institute_name";
     public static final String KEY_INSTITUTE_CODE = "institute_code";
-    public static final String KEY_INSTITUTE_CODE_ID = "institute_code_id";
     public static final String KEY_INSTITUTE_LOGO = "institute_logo";
 
     // User Login Preferences
+    public static final String KEY_USER_DYNAMIC_API = "user_dynamic_api";
     public static final String KEY_USER_ID = "user_id";
-    public static final String KEY_SCHOOL_ID = "school_id";
     public static final String KEY_NAME = "name";
-    public static final String KEY_USER_EMAIL = "user_name";
+    public static final String KEY_USER_NAME = "user_name";
+    public static final String KEY_USER_IMAGE = "user_pic";
+    public static final String KEY_USER_TYPE = "user_type";
+    public static final String KEY_USER_TYPE_NAME = "user_type_name";
 
 
 }

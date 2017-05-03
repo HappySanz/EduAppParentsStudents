@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
 
-    <com.palprotech.eduappteacher.customview.CircleImageView
+    <com.palprotech.eduappparentsstudents.customview.CircleImageView
         android:id="@+id/img_profile_image"
         android:layout_width="100dp"
         android:layout_height="100dp"
