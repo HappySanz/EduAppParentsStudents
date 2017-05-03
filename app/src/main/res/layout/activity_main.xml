@@ -42,8 +42,8 @@
             android:layout_gravity="start"
             android:layout_weight="1"
             android:background="@color/transparent"
-            android:dividerHeight="1sp"
-            android:divider="@color/nav_list_color"
+            android:dividerHeight="-0.0025dp"
+            android:divider="@color/transparent"
             android:scrollbars="vertical" />
 
     </LinearLayout>

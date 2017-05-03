@@ -9,9 +9,9 @@
 
     <com.palprotech.eduappparentsstudents.customview.CircleImageView
         android:id="@+id/image_institute_pic"
-        android:layout_width="120sp"
-        android:layout_height="120sp"
-        android:layout_marginTop="5sp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="5dp"
         android:fitsSystemWindows="true"
         android:scaleType="centerCrop"
         android:src="@drawable/profile_pic"
@@ -21,53 +21,53 @@
         android:id="@+id/txtInstituteName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30sp"
-        android:layout_marginTop="30sp"
-        android:text="@string/app_name" />
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/app_name"
+        android:textAllCaps="true"/>
 
     <EditText
         android:id="@+id/inputUsername"
-        android:layout_width="230sp"
-        android:layout_height="40sp"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
         android:background="@drawable/textcolorborder"
         android:hint="@string/user_name"
         android:maxLines="1"
         android:inputType="textEmailAddress"
-        android:layout_marginBottom="20sp"
-        android:paddingLeft="10sp"
-        android:textColor="@color/appColor"
+        android:layout_marginBottom="20dp"
+        android:paddingLeft="10dp"
+        android:textColor="#67368c"
         android:textColorHint="#7767368c" />
 
     <EditText
         android:id="@+id/inputPassword"
-        android:layout_width="230sp"
-        android:layout_height="40sp"
-        android:layout_marginBottom="50sp"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="50dp"
         android:background="@drawable/textcolorborder"
         android:hint="@string/password"
         android:inputType="textPassword"
         android:maxLines="1"
-        android:paddingLeft="10sp"
-        android:textColor="@color/appColor"
+        android:paddingLeft="10dp"
+        android:textColor="#67368c"
         android:textColorHint="#7767368c" />
+
     <TextView
-        android:id="@+id/txtforgot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30sp"
-        android:layout_marginTop="-40sp"
-        android:layout_marginLeft="60sp"
-        android:text="@string/forgot"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="-45dp"
+        android:paddingLeft="120dp"
+        android:text="Forgot Password?"
         android:textColor="@color/appColor"/>
 
     <Button
         android:id="@+id/btnLogin"
-        android:layout_width="120sp"
-        android:layout_height="40sp"
-        android:layout_marginBottom="100sp"
-        android:background="@drawable/round_btn_color"
-        android:onClick="@drawable/round_btn"
-        android:text="Sign in"
-        android:textColor="@color/white" />
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/round_btn"
+        android:text="@string/sign_in"
+        android:textColor="@color/appColor" />
 
 </LinearLayout>

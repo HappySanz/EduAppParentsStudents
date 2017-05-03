@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">EduAppParentsStudents</string>
+    <string name="app_name">EduAppTeacher</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="error_occured">Failed to connect to the server. Please try again.</string>
@@ -7,7 +7,7 @@
     <string name="alert_button_ok">Ok</string>
     <string name="alert_button_cancel">Cancel</string>
     <string name="progress_loading">Loading...</string>
-
+    <string name="sign_in">Sign In</string>
     <string name="app_name_display">EDU</string>
 
     <string name="drawer_open">Drawer open</string>
@@ -21,12 +21,11 @@
     <!---->
     <string name="user_name">Username</string>
     <string name="password">Password</string>
-    <string name="forgot">Forgot Password</string>
 
     <!--Dashboard-->
     <!---->
     <string name="attendance">ATTENDANCE</string>
-    <string name="class_test">CLASS TEST &amp; HOMEWORK</string>
+    <string name="class_test">CLASS TEST &amp;\n HOMEWORK</string>
     <string name="exam">EXAM &amp; RESULT</string>
     <string name="time_table">TIME TABLE</string>
     <string name="events">EVENTS</string>
