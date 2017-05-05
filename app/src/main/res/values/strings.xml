@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">EduAppTeacher</string>
+    <string name="app_name">EduAppParentsStudents</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="error_occured">Failed to connect to the server. Please try again.</string>
