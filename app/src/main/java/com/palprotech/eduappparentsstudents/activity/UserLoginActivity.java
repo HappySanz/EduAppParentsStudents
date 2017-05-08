@@ -151,11 +151,25 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
         return signInsuccess;
     }
 
+    public static void longInfo(String str) {
+        if (str.length() > 4000) {
+            Log.d("Data From", str.substring(0, 4000));
+            longInfo(str.substring(4000));
+        } else
+            Log.d("Data To", str);
+        String New ;
+    }
+
     @Override
     public void onSignUp(JSONObject response) {
 
         progressDialogHelper.hideProgressDialog();
         if (validateSignInResponse(response)) {
+
+            String repo = response.toString();
+
+            longInfo(repo);
+
             try {
                 JSONArray getData = response.getJSONArray("userData");
                 JSONObject userData = getData.getJSONObject(0);
