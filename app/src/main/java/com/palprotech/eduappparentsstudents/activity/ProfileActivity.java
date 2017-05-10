@@ -38,6 +38,7 @@ public class ProfileActivity extends AppCompatActivity {
         numPhone = (EditText) findViewById(R.id.txtphone);
         txtUsrName = (TextView) findViewById(R.id.name);
         txtUserType = (TextView) findViewById(R.id.typename);
+
         txtUsrID.setText(PreferenceStorage.getUserName(getApplicationContext()));
         txtMail.setText(PreferenceStorage.getEmail(getApplicationContext()));
 //        txtPassword.setText(PreferenceStorage.get(getApplicationContext()));

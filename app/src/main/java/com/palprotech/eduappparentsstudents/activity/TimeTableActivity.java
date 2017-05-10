@@ -116,7 +116,7 @@ public class TimeTableActivity extends AppCompatActivity implements ITimeTableSe
             try {
                 JSONArray getData = response.getJSONArray("timeTable");
                 JSONObject userData = getData.getJSONObject(0);
-
+int getLength = getData.length();
                 String subjectName = null;
                 Log.d(TAG, "userData dictionary" + userData.toString());
 
