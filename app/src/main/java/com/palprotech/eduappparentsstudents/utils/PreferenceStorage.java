@@ -191,6 +191,7 @@ public class PreferenceStorage {
     }
 
     // Student Preference Data
+    // Get Student Class Id
     public static void saveStudentClassIdPreference(Context context, String studentPrefclassId) {
         SharedPreferences sharedPreferences = PreferenceManager
                 .getDefaultSharedPreferences(context);
