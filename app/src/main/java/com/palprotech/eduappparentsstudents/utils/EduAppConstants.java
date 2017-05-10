@@ -20,6 +20,9 @@ public class EduAppConstants {
     public static final String USER_LOGIN_API = "/api/login/adminlogin/";
     public static final String USER_IMAGE_API = "/assets/admin/profile/";
 
+    // STUDENT TIMETABLE URL
+    public static final String GET_STUDENT_TIME_TABLE_API = "/api/stud_timetable/studTimetable/";
+
     //Service Params
     public static String PARAM_MESSAGE = "msg";
 
@@ -55,6 +58,14 @@ public class EduAppConstants {
     public static final String KEY_USER_IMAGE = "user_pic";
     public static final String KEY_USER_TYPE = "user_type";
     public static final String KEY_USER_TYPE_NAME = "user_type_name";
+
+    // Student Preferences Data
+    public static final String KEY_STUDENT_CLASS_ID_PREFERENCES = "student_class_id";
+
+    // Get Student Time table
+    public static final String PARAMS_CLASS_ID = "class_id";
+
+
 
 
 }

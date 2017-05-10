@@ -2,5 +2,6 @@
 <resources>
 
     <dimen name="menuTextSize">18dp</dimen>
+    <dimen name="actionbarTextSize">20sp</dimen>
 
 </resources>

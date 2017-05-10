@@ -190,4 +190,20 @@ public class PreferenceStorage {
         return userTypeName;
     }
 
+    // Student Preference Data
+    public static void saveStudentClassIdPreference(Context context, String studentPrefclassId) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(EduAppConstants.KEY_STUDENT_CLASS_ID_PREFERENCES, studentPrefclassId);
+        editor.commit();
+    }
+
+    public static String getStudentClassIdPreference(Context context) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        String studentPrefclassId = sharedPreferences.getString(EduAppConstants.KEY_STUDENT_CLASS_ID_PREFERENCES, "");
+        return studentPrefclassId;
+    }
+
 }

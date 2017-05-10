@@ -174,6 +174,9 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
                 JSONArray getData = response.getJSONArray("userData");
                 JSONObject userData = getData.getJSONObject(0);
                 String user_id = null;
+                JSONArray getStudentData = response.getJSONArray("enrollDetails");
+                JSONObject studentData = getStudentData.getJSONObject(0);
+
                 Log.d(TAG, "userData dictionary" + userData.toString());
                 if (userData != null) {
                     user_id = userData.getString("user_id") + "";
@@ -191,6 +194,7 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
                     String UserPicUrl = PreferenceStorage.getUserDynamicAPI(this) + EduAppConstants.USER_IMAGE_API + UserImage;
                     String UserType = userData.getString("user_type");
                     String UserTypeName = userData.getString("user_type_name");
+                    String StudentPreferenceClassId = studentData.getString("class_id");
 
                     if ((Name != null) && !(Name.isEmpty()) && !Name.equalsIgnoreCase("null")) {
                         PreferenceStorage.saveName(this, Name);
@@ -206,6 +210,9 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
                     }
                     if ((UserTypeName != null) && !(UserTypeName.isEmpty()) && !UserTypeName.equalsIgnoreCase("null")) {
                         PreferenceStorage.saveUserTypeName(this, UserTypeName);
+                    }
+                    if ((StudentPreferenceClassId != null) && !(StudentPreferenceClassId.isEmpty()) && !StudentPreferenceClassId.equalsIgnoreCase("null")) {
+                        PreferenceStorage.saveStudentClassIdPreference(this, StudentPreferenceClassId);
                     }
                 }
             } catch (JSONException e) {
