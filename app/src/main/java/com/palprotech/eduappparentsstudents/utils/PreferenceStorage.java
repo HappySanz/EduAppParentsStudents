@@ -207,8 +207,8 @@ public class PreferenceStorage {
         return studentPrefclassId;
     }
 
-    ////////////////////////////////////
-
+    //Parent Profile Data
+    //Parent ID
     public static void saveParentID(Context context, String name) {
         SharedPreferences sharedPreferences = PreferenceManager
                 .getDefaultSharedPreferences(context);
@@ -224,6 +224,7 @@ public class PreferenceStorage {
         return parentID;
     }
 
+    //Father Name
     public static void saveFatherName(Context context, String name) {
         SharedPreferences sharedPreferences = PreferenceManager
                 .getDefaultSharedPreferences(context);
@@ -239,6 +240,7 @@ public class PreferenceStorage {
         return fatherName;
     }
 
+    //Mother Name
     public static void saveMotherName(Context context, String name) {
         SharedPreferences sharedPreferences = PreferenceManager
                 .getDefaultSharedPreferences(context);
@@ -253,6 +255,8 @@ public class PreferenceStorage {
         String motherName = sharedPreferences.getString(EduAppConstants.PARENT_ID, "");
         return motherName;
     }
+
+    //Guardian Name
     public static void saveGuardnName(Context context, String name) {
         SharedPreferences sharedPreferences = PreferenceManager
                 .getDefaultSharedPreferences(context);
@@ -267,6 +271,8 @@ public class PreferenceStorage {
         String guardnName = sharedPreferences.getString(EduAppConstants.GUARDN_NAME, "");
         return guardnName;
     }
+
+    //Father Occupation
     public static void saveOccupation(Context context, String name) {
         SharedPreferences sharedPreferences = PreferenceManager
                 .getDefaultSharedPreferences(context);
@@ -281,6 +287,8 @@ public class PreferenceStorage {
         String occupation = sharedPreferences.getString(EduAppConstants.OCCUPATION, "");
         return occupation;
     }
+
+    //Family Address
     public static void saveAddress(Context context, String name) {
         SharedPreferences sharedPreferences = PreferenceManager
                 .getDefaultSharedPreferences(context);
@@ -295,6 +303,8 @@ public class PreferenceStorage {
         String address = sharedPreferences.getString(EduAppConstants.ADDRESS, "");
         return address;
     }
+
+    //Contact Email
     public static void saveEmail(Context context, String name) {
         SharedPreferences sharedPreferences = PreferenceManager
                 .getDefaultSharedPreferences(context);
@@ -309,6 +319,8 @@ public class PreferenceStorage {
         String email = sharedPreferences.getString(EduAppConstants.EMAIL, "");
         return email;
     }
+
+    //Contact Phone
     public static void saveHomePhone(Context context, String name) {
         SharedPreferences sharedPreferences = PreferenceManager
                 .getDefaultSharedPreferences(context);
@@ -323,6 +335,8 @@ public class PreferenceStorage {
         String homePhone = sharedPreferences.getString(EduAppConstants.HOME_PHONE, "");
         return homePhone;
     }
+
+    //Official Phone
     public static void saveOfficePhone(Context context, String name) {
         SharedPreferences sharedPreferences = PreferenceManager
                 .getDefaultSharedPreferences(context);
@@ -337,6 +351,8 @@ public class PreferenceStorage {
         String officePhone = sharedPreferences.getString(EduAppConstants.OFFICE_PHONE, "");
         return officePhone;
     }
+
+    //Personal Phone
     public static void saveMobileOne(Context context, String name) {
         SharedPreferences sharedPreferences = PreferenceManager
                 .getDefaultSharedPreferences(context);
@@ -351,6 +367,8 @@ public class PreferenceStorage {
         String mobileOne = sharedPreferences.getString(EduAppConstants.MOBILE_ONE, "");
         return mobileOne;
     }
+
+    //Personal Phone
     public static void saveMobileTwo(Context context, String name) {
         SharedPreferences sharedPreferences = PreferenceManager
                 .getDefaultSharedPreferences(context);
@@ -365,6 +383,8 @@ public class PreferenceStorage {
         String mobileTwo = sharedPreferences.getString(EduAppConstants.MOBILE_TWO, "");
         return mobileTwo;
     }
+
+    //Father Picture
     public static void saveFatherImg(Context context, String name) {
         SharedPreferences sharedPreferences = PreferenceManager
                 .getDefaultSharedPreferences(context);
@@ -379,6 +399,8 @@ public class PreferenceStorage {
         String fatherImg = sharedPreferences.getString(EduAppConstants.FATHER_IMAGE, "");
         return fatherImg;
     }
+
+    //Mother Picture
     public static void saveMotherImg(Context context, String name) {
         SharedPreferences sharedPreferences = PreferenceManager
                 .getDefaultSharedPreferences(context);
@@ -393,6 +415,8 @@ public class PreferenceStorage {
         String motherImg = sharedPreferences.getString(EduAppConstants.MOTHER_IMAGE, "");
         return motherImg;
     }
+
+    //Guardian Picture
     public static void saveGuardnImg(Context context, String name) {
         SharedPreferences sharedPreferences = PreferenceManager
                 .getDefaultSharedPreferences(context);
