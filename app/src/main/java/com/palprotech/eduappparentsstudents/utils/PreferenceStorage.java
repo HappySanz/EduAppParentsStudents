@@ -176,17 +176,37 @@ public class PreferenceStorage {
 
     // User Type Name
     public static void saveUserTypeName(Context context, String userTypeName) {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(EduAppConstants.KEY_USER_TYPE_NAME, userTypeName);
         editor.commit();
     }
 
     public static String getUserTypeName(Context context) {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
         String userTypeName = sharedPreferences.getString(EduAppConstants.KEY_USER_TYPE_NAME, "");
         return userTypeName;
     }
+
+    // Student Preference Data
+    public static void saveStudentClassIdPreference(Context context, String studentPrefclassId) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(EduAppConstants.KEY_STUDENT_CLASS_ID_PREFERENCES, studentPrefclassId);
+        editor.commit();
+    }
+
+    public static String getStudentClassIdPreference(Context context) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        String studentPrefclassId = sharedPreferences.getString(EduAppConstants.KEY_STUDENT_CLASS_ID_PREFERENCES, "");
+        return studentPrefclassId;
+    }
+
+    ////////////////////////////////////
 
     public static void saveParentID(Context context, String name) {
         SharedPreferences sharedPreferences = PreferenceManager
@@ -387,6 +407,6 @@ public class PreferenceStorage {
         return guardnImg;
     }
 
-
+    
 
 }
