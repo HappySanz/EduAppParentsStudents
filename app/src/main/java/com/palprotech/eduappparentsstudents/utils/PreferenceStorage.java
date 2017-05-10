@@ -253,6 +253,7 @@ public class PreferenceStorage {
         String motherName = sharedPreferences.getString(EduAppConstants.PARENT_ID, "");
         return motherName;
     }
+
     public static void saveGuardnName(Context context, String name) {
         SharedPreferences sharedPreferences = PreferenceManager
                 .getDefaultSharedPreferences(context);
@@ -267,6 +268,7 @@ public class PreferenceStorage {
         String guardnName = sharedPreferences.getString(EduAppConstants.GUARDN_NAME, "");
         return guardnName;
     }
+
     public static void saveOccupation(Context context, String name) {
         SharedPreferences sharedPreferences = PreferenceManager
                 .getDefaultSharedPreferences(context);
@@ -281,6 +283,7 @@ public class PreferenceStorage {
         String occupation = sharedPreferences.getString(EduAppConstants.OCCUPATION, "");
         return occupation;
     }
+
     public static void saveAddress(Context context, String name) {
         SharedPreferences sharedPreferences = PreferenceManager
                 .getDefaultSharedPreferences(context);
@@ -295,6 +298,7 @@ public class PreferenceStorage {
         String address = sharedPreferences.getString(EduAppConstants.ADDRESS, "");
         return address;
     }
+
     public static void saveEmail(Context context, String name) {
         SharedPreferences sharedPreferences = PreferenceManager
                 .getDefaultSharedPreferences(context);
@@ -309,6 +313,7 @@ public class PreferenceStorage {
         String email = sharedPreferences.getString(EduAppConstants.EMAIL, "");
         return email;
     }
+
     public static void saveHomePhone(Context context, String name) {
         SharedPreferences sharedPreferences = PreferenceManager
                 .getDefaultSharedPreferences(context);
@@ -323,6 +328,7 @@ public class PreferenceStorage {
         String homePhone = sharedPreferences.getString(EduAppConstants.HOME_PHONE, "");
         return homePhone;
     }
+
     public static void saveOfficePhone(Context context, String name) {
         SharedPreferences sharedPreferences = PreferenceManager
                 .getDefaultSharedPreferences(context);
@@ -337,6 +343,7 @@ public class PreferenceStorage {
         String officePhone = sharedPreferences.getString(EduAppConstants.OFFICE_PHONE, "");
         return officePhone;
     }
+
     public static void saveMobileOne(Context context, String name) {
         SharedPreferences sharedPreferences = PreferenceManager
                 .getDefaultSharedPreferences(context);
@@ -351,6 +358,7 @@ public class PreferenceStorage {
         String mobileOne = sharedPreferences.getString(EduAppConstants.MOBILE_ONE, "");
         return mobileOne;
     }
+
     public static void saveMobileTwo(Context context, String name) {
         SharedPreferences sharedPreferences = PreferenceManager
                 .getDefaultSharedPreferences(context);
@@ -365,6 +373,7 @@ public class PreferenceStorage {
         String mobileTwo = sharedPreferences.getString(EduAppConstants.MOBILE_TWO, "");
         return mobileTwo;
     }
+
     public static void saveFatherImg(Context context, String name) {
         SharedPreferences sharedPreferences = PreferenceManager
                 .getDefaultSharedPreferences(context);
@@ -379,6 +388,7 @@ public class PreferenceStorage {
         String fatherImg = sharedPreferences.getString(EduAppConstants.FATHER_IMAGE, "");
         return fatherImg;
     }
+
     public static void saveMotherImg(Context context, String name) {
         SharedPreferences sharedPreferences = PreferenceManager
                 .getDefaultSharedPreferences(context);
@@ -393,6 +403,7 @@ public class PreferenceStorage {
         String motherImg = sharedPreferences.getString(EduAppConstants.MOTHER_IMAGE, "");
         return motherImg;
     }
+
     public static void saveGuardnImg(Context context, String name) {
         SharedPreferences sharedPreferences = PreferenceManager
                 .getDefaultSharedPreferences(context);
@@ -407,7 +418,4 @@ public class PreferenceStorage {
         String guardnImg = sharedPreferences.getString(EduAppConstants.GUARDN_IMAGE, "");
         return guardnImg;
     }
-
-    
-
 }
