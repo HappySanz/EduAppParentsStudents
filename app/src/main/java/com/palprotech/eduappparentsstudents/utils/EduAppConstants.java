@@ -68,4 +68,20 @@ public class EduAppConstants {
 
 
 
+    //User Profile details
+    public static final String PARENT_ID = "parent_id";
+    public static final String FATHER_NAME = "father_name";
+    public static final String MOTHER_NAME= "mother_name";
+    public static final String GUARDN_NAME = "guardn_name";
+    public static final String OCCUPATION = "occupation";
+    public static final String ADDRESS = "address";
+    public static final String EMAIL = "email";
+    public static final String HOME_PHONE = "home_phone";
+    public static final String OFFICE_PHONE = "office_phone";
+    public static final String MOBILE_ONE = "mobile";
+    public static final String MOBILE_TWO = "mobile1";
+    public static final String FATHER_IMAGE = "father_pic";
+    public static final String MOTHER_IMAGE = "mother_pic";
+    public static final String GUARDN_IMAGE = "guardn_pic";
+
 }

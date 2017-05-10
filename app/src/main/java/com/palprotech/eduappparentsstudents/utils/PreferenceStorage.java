@@ -176,34 +176,215 @@ public class PreferenceStorage {
 
     // User Type Name
     public static void saveUserTypeName(Context context, String userTypeName) {
-        SharedPreferences sharedPreferences = PreferenceManager
-                .getDefaultSharedPreferences(context);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(EduAppConstants.KEY_USER_TYPE_NAME, userTypeName);
         editor.commit();
     }
 
     public static String getUserTypeName(Context context) {
-        SharedPreferences sharedPreferences = PreferenceManager
-                .getDefaultSharedPreferences(context);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         String userTypeName = sharedPreferences.getString(EduAppConstants.KEY_USER_TYPE_NAME, "");
         return userTypeName;
     }
 
-    // Student Preference Data
-    public static void saveStudentClassIdPreference(Context context, String studentPrefclassId) {
+    public static void saveParentID(Context context, String name) {
         SharedPreferences sharedPreferences = PreferenceManager
                 .getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(EduAppConstants.KEY_STUDENT_CLASS_ID_PREFERENCES, studentPrefclassId);
+        editor.putString(EduAppConstants.PARENT_ID, name);
         editor.commit();
     }
 
-    public static String getStudentClassIdPreference(Context context) {
+    public static String getParentID(Context context) {
         SharedPreferences sharedPreferences = PreferenceManager
                 .getDefaultSharedPreferences(context);
-        String studentPrefclassId = sharedPreferences.getString(EduAppConstants.KEY_STUDENT_CLASS_ID_PREFERENCES, "");
-        return studentPrefclassId;
+        String parentID = sharedPreferences.getString(EduAppConstants.PARENT_ID, "");
+        return parentID;
+    }
+
+    public static void saveFatherName(Context context, String name) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(EduAppConstants.FATHER_NAME, name);
+        editor.commit();
+    }
+
+    public static String getFatherName(Context context) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        String fatherName = sharedPreferences.getString(EduAppConstants.FATHER_NAME, "");
+        return fatherName;
+    }
+
+    public static void saveMotherName(Context context, String name) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(EduAppConstants.MOTHER_NAME, name);
+        editor.commit();
+    }
+
+    public static String getMotherName(Context context) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        String motherName = sharedPreferences.getString(EduAppConstants.PARENT_ID, "");
+        return motherName;
+    }
+    public static void saveGuardnName(Context context, String name) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(EduAppConstants.GUARDN_NAME, name);
+        editor.commit();
+    }
+
+    public static String getGuardnName(Context context) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        String guardnName = sharedPreferences.getString(EduAppConstants.GUARDN_NAME, "");
+        return guardnName;
+    }
+    public static void saveOccupation(Context context, String name) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(EduAppConstants.OCCUPATION, name);
+        editor.commit();
+    }
+
+    public static String getOccupation(Context context) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        String occupation = sharedPreferences.getString(EduAppConstants.OCCUPATION, "");
+        return occupation;
+    }
+    public static void saveAddress(Context context, String name) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(EduAppConstants.ADDRESS, name);
+        editor.commit();
+    }
+
+    public static String getAddress(Context context) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        String address = sharedPreferences.getString(EduAppConstants.ADDRESS, "");
+        return address;
+    }
+    public static void saveEmail(Context context, String name) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(EduAppConstants.EMAIL, name);
+        editor.commit();
+    }
+
+    public static String getEmail(Context context) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        String email = sharedPreferences.getString(EduAppConstants.EMAIL, "");
+        return email;
+    }
+    public static void saveHomePhone(Context context, String name) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(EduAppConstants.HOME_PHONE, name);
+        editor.commit();
+    }
+
+    public static String getHomePhone(Context context) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        String homePhone = sharedPreferences.getString(EduAppConstants.HOME_PHONE, "");
+        return homePhone;
+    }
+    public static void saveOfficePhone(Context context, String name) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(EduAppConstants.OFFICE_PHONE, name);
+        editor.commit();
+    }
+
+    public static String getOfficePhone(Context context) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        String officePhone = sharedPreferences.getString(EduAppConstants.OFFICE_PHONE, "");
+        return officePhone;
+    }
+    public static void saveMobileOne(Context context, String name) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(EduAppConstants.MOBILE_ONE, name);
+        editor.commit();
+    }
+
+    public static String getMobileOne(Context context) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        String mobileOne = sharedPreferences.getString(EduAppConstants.MOBILE_ONE, "");
+        return mobileOne;
+    }
+    public static void saveMobileTwo(Context context, String name) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(EduAppConstants.MOBILE_TWO, name);
+        editor.commit();
+    }
+
+    public static String getMobileTwo(Context context) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        String mobileTwo = sharedPreferences.getString(EduAppConstants.MOBILE_TWO, "");
+        return mobileTwo;
+    }
+    public static void saveFatherImg(Context context, String name) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(EduAppConstants.FATHER_IMAGE, name);
+        editor.commit();
+    }
+
+    public static String getFatherImg(Context context) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        String fatherImg = sharedPreferences.getString(EduAppConstants.FATHER_IMAGE, "");
+        return fatherImg;
+    }
+    public static void saveMotherImg(Context context, String name) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(EduAppConstants.MOTHER_IMAGE, name);
+        editor.commit();
+    }
+
+    public static String getMotherImg(Context context) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        String motherImg = sharedPreferences.getString(EduAppConstants.MOTHER_IMAGE, "");
+        return motherImg;
+    }
+    public static void saveGuardnImg(Context context, String name) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(EduAppConstants.GUARDN_IMAGE, name);
+        editor.commit();
+    }
+
+    public static String getGuardnImg(Context context) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        String guardnImg = sharedPreferences.getString(EduAppConstants.GUARDN_IMAGE, "");
+        return guardnImg;
     }
 
 }
