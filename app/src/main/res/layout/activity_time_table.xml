@@ -17,10 +17,11 @@
 
         <ImageView
             android:id="@+id/back_res"
-            android:layout_width="30dp"
+            android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:minHeight="?attr/actionBarSize"
+            android:paddingLeft="15dp"
             android:src="@drawable/ic_arrow_back_white_48dp" />
 
         <ImageView
@@ -57,7 +58,8 @@
         android:layout_marginRight="5dp"
         android:layout_marginTop="20dp"
         android:layout_weight="1"
-        android:scrollbars="vertical">
+        android:scrollbars="horizontal|vertical"
+        android:fadeScrollbars="false">
 
         <HorizontalScrollView
             android:id="@+id/horizon"

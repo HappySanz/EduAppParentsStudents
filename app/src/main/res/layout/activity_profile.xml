@@ -31,9 +31,6 @@
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:hint="Kamal Raj"
-            android:textColorHint="@color/white"
             android:layout_marginTop="20dp"
             android:textColor="@color/white"
             android:layout_gravity="center_horizontal"
@@ -45,10 +42,20 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_gravity="center_horizontal"
-            android:hint="Professor"
             android:textColor="@color/white"
-            android:textColorHint="@color/white"
             />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="@dimen/fab_margin"
+            android:src="@drawable/ic_mode_edit_white_24dp"
+            app:backgroundTint="@color/city_text_color" />
+
 
     </LinearLayout>
 

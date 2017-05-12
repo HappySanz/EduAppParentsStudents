@@ -193,28 +193,55 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
 
                     String StudentPreferenceClassId = studentData.getString("class_id");
 
-                    String ParentPhone = parentData.getString("home_phone");
+                    String FatherPhone = parentData.getString("home_phone");
 
+                    String FatherMail = parentData.getString("email");
+
+                    String Address = parentData.getString("address");
+
+                    //Name
                     if ((Name != null) && !(Name.isEmpty()) && !Name.equalsIgnoreCase("null")) {
                         PreferenceStorage.saveName(this, Name);
                     }
+
+                    //Username
                     if ((UserName != null) && !(UserName.isEmpty()) && !UserName.equalsIgnoreCase("null")) {
                         PreferenceStorage.saveUserName(this, UserName);
                     }
+
+                    //ProfilePic
                     if ((UserPicUrl != null) && !(UserPicUrl.isEmpty()) && !UserPicUrl.equalsIgnoreCase("null")) {
                         PreferenceStorage.saveUserPicture(this, UserPicUrl);
                     }
+
+                    //Usertype
                     if ((UserType != null) && !(UserType.isEmpty()) && !UserType.equalsIgnoreCase("null")) {
                         PreferenceStorage.saveUserType(this, UserType);
                     }
+
+                    //UsertypeName
                     if ((UserTypeName != null) && !(UserTypeName.isEmpty()) && !UserTypeName.equalsIgnoreCase("null")) {
                         PreferenceStorage.saveUserTypeName(this, UserTypeName);
                     }
+
+                    //StudentClassID
                     if ((StudentPreferenceClassId != null) && !(StudentPreferenceClassId.isEmpty()) && !StudentPreferenceClassId.equalsIgnoreCase("null")) {
                         PreferenceStorage.saveStudentClassIdPreference(this, StudentPreferenceClassId);
                     }
-                    if ((ParentPhone != null) && !(ParentPhone.isEmpty()) && !ParentPhone.equalsIgnoreCase("null")) {
-                        PreferenceStorage.saveHomePhone(this, ParentPhone);
+
+                    //Father'sPhone
+                    if ((FatherPhone != null) && !(FatherPhone.isEmpty()) && !FatherPhone.equalsIgnoreCase("null")) {
+                        PreferenceStorage.saveHomePhone(this, FatherPhone);
+                    }
+
+                    //Father'sMail
+                    if ((FatherMail != null) && !(FatherMail.isEmpty()) && !FatherMail.equalsIgnoreCase("null")) {
+                        PreferenceStorage.saveEmail(this, FatherMail);
+                    }
+
+                    //Address
+                    if ((Address != null) && !(Address.isEmpty()) && !Address.equalsIgnoreCase("null")) {
+                        PreferenceStorage.saveAddress(this, Address);
                     }
                 }
             } catch (JSONException e) {

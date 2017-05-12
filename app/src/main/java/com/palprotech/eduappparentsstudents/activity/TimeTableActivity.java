@@ -1,13 +1,14 @@
 package com.palprotech.eduappparentsstudents.activity;
 
-import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -17,9 +18,7 @@ import com.palprotech.eduappparentsstudents.R;
 import com.palprotech.eduappparentsstudents.helper.AlertDialogHelper;
 import com.palprotech.eduappparentsstudents.helper.ProgressDialogHelper;
 import com.palprotech.eduappparentsstudents.interfaces.DialogClickListener;
-import com.palprotech.eduappparentsstudents.servicehelpers.SignUpServiceHelper;
 import com.palprotech.eduappparentsstudents.servicehelpers.TimeTableServiceHelper;
-import com.palprotech.eduappparentsstudents.serviceinterfaces.ISignUpServiceListener;
 import com.palprotech.eduappparentsstudents.serviceinterfaces.ITimeTableServiceListener;
 import com.palprotech.eduappparentsstudents.utils.CommonUtils;
 import com.palprotech.eduappparentsstudents.utils.EduAppConstants;
@@ -47,6 +46,13 @@ public class TimeTableActivity extends AppCompatActivity implements ITimeTableSe
         timeTableServiceHelper.setSignUpServiceListener(this);
         progressDialogHelper = new ProgressDialogHelper(this);
         GetTimeTableData();
+        ImageView bckbtn = (ImageView) findViewById(R.id.back_res);
+        bckbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     private void GetTimeTableData() {
@@ -119,13 +125,12 @@ public class TimeTableActivity extends AppCompatActivity implements ITimeTableSe
 int getLength = getData.length();
                 String subjectName = null;
                 Log.d(TAG, "userData dictionary" + userData.toString());
-
                 layout_all = (LinearLayout) findViewById(R.id.layout_timetable);
                 TableLayout layout = new TableLayout(this);
                 layout.setLayoutParams(new TableLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                         ViewGroup.LayoutParams.MATCH_PARENT));
-
-                layout.setPadding(0, 0, 0, 0);
+                layout_all.setScrollbarFadingEnabled(false);
+                layout.setPadding(0, 80,0, 80);
 
                 TableLayout.LayoutParams rowLp = new TableLayout.LayoutParams(
                         ViewGroup.LayoutParams.MATCH_PARENT,
@@ -134,22 +139,22 @@ int getLength = getData.length();
                         ViewGroup.LayoutParams.MATCH_PARENT,
                         ViewGroup.LayoutParams.MATCH_PARENT);
 
-                cellLp.setMargins(6, 0, 0, 0);
+                cellLp.setMargins(2, 2, 2, 2);
                 int i = 0;
-                for (int f = 0; f <= 4; f++) {
+                for (int f = 1; f <= 5; f++) {
 
                     TableRow tr = new TableRow(this);
 
                     tr.setLayoutParams(new TableRow.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                             ViewGroup.LayoutParams.MATCH_PARENT));
                     tr.setBackgroundColor(Color.BLACK);
-                    tr.setPadding(0, 0, 0, 2);
+                    tr.setPadding(0, 0, 0, 1);
 
                     TableRow.LayoutParams llp = new
                             TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT);
-                    llp.setMargins(0, 0, 2, 0);//2px right-margin
+                    llp.setMargins(1, 1, 1, 1);//2px right-margin
 
-                    for (int c1 = 0; c1 <= 7; c1++) {
+                    for (int c1 = 1; c1 <= 8; c1++) {
 
                         LinearLayout cell = new LinearLayout(this);
                         cell.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
@@ -158,11 +163,14 @@ int getLength = getData.length();
 
                         final String name = getData.getJSONObject(i).getString("subject_name") + "";
 
-                        cell.setBackgroundColor(Color.rgb(255, 144, 134));
+                        cell.setBackgroundColor(Color.WHITE);//argb(255,104,53,142)
 
                         b.setText(name);
-                        b.setTextSize(10.0f);
-
+                        b.setTextSize(15.0f);
+                        b.setTypeface(null, Typeface.BOLD);
+                        b.setAllCaps(true);
+                        b.setTextColor(Color.parseColor("#FF68358E"));
+                        b.setGravity(Gravity.CENTER);
                         b.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -172,8 +180,8 @@ int getLength = getData.length();
                         });
                         b.setPressed(true);
 
-                        b.setHeight(100);
-                        b.setWidth(100);
+                        b.setHeight(150);
+                        b.setWidth(150);
                         b.setPadding(1, 0, 2, 0);
                         cell.addView(b);
                         cell.setLayoutParams(llp);//2px border on the right for the cell
