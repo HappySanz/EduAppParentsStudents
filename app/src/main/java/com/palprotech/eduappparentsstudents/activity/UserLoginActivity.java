@@ -102,7 +102,6 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
         } else {
             AlertDialogHelper.showSimpleAlertDialog(this, "No Network connection");
         }
-
     }
 
     @Override
