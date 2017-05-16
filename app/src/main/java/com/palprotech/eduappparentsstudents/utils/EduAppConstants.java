@@ -23,6 +23,9 @@ public class EduAppConstants {
     // STUDENT TIMETABLE URL
     public static final String GET_STUDENT_TIME_TABLE_API = "/api/stud_timetable/studTimetable/";
 
+    // CLASS TEST & HOMEWORK URL
+    public static final String GET_STUDENT_CLASSTEST_AND_HOMEWORK_API = "/api/disp_Homework/dispHomework/";
+
     //Service Params
     public static String PARAM_MESSAGE = "msg";
 
@@ -66,12 +69,10 @@ public class EduAppConstants {
     public static final String PARAMS_CLASS_ID = "class_id";
 
 
-
-
     //User Profile details
     public static final String PARENT_ID = "parent_id";
     public static final String FATHER_NAME = "father_name";
-    public static final String MOTHER_NAME= "mother_name";
+    public static final String MOTHER_NAME = "mother_name";
     public static final String GUARDN_NAME = "guardn_name";
     public static final String OCCUPATION = "occupation";
     public static final String ADDRESS = "address";
@@ -83,5 +84,8 @@ public class EduAppConstants {
     public static final String FATHER_IMAGE = "father_pic";
     public static final String MOTHER_IMAGE = "mother_pic";
     public static final String GUARDN_IMAGE = "guardn_pic";
+
+    //Class Test & Homework
+    public static final String PARAM_CLASS_ID = "class_id";
 
 }

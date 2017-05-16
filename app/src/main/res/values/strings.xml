@@ -7,6 +7,7 @@
     <string name="alert_button_ok">Ok</string>
     <string name="alert_button_cancel">Cancel</string>
     <string name="progress_loading">Loading...</string>
+    <string name="no_connectivity">Please check your internet connectivity and try again.</string>
 
     <string name="app_name_display">EDU</string>
 
