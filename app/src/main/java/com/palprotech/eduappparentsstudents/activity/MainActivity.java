@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements DialogClickListen
     private ArrayAdapter<String> navListAdapter;
     private String[] values = {"PROFILE", "ATTENDANCE", "CLASS TEST & HOMEWORK", "EXAM & RESULT", "TIME TABLE", "CALENDAR", "EVENT", "COMMUNICATION", "SETTINGS", "SIGN OUT"};
     TextView navUserProfileName = null;
-    LinearLayout dashAttendance, dashTimeTable, dashClassTest;
+    LinearLayout dashAttendance, dashTimeTable, dashClassTest, dashExam;
     private String mCurrentUserProfileUrl = "";
     Context context;
 
@@ -81,6 +81,7 @@ public class MainActivity extends AppCompatActivity implements DialogClickListen
         dashAttendance = (LinearLayout) findViewById(R.id.attendance);
         dashTimeTable = (LinearLayout) findViewById(R.id.time_table);
         dashClassTest = (LinearLayout) findViewById(R.id.class_test);
+        dashExam = (LinearLayout) findViewById(R.id.exam);
 
         dashAttendance.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,6 +103,14 @@ public class MainActivity extends AppCompatActivity implements DialogClickListen
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ClassTestHomeworkActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        dashExam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ExamsResultActivity.class);
                 startActivity(intent);
             }
         });

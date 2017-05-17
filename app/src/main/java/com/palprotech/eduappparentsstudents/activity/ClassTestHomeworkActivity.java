@@ -59,11 +59,11 @@ public class ClassTestHomeworkActivity extends AppCompatActivity implements ICla
         classTestServiceHelper.setClassTestServiceListener(this);
         progressDialogHelper = new ProgressDialogHelper(this);
 
-        callGetFilterService();
+        callGetClassTestService();
 
     }
 
-    public void callGetFilterService() {
+    public void callGetClassTestService() {
         /*if(eventsListAdapter != null){
             eventsListAdapter.clearSearchFlag();
         }*/

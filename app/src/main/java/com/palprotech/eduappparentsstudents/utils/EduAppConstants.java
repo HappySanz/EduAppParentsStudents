@@ -26,6 +26,12 @@ public class EduAppConstants {
     // CLASS TEST & HOMEWORK URL
     public static final String GET_STUDENT_CLASSTEST_AND_HOMEWORK_API = "/api/disp_Homework/dispHomework/";
 
+    // EXAM & RESULT URL
+    public static final String GET_EXAM_API = "/api/disp_Exams/dispExams/";
+    public static final String GET_RESULT_API = "/api/disp_Exammarks/dispMarkdetails/";
+
+    //
+
     //Service Params
     public static String PARAM_MESSAGE = "msg";
 
