@@ -20,11 +20,17 @@ public class EduAppConstants {
     public static final String USER_LOGIN_API = "/api/login/adminlogin/";
     public static final String USER_IMAGE_API = "/assets/admin/profile/";
 
+    //EXAM AND RESULT URL
+    public static final String EXAMS_AND_RESULTS = "api/disp_Exams/dispExams/";
+
     // STUDENT TIMETABLE URL
     public static final String GET_STUDENT_TIME_TABLE_API = "/api/stud_timetable/studTimetable/";
 
     // CLASS TEST & HOMEWORK URL
     public static final String GET_STUDENT_CLASSTEST_AND_HOMEWORK_API = "/api/disp_Homework/dispHomework/";
+
+    //Event URL
+    public static final String GET_EVENT_API = "/api/disp_Events/dispEvents/";
 
     //Service Params
     public static String PARAM_MESSAGE = "msg";

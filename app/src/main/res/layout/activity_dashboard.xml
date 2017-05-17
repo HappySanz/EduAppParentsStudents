@@ -28,6 +28,7 @@
                 android:layout_width="80sp"
                 android:layout_height="80sp"
                 android:layout_alignParentTop="true"
+                android:layout_marginTop="5dp"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="top|center"
                 android:background="@drawable/attendance" />
@@ -114,16 +115,16 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="70sp"
-                android:layout_height="70sp"
-                android:layout_marginTop="5dp"
+                android:layout_width="90sp"
+                android:layout_height="90sp"
+                android:layout_marginTop="-5dp"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/timetable" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="1dp"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="@string/time_table"

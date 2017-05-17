@@ -101,3 +101,7 @@ dependencies {
 
     compile files('libs/universal-image-loader-1.9.3.jar')
 }
+
+dependencies {
+    compile 'com.google.code.gson:gson:2.8.0'
+}

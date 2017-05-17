@@ -13,29 +13,29 @@ import com.makeramen.roundedimageview.RoundedTransformationBuilder;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.palprotech.eduappparentsstudents.R;
 import com.palprotech.eduappparentsstudents.app.AppController;
-import com.palprotech.eduappparentsstudents.bean.dashboard.ClassTest;
+import com.palprotech.eduappparentsstudents.bean.dashboard.Event;
 import com.squareup.picasso.Transformation;
 
 import java.util.ArrayList;
 
 /**
- * Created by Admin on 15-05-2017.
+ * Created by Narendar on 17/05/17.
  */
 
-public class ClassTestListAdapter extends BaseAdapter{
+public class EventListAdapter extends BaseAdapter {
 
-    private static final String TAG = ClassTestListAdapter.class.getName();
+    private static final String TAG = EventListAdapter.class.getName();
     private final Transformation transformation;
     private Context context;
-    private ArrayList<ClassTest> classTests;
+    private ArrayList<Event> events;
     private boolean mSearching = false;
     private boolean mAnimateSearch = false;
     private ArrayList<Integer> mValidSearchIndices =new ArrayList<Integer>();
     private ImageLoader imageLoader = AppController.getInstance().getUniversalImageLoader();
 
-    public ClassTestListAdapter(Context context, ArrayList<ClassTest> classTests) {
+    public EventListAdapter(Context context, ArrayList<Event> events) {
         this.context = context;
-        this.classTests = classTests;
+        this.events = events;
 
         transformation = new RoundedTransformationBuilder()
                 .cornerRadiusDp(0)
@@ -55,16 +55,16 @@ public class ClassTestListAdapter extends BaseAdapter{
 
         }else{
             // Log.d(TAG,"Normal count size");
-            return classTests.size();
+            return events.size();
         }
     }
 
     @Override
     public Object getItem(int position) {
         if(mSearching){
-            return classTests.get(mValidSearchIndices.get(position));
+            return events.get(mValidSearchIndices.get(position));
         }else {
-            return classTests.get(position);
+            return events.get(position);
         }
     }
 
@@ -75,18 +75,18 @@ public class ClassTestListAdapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder;
+        EventListAdapter.ViewHolder holder;
         if (convertView == null) {
             LayoutInflater inflater = ((Activity) context).getLayoutInflater();
-            convertView = inflater.inflate(R.layout.class_test_list_item, parent, false);
+            convertView = inflater.inflate(R.layout.events_list_item, parent, false);
 
-            holder = new ViewHolder();
+            holder = new EventListAdapter.ViewHolder();
 //            holder.txtClassTestTitle = (TextView) convertView.findViewById(R.id.txtClassTestTitle);
-            holder.txtClassTestSubject = (TextView) convertView.findViewById(R.id.txtClassTestSubject);
-            holder.txtClassTestDate = (TextView) convertView.findViewById(R.id.txtClassTestDate);
+            holder.txtEventName = (TextView) convertView.findViewById(R.id.txtEventName);
+            holder.txtEventDate = (TextView) convertView.findViewById(R.id.txtEventDate);
             convertView.setTag(holder);
         } else {
-            holder = (ViewHolder) convertView.getTag();
+            holder = (EventListAdapter.ViewHolder) convertView.getTag();
         }
 
         if(mSearching){
@@ -98,11 +98,11 @@ public class ClassTestListAdapter extends BaseAdapter{
             Log.d("Event List Adapter","getview pos called"+ position);
         }
 
-        ClassTest classTest = classTests.get(position);
+        Event event = events.get(position);
 
 //        holder.txtClassTestTitle.setText(classTests.get(position).getHwTitle());
-        holder.txtClassTestSubject.setText(classTests.get(position).getHwSubjectName());
-        holder.txtClassTestDate.setText(classTests.get(position).getHwTestDate());
+        holder.txtEventName.setText(events.get(position).getEvent_name());
+        holder.txtEventDate.setText(events.get(position).getEvent_date());
 
         return convertView;
     }
@@ -112,10 +112,10 @@ public class ClassTestListAdapter extends BaseAdapter{
         mAnimateSearch = false;
         Log.d("EventListAdapter","serach for event"+eventName);
         mValidSearchIndices.clear();
-        for(int i =0; i< classTests.size(); i++){
-            String homeWorkTitle = classTests.get(i).getHwTitle();
-            if((homeWorkTitle != null) && !(homeWorkTitle.isEmpty())){
-                if( homeWorkTitle.toLowerCase().contains(eventName.toLowerCase())){
+        for(int i =0; i< events.size(); i++){
+            String eventTitle = events.get(i).getEvent_name();
+            if((eventTitle != null) && !(eventTitle.isEmpty())){
+                if( eventTitle.toLowerCase().contains(eventName.toLowerCase())){
                     mValidSearchIndices.add(i);
                 }
 
@@ -138,7 +138,7 @@ public class ClassTestListAdapter extends BaseAdapter{
     }
 
     public class ViewHolder {
-        public TextView txtClassTestTitle, txtClassTestSubject, txtClassTestDate;
+        public TextView txtClassTestTitle, txtEventName, txtEventDate;
     }
 
     public boolean ismSearching() {
@@ -153,3 +153,4 @@ public class ClassTestListAdapter extends BaseAdapter{
         }
     }
 }
+

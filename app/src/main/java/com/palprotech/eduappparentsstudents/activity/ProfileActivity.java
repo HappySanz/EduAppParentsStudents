@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.support.design.widget.FloatingActionButton;
 import com.palprotech.eduappparentsstudents.R;
 import com.palprotech.eduappparentsstudents.utils.PreferenceStorage;
 import com.squareup.picasso.Picasso;
@@ -26,7 +25,6 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         //new LoadProfile().execute();
         SetUI();
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
     }
 
     private void SetUI() {

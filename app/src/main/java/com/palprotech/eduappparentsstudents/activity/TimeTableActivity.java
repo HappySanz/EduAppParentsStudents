@@ -141,7 +141,7 @@ int getLength = getData.length();
 
                 cellLp.setMargins(2, 2, 2, 2);
                 int i = 0;
-                for (int f = 1; f <= 5; f++) {
+                for (int f = 0; f <= 4; f++) {
 
                     TableRow tr = new TableRow(this);
 
