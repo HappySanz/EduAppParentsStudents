@@ -1,5 +1,6 @@
 package com.palprotech.eduappparentsstudents.activity;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -8,15 +9,14 @@ import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Switch;
 
 import com.google.gson.Gson;
 import com.palprotech.eduappparentsstudents.R;
 import com.palprotech.eduappparentsstudents.adapter.ClassTestListAdapter;
 import com.palprotech.eduappparentsstudents.bean.dashboard.ClassTest;
 import com.palprotech.eduappparentsstudents.bean.dashboard.ClassTestList;
+import com.palprotech.eduappparentsstudents.customview.LoadMoreListView;
 import com.palprotech.eduappparentsstudents.helper.AlertDialogHelper;
 import com.palprotech.eduappparentsstudents.helper.ProgressDialogHelper;
 import com.palprotech.eduappparentsstudents.servicehelpers.ClassTestServiceHelper;
@@ -46,8 +46,6 @@ public class ClassTestHomeworkActivity extends AppCompatActivity implements ICla
     protected boolean isLoadingForFirstTime = true;
     Handler mHandler = new Handler();
     private SearchView mSearchView = null;
-    private Switch switch_test, switch_homwork;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,20 +59,11 @@ public class ClassTestHomeworkActivity extends AppCompatActivity implements ICla
         classTestServiceHelper.setClassTestServiceListener(this);
         progressDialogHelper = new ProgressDialogHelper(this);
 
-        callGetFilterService();
-        ImageView bckbtn = (ImageView) findViewById(R.id.back_res);
-        bckbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-//        testsort();
-
+        callGetClassTestService();
 
     }
 
-    public void callGetFilterService() {
+    public void callGetClassTestService() {
         /*if(eventsListAdapter != null){
             eventsListAdapter.clearSearchFlag();
         }*/
@@ -83,18 +72,12 @@ public class ClassTestHomeworkActivity extends AppCompatActivity implements ICla
 
         if (CommonUtils.isNetworkAvailable(this)) {
             progressDialogHelper.showProgressDialog(getString(R.string.progress_loading));
+            //    eventServiceHelper.makeRawRequest(FindAFunConstants.GET_ADVANCE_SINGLE_SEARCH);
             new HttpAsyncTask().execute("");
         } else {
             AlertDialogHelper.showSimpleAlertDialog(this, getString(R.string.no_connectivity));
         }
 
-    }
-
-    public void testsort() {
-        if (switch_test.isChecked()){
-            classTestArrayList.clear();
-
-        }
     }
 
     @Override
