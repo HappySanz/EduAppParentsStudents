@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements DialogClickListen
     boolean doubleBackToExitPressedOnce = false;
     private ImageView imgNavProfileImage;
     private ArrayAdapter<String> navListAdapter;
-    private String[] values = {"PROFILE", "ATTENDANCE", "CLASS TEST & HOMEWORK", "EXAM & RESULT", "TIME TABLE", "CALENDAR", "EVENT", "COMMUNICATION", "SETTINGS", "SIGN OUT"};
+    private String[] values = {"PROFILE", "ATTENDANCE", "CLASS TEST & HOMEWORK", "EXAM & RESULT", "TIME TABLE", "EVENT", "COMMUNICATION", "SIGN OUT"};
     TextView navUserProfileName = null;
     LinearLayout dashAttendance, dashTimeTable, dashClassTest, dashExam, dashEvent, dashCommunication;
     private String mCurrentUserProfileUrl = "";
@@ -231,38 +231,40 @@ public class MainActivity extends AppCompatActivity implements DialogClickListen
             navigationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(navigationIntent);
         } else if (position == 1) {
-            Intent navigationIntent = new Intent(this, ProfileActivity.class);
+            Intent navigationIntent = new Intent(this, AttendanceActivity.class);
             navigationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(navigationIntent);
         } else if (position == 2) {
-            Intent navigationIntent = new Intent(this, ProfileActivity.class);
+            Intent navigationIntent = new Intent(this, ClassTestHomeworkActivity.class);
             navigationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(navigationIntent);
         } else if (position == 3) {
-            Intent navigationIntent = new Intent(this, ProfileActivity.class);
-            //navigationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            Intent navigationIntent = new Intent(this, ExamsResultActivity.class);
+            navigationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(navigationIntent);
         } else if (position == 4) {
-            Intent navigationIntent = new Intent(this, ProfileActivity.class);
-            //navigationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            Intent navigationIntent = new Intent(this, TimeTableActivity.class);
+            navigationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(navigationIntent);
         } else if (position == 5) {
-            Intent navigationIntent = new Intent(this, ProfileActivity.class);
-            //navigationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(navigationIntent);
-        } else if (position == 6) {
             Intent navigationIntent = new Intent(this, EventsActivity.class);
             navigationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(navigationIntent);
-        } else if (position == 7) {
-            Intent navigationIntent = new Intent(this, ProfileActivity.class);
-            //navigationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        } else if (position == 6) {
+            Intent navigationIntent = new Intent(this, ParentsCommunicationActivity.class);
+            navigationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(navigationIntent);
-        } else if (position == 8) {
-            Intent navigationIntent = new Intent(this, ProfileActivity.class);
-            //navigationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(navigationIntent);
-        } else if (position == 9) {
+        }
+// else if (position == 7) {
+//            Intent navigationIntent = new Intent(this, ProfileActivity.class);
+//            //navigationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//            startActivity(navigationIntent);
+//        } else if (position == 8) {
+//            Intent navigationIntent = new Intent(this, ProfileActivity.class);
+//            //navigationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//            startActivity(navigationIntent);
+//        }
+        else if (position == 7) {
             Log.d(TAG, "Perform Logout");
             doLogout();
         }

@@ -31,10 +31,15 @@ public class ProfileActivity extends AppCompatActivity {
 
         mProfileImage = (ImageView) findViewById(R.id.image_profile_pic);
         txtUsrID = (EditText) findViewById(R.id.userid);
+        txtUsrID.setEnabled(false);
         txtMail = (EditText) findViewById(R.id.txtmail);
+        txtMail.setEnabled(false);
         txtPassword = (EditText) findViewById(R.id.txtpassword);
+        txtPassword.setEnabled(false);
         txtAddress = (EditText) findViewById(R.id.txtaddress);
+        txtAddress.setEnabled(false);
         numPhone = (EditText) findViewById(R.id.txtphone);
+        numPhone.setEnabled(false);
         txtUsrName = (TextView) findViewById(R.id.name);
         txtUserType = (TextView) findViewById(R.id.typename);
 

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_grey">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:layout_marginTop="100dp">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/black">
+
+            <TableRow>
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:text="Date"
+                    android:textSize="25dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center"
+                    android:background="@color/appColor"
+                    android:textColor="@color/white"
+                    android:layout_column="1"
+                    />
+                <TextView
+                    android:layout_width="130dp"
+                    android:layout_height="match_parent"
+                    android:text="Subject"
+                    android:textSize="25dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center"
+                    android:background="@color/appColor"
+                    android:textColor="@color/white"
+                    android:layout_column="2"/>
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:text="Detail"
+                    android:textSize="25dp"
+                    android:gravity="center"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@color/appColor"
+                    android:textColor="@color/white"
+                    android:layout_column="3"/>
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/txtHomeWorkDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginLeft="2dp"
+                    android:background="@color/background_grey"
+                    android:textColor="@color/appColor"
+                    android:layout_column="1"
+                    android:gravity="center"
+                    android:text="123"
+                    android:textSize="15dp"/>
+
+                <TextView
+                    android:id="@+id/txtHomeWorkDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginLeft="2dp"
+                    android:textColor="@color/appColor"
+                    android:background="@color/background_grey"
+                    android:layout_column="2"
+                    android:gravity="center"
+                    android:text="123"
+                    android:textSize="15dp"/>
+
+                <TextView
+                    android:id="@+id/txtHomeWorkSubject"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:textColor="@color/appColor"
+                    android:background="@color/background_grey"
+                    android:gravity="center"
+                    android:text="123"
+                    android:layout_column="3"
+                    android:textSize="15dp"/>
+
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnmark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="View Mark"
+        android:background="@color/transparent"/>
+
+</LinearLayout>

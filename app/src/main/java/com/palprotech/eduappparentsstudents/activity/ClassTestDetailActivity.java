@@ -1,9 +1,9 @@
 package com.palprotech.eduappparentsstudents.activity;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.palprotech.eduappparentsstudents.R;
@@ -20,13 +20,15 @@ import org.json.JSONObject;
 public class ClassTestDetailActivity extends AppCompatActivity implements IClassTestServiceListener, DialogClickListener, View.OnClickListener {
 
     private ClassTest classTest;
-    private TextView txtHomeWorkType, txtTitle, txtHomeWorkDate, txtHomeWorkDetails, txtHomeWorkSubject, txtHomeWorkMarkStatus;
+    private TextView txtHomeWorkType, txtTitle, txtHomeWorkDate, txtHomeWorkDetails, txtHomeWorkSubject;
+    public  String txtHomeWorkMarkStatus;
     private String markStatus = "0";
+    private Button btnmark;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_classtest_details);
+        setContentView(R.layout.test_displ);
         classTest = (ClassTest) getIntent().getSerializableExtra("eventObj");
         initializeViews();
         populateData();
@@ -35,21 +37,22 @@ public class ClassTestDetailActivity extends AppCompatActivity implements IClass
     }
 
     private void initializeViews() {
-        txtHomeWorkType = (TextView) findViewById(R.id.txtHomeWorkType);
-        txtTitle = (TextView) findViewById(R.id.txtTitle);
         txtHomeWorkDate = (TextView) findViewById(R.id.txtHomeWorkDate);
         txtHomeWorkDetails = (TextView) findViewById(R.id.txtHomeWorkDetails);
         txtHomeWorkSubject = (TextView) findViewById(R.id.txtHomeWorkSubject);
-        txtHomeWorkMarkStatus = (TextView) findViewById(R.id.txtHomeWorkMarkStatus);
     }
 
     private void populateData() {
-        txtHomeWorkType.setText(classTest.getHwType());
-        txtTitle.setText(classTest.getHwTitle());
         txtHomeWorkDate.setText(classTest.getHwTestDate());
         txtHomeWorkDetails.setText(classTest.getHwDatails());
         txtHomeWorkSubject.setText(classTest.getHwSubjectName());
-        txtHomeWorkMarkStatus.setText(classTest.getHwMarkStatus());
+//        txtHomeWorkMarkStatus = classTest.getHwMarkStatus();
+//        if(txtHomeWorkMarkStatus.equals(1)){
+//            btnmark.setVisibility(View.VISIBLE);
+//        }
+//        else{
+//            btnmark.setVisibility(View.GONE);
+//        }
 
     }
 

@@ -22,4 +22,14 @@
 
     </style>
 
+    <style name="datePickerTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorPrimary">@color/appColor</item>
+        <item name="colorPrimaryDark">@color/appColor</item>
+        <item name="colorAccent">@color/appColor</item>
+        <item name="android:textColorPrimary">@color/appColor</item>
+        <item name="android:textColorSecondary">@color/appColor</item>
+        <item name="android:textColorTertiary">@color/appColor</item>
+        <item name="android:colorBackground">@color/gray_2</item>
+    </style>
+
 </resources>
