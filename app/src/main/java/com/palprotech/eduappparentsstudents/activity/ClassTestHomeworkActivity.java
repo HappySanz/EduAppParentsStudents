@@ -23,6 +23,7 @@ import com.palprotech.eduappparentsstudents.servicehelpers.ClassTestServiceHelpe
 import com.palprotech.eduappparentsstudents.serviceinterfaces.IClassTestServiceListener;
 import com.palprotech.eduappparentsstudents.utils.CommonUtils;
 import com.palprotech.eduappparentsstudents.utils.EduAppConstants;
+import com.palprotech.eduappparentsstudents.utils.PreferenceStorage;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,7 +36,7 @@ import java.util.ArrayList;
 
 public class ClassTestHomeworkActivity extends AppCompatActivity implements IClassTestServiceListener, AdapterView.OnItemClickListener {
 
-    private static final String TAG = "ClassTestHomeworkActivity";
+    private static final String TAG = "ClassTestHomework";
     ListView loadMoreListView;
     View view;
     ClassTestListAdapter classTestListAdapter;
@@ -82,20 +83,20 @@ public class ClassTestHomeworkActivity extends AppCompatActivity implements ICla
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//        Log.d(TAG, "onEvent list item clicked" + position);
-//        ClassTest classTest = null;
-//        if ((classTestListAdapter != null) && (classTestListAdapter.ismSearching())) {
-//            Log.d(TAG, "while searching");
-//            int actualindex = classTestListAdapter.getActualEventPos(position);
-//            Log.d(TAG, "actual index" + actualindex);
-//            classTest = classTestArrayList.get(actualindex);
-//        } else {
-//            classTest = classTestArrayList.get(position);
-//        }
-//        Intent intent = new Intent(this, EventDetailActivity.class);
-//        intent.putExtra("eventObj", event);
+        Log.d(TAG, "onEvent list item click" + position);
+        ClassTest classTest = null;
+        if ((classTestListAdapter != null) && (classTestListAdapter.ismSearching())) {
+            Log.d(TAG, "while searching");
+            int actualindex = classTestListAdapter.getActualEventPos(position);
+            Log.d(TAG, "actual index" + actualindex);
+            classTest = classTestArrayList.get(actualindex);
+        } else {
+            classTest = classTestArrayList.get(position);
+        }
+        Intent intent = new Intent(this, ClassTestDetailActivity.class);
+        intent.putExtra("eventObj", classTest);
         // intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-//        startActivity(intent);
+        startActivity(intent);
     }
 
     @Override
@@ -149,7 +150,7 @@ public class ClassTestHomeworkActivity extends AppCompatActivity implements ICla
 
             JSONObject jsonObject = new JSONObject();
             try {
-                jsonObject.put(EduAppConstants.PARAM_CLASS_ID, "1");
+                jsonObject.put(EduAppConstants.PARAM_CLASS_ID, PreferenceStorage.getStudentClassIdPreference(getApplicationContext()));
 
 
             } catch (JSONException e) {

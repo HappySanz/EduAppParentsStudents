@@ -191,6 +191,54 @@ public class PreferenceStorage {
     }
 
     // Student Preference Data
+    // Get Student Enroll Id
+    public static void saveStudentEnrollIdPreference(Context context, String studentPrefEnrollID) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(EduAppConstants.KEY_STUDENT_ENROLL_ID_PREFERENCES, studentPrefEnrollID);
+        editor.commit();
+    }
+
+    public static String getStudentEnrollIdPreference(Context context) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        String studentPrefEnrollID = sharedPreferences.getString(EduAppConstants.KEY_STUDENT_ENROLL_ID_PREFERENCES, "");
+        return studentPrefEnrollID;
+    }
+
+    // Get Student Admission Id
+    public static void saveStudentAdmissionIdPreference(Context context, String studentPrefAdmissionID) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(EduAppConstants.KEY_STUDENT_ADMISSION_ID_PREFERENCES, studentPrefAdmissionID);
+        editor.commit();
+    }
+
+    public static String getStudentAdmissionIdPreference(Context context) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        String studentPrefAdmissionID = sharedPreferences.getString(EduAppConstants.KEY_STUDENT_ADMISSION_ID_PREFERENCES, "");
+        return studentPrefAdmissionID;
+    }
+
+    // Get Student Admission No
+    public static void saveStudentAdmissionNoPreference(Context context, String studentPrefAdmissionNo) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(EduAppConstants.KEY_STUDENT_ADMISSION_NO_PREFERENCES, studentPrefAdmissionNo);
+        editor.commit();
+    }
+
+    public static String getStudentAdmissionNoPreference(Context context) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        String studentPrefAdmissionNo = sharedPreferences.getString(EduAppConstants.KEY_STUDENT_ADMISSION_NO_PREFERENCES, "");
+        return studentPrefAdmissionNo;
+    }
+
     // Get Student Class Id
     public static void saveStudentClassIdPreference(Context context, String studentPrefclassId) {
         SharedPreferences sharedPreferences = PreferenceManager
@@ -206,6 +254,55 @@ public class PreferenceStorage {
         String studentPrefclassId = sharedPreferences.getString(EduAppConstants.KEY_STUDENT_CLASS_ID_PREFERENCES, "");
         return studentPrefclassId;
     }
+
+    // Get Student Name
+    public static void saveStudentNamePreference(Context context, String studentPrefName) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(EduAppConstants.KEY_STUDENT_NAME_PREFERENCES, studentPrefName);
+        editor.commit();
+    }
+
+    public static String getStudentNamePreference(Context context) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        String studentPrefName = sharedPreferences.getString(EduAppConstants.KEY_STUDENT_NAME_PREFERENCES, "");
+        return studentPrefName;
+    }
+
+    // Get Student Class Name
+    public static void saveStudentClassNamePreference(Context context, String studentPrefClassName) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(EduAppConstants.KEY_STUDENT_CLASS_NAME_PREFERENCES, studentPrefClassName);
+        editor.commit();
+    }
+
+    public static String getStudentClassNamePreference(Context context) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        String studentPrefClassName = sharedPreferences.getString(EduAppConstants.KEY_STUDENT_CLASS_NAME_PREFERENCES, "");
+        return studentPrefClassName;
+    }
+
+    // Get Student Section Name
+    public static void saveStudentSectionNamePreference(Context context, String studentPrefSectionName) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(EduAppConstants.KEY_STUDENT_SECTION_NAME_PREFERENCES, studentPrefSectionName);
+        editor.commit();
+    }
+
+    public static String getStudentSectionNamePreference(Context context) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        String studentPrefSectionName = sharedPreferences.getString(EduAppConstants.KEY_STUDENT_SECTION_NAME_PREFERENCES, "");
+        return studentPrefSectionName;
+    }
+
 
     ////////////////////////////////////
 

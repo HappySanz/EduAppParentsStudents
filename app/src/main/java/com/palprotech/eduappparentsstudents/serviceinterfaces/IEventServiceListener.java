@@ -7,6 +7,7 @@ import org.json.JSONObject;
  */
 
 public interface IEventServiceListener {
+
     void onEventResponse(JSONObject response);
 
     void onEventError(String error);

@@ -190,55 +190,90 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
                     String UserType = userData.getString("user_type");
                     String UserTypeName = userData.getString("user_type_name");
 
+                    String StudentPreferenceEnrollId = studentData.getString("enroll_id");
+                    String StudentPreferenceAdmissionId = studentData.getString("admission_id");
+                    String StudentPreferenceAdmissionNo = studentData.getString("admisn_no");
                     String StudentPreferenceClassId = studentData.getString("class_id");
+                    String StudentPreferenceName = studentData.getString("name");
+                    String StudentPreferenceClassName = studentData.getString("class_name");
+                    String StudentPreferenceSectionName = studentData.getString("sec_name");
 
                     String FatherPhone = parentData.getString("home_phone");
-
                     String FatherMail = parentData.getString("email");
-
                     String Address = parentData.getString("address");
 
-                    //Name
+                    // User Preference - Name
                     if ((Name != null) && !(Name.isEmpty()) && !Name.equalsIgnoreCase("null")) {
                         PreferenceStorage.saveName(this, Name);
                     }
 
-                    //Username
+                    // User Preference - Username
                     if ((UserName != null) && !(UserName.isEmpty()) && !UserName.equalsIgnoreCase("null")) {
                         PreferenceStorage.saveUserName(this, UserName);
                     }
 
-                    //ProfilePic
+                    // User Preference - ProfilePic
                     if ((UserPicUrl != null) && !(UserPicUrl.isEmpty()) && !UserPicUrl.equalsIgnoreCase("null")) {
                         PreferenceStorage.saveUserPicture(this, UserPicUrl);
                     }
 
-                    //Usertype
+                    // User Preference - Usertype
                     if ((UserType != null) && !(UserType.isEmpty()) && !UserType.equalsIgnoreCase("null")) {
                         PreferenceStorage.saveUserType(this, UserType);
                     }
 
-                    //UsertypeName
+                    // User Preference - UsertypeName
                     if ((UserTypeName != null) && !(UserTypeName.isEmpty()) && !UserTypeName.equalsIgnoreCase("null")) {
                         PreferenceStorage.saveUserTypeName(this, UserTypeName);
                     }
+//
+//
+                    // Student Preference - EnrollId
+                    if ((StudentPreferenceEnrollId != null) && !(StudentPreferenceEnrollId.isEmpty()) && !StudentPreferenceEnrollId.equalsIgnoreCase("null")) {
+                        PreferenceStorage.saveStudentEnrollIdPreference(this, StudentPreferenceEnrollId);
+                    }
+                    // Student Preference - AdmissionId
+                    if ((StudentPreferenceAdmissionId != null) && !(StudentPreferenceAdmissionId.isEmpty()) && !StudentPreferenceAdmissionId.equalsIgnoreCase("null")) {
+                        PreferenceStorage.saveStudentAdmissionIdPreference(this, StudentPreferenceAdmissionId);
+                    }
 
-                    //StudentClassID
+                    // Student Preference - AdmissionNo
+                    if ((StudentPreferenceAdmissionNo != null) && !(StudentPreferenceAdmissionNo.isEmpty()) && !StudentPreferenceAdmissionNo.equalsIgnoreCase("null")) {
+                        PreferenceStorage.saveStudentAdmissionNoPreference(this, StudentPreferenceAdmissionNo);
+                    }
+
+                    // Student Preference - ClassId
                     if ((StudentPreferenceClassId != null) && !(StudentPreferenceClassId.isEmpty()) && !StudentPreferenceClassId.equalsIgnoreCase("null")) {
                         PreferenceStorage.saveStudentClassIdPreference(this, StudentPreferenceClassId);
                     }
 
-                    //Father'sPhone
+                    // Student Preference - Name
+                    if ((StudentPreferenceName != null) && !(StudentPreferenceName.isEmpty()) && !StudentPreferenceName.equalsIgnoreCase("null")) {
+                        PreferenceStorage.saveStudentNamePreference(this, StudentPreferenceName);
+                    }
+
+                    // Student Preference - ClassName
+                    if ((StudentPreferenceClassName != null) && !(StudentPreferenceClassName.isEmpty()) && !StudentPreferenceClassName.equalsIgnoreCase("null")) {
+                        PreferenceStorage.saveStudentClassNamePreference(this, StudentPreferenceClassName);
+                    }
+
+                    // Student Preference - SectionName
+                    if ((StudentPreferenceSectionName != null) && !(StudentPreferenceSectionName.isEmpty()) && !StudentPreferenceSectionName.equalsIgnoreCase("null")) {
+                        PreferenceStorage.saveStudentSectionNamePreference(this, StudentPreferenceSectionName);
+                    }
+//
+//
+                    // Parents Preference - Father'sPhone
                     if ((FatherPhone != null) && !(FatherPhone.isEmpty()) && !FatherPhone.equalsIgnoreCase("null")) {
                         PreferenceStorage.saveHomePhone(this, FatherPhone);
                     }
 
-                    //Father'sMail
+                    // Parents Preference - Father'sMail
                     if ((FatherMail != null) && !(FatherMail.isEmpty()) && !FatherMail.equalsIgnoreCase("null")) {
                         PreferenceStorage.saveEmail(this, FatherMail);
                     }
 
-                    //Address
+                    // Parents Preference - Address
                     if ((Address != null) && !(Address.isEmpty()) && !Address.equalsIgnoreCase("null")) {
                         PreferenceStorage.saveAddress(this, Address);
                     }

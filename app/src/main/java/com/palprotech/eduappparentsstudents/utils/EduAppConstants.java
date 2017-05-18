@@ -25,6 +25,7 @@ public class EduAppConstants {
 
     // CLASS TEST & HOMEWORK URL
     public static final String GET_STUDENT_CLASSTEST_AND_HOMEWORK_API = "/api/disp_Homework/dispHomework/";
+    public static final String GET_STUDENT_CLASSTEST_MARK_API = "/api/disp_Ctestmarks/dispCtestmarks/";
 
     // EXAM & RESULT URL
     public static final String GET_EXAM_API = "/api/disp_Exams/dispExams/";
@@ -70,7 +71,13 @@ public class EduAppConstants {
     public static final String KEY_USER_TYPE_NAME = "user_type_name";
 
     // Student Preferences Data
+    public static final String KEY_STUDENT_ENROLL_ID_PREFERENCES = "student_enroll_id";
+    public static final String KEY_STUDENT_ADMISSION_ID_PREFERENCES = "student_admission_id";
+    public static final String KEY_STUDENT_ADMISSION_NO_PREFERENCES = "student_admission_no";
     public static final String KEY_STUDENT_CLASS_ID_PREFERENCES = "student_class_id";
+    public static final String KEY_STUDENT_NAME_PREFERENCES = "student_name";
+    public static final String KEY_STUDENT_CLASS_NAME_PREFERENCES = "student_class_name";
+    public static final String KEY_STUDENT_SECTION_NAME_PREFERENCES = "student_section_name";
 
     // Get Student Time table
     public static final String PARAMS_CLASS_ID = "class_id";
