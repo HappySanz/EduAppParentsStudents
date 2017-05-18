@@ -1,5 +1,6 @@
 package com.palprotech.eduappparentsstudents.activity;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -55,7 +56,7 @@ public class ExamsResultActivity extends AppCompatActivity implements IExamAndRe
         loadMoreListView.setOnItemClickListener(this);
         examsArrayList = new ArrayList<>();
         examServiceHelper = new ExamServiceHelper(this);
-        examServiceHelper.setClassTestServiceListener(this);
+        examServiceHelper.setExamServiceListener(this);
         progressDialogHelper = new ProgressDialogHelper(this);
 
         callGetExamResultService();
@@ -78,7 +79,7 @@ public class ExamsResultActivity extends AppCompatActivity implements IExamAndRe
         if (CommonUtils.isNetworkAvailable(this)) {
             progressDialogHelper.showProgressDialog(getString(R.string.progress_loading));
             //    eventServiceHelper.makeRawRequest(FindAFunConstants.GET_ADVANCE_SINGLE_SEARCH);
-            new ExamsResultActivity.HttpAsyncTask().execute("");
+            new HttpAsyncTask().execute("");
         } else {
             AlertDialogHelper.showSimpleAlertDialog(this, getString(R.string.no_connectivity));
         }
@@ -88,7 +89,20 @@ public class ExamsResultActivity extends AppCompatActivity implements IExamAndRe
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-
+     /*   Log.d(TAG, "onEvent list item click" + position);
+        Exams exams = null;
+        if ((examListAdapter != null) && (examListAdapter.ismSearching())) {
+            Log.d(TAG, "while searching");
+            int actualindex = examListAdapter.getActualEventPos(position);
+            Log.d(TAG, "actual index" + actualindex);
+            exams = examsArrayList.get(actualindex);
+        } else {
+            exams = examsArrayList.get(position);
+        }
+        Intent intent = new Intent(this, ExamDetailActivity.class);
+        intent.putExtra("eventObj", exams);
+        // intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivity(intent); */
     }
 
     @Override
@@ -123,8 +137,15 @@ public class ExamsResultActivity extends AppCompatActivity implements IExamAndRe
     }
 
     @Override
-    public void onExamAndResultError(String error) {
-
+    public void onExamAndResultError(final String error) {
+        mHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                progressDialogHelper.hideProgressDialog();
+//                loadMoreListView.onLoadMoreComplete();
+                AlertDialogHelper.showSimpleAlertDialog(ExamsResultActivity.this, error);
+            }
+        });
     }
 
     private class HttpAsyncTask extends AsyncTask<String, Void, Void> {

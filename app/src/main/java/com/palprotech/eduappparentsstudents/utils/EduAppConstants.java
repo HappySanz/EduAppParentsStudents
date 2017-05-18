@@ -105,4 +105,7 @@ public class EduAppConstants {
     //Class Test & Homework
     public static final String PARAM_CLASS_ID = "class_id";
 
+    //Exam
+    public static final String PARAM_EXAM_ID = "exam_id";
+
 }

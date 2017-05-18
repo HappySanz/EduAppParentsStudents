@@ -8,9 +8,9 @@ import com.android.volley.Request;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.palprotech.eduappparentsstudents.R;
-import com.palprotech.eduappparentsstudents.activity.ExamsResultActivity;
+import com.palprotech.eduappparentsstudents.activity.ExamDetailActivity;
 import com.palprotech.eduappparentsstudents.app.AppController;
-import com.palprotech.eduappparentsstudents.serviceinterfaces.IExamAndResultServiceListener;
+import com.palprotech.eduappparentsstudents.serviceinterfaces.IExamDetailViewServiceListener;
 import com.palprotech.eduappparentsstudents.utils.EduAppConstants;
 import com.palprotech.eduappparentsstudents.utils.PreferenceStorage;
 
@@ -20,33 +20,33 @@ import org.json.JSONObject;
 import java.io.UnsupportedEncodingException;
 
 /**
- * Created by Admin on 17-05-2017.
+ * Created by Admin on 18-05-2017.
  */
 
-public class ExamServiceHelper {
+public class ExamDetailViewServiceHelper {
 
-    private String TAG = ExamsResultActivity.class.getSimpleName();
+    private String TAG = ExamDetailActivity.class.getSimpleName();
     private Context context;
-    IExamAndResultServiceListener examAndResultServiceListener;
+    IExamDetailViewServiceListener examDetailViewServiceListener;
 
-    public ExamServiceHelper(Context context) {
+    public ExamDetailViewServiceHelper(Context context) {
         this.context = context;
     }
 
-    public void setExamServiceListener(IExamAndResultServiceListener examAndResultServiceListener) {
-        this.examAndResultServiceListener = examAndResultServiceListener;
+    public void setExamDetailViewServiceListener(IExamDetailViewServiceListener examDetailViewServiceListener) {
+        this.examDetailViewServiceListener = examDetailViewServiceListener;
     }
 
-    public void makeGetExamAndResultServiceCall(String params) {
+    public void makeGetExamDetailViewServiceCall(String params) {
         Log.d(TAG, "making sign in request" + params);
         final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
-                EduAppConstants.BASE_URL + PreferenceStorage.getInstituteCode(context) + EduAppConstants.GET_EXAM_API, params,
+                EduAppConstants.BASE_URL + PreferenceStorage.getInstituteCode(context) + EduAppConstants.GET_RESULT_API, params,
                 new com.android.volley.Response.Listener<JSONObject>() {
 
                     @Override
                     public void onResponse(JSONObject response) {
                         Log.d(TAG, response.toString());
-                        examAndResultServiceListener.onExamAndResultResponse(response);
+                        examDetailViewServiceListener.onExamDetailViewResponse(response);
                     }
                 }, new com.android.volley.Response.ErrorListener() {
 
@@ -58,19 +58,19 @@ public class ExamServiceHelper {
                     try {
                         String responseBody = new String(error.networkResponse.data, "utf-8");
                         JSONObject jsonObject = new JSONObject(responseBody);
-                        examAndResultServiceListener.onExamAndResultError(jsonObject.getString(EduAppConstants.PARAM_MESSAGE));
+                        examDetailViewServiceListener.onExamDetailViewError(jsonObject.getString(EduAppConstants.PARAM_MESSAGE));
                         String status = jsonObject.getString("status");
                         Log.d(TAG, "signup status is" + status);
                     } catch (UnsupportedEncodingException e) {
-                        examAndResultServiceListener.onExamAndResultError(context.getResources().getString(R.string.error_occured));
+                        examDetailViewServiceListener.onExamDetailViewError(context.getResources().getString(R.string.error_occured));
                         e.printStackTrace();
                     } catch (JSONException e) {
-                        examAndResultServiceListener.onExamAndResultError(context.getResources().getString(R.string.error_occured));
+                        examDetailViewServiceListener.onExamDetailViewError(context.getResources().getString(R.string.error_occured));
                         e.printStackTrace();
                     }
 
                 } else {
-                    examAndResultServiceListener.onExamAndResultError(context.getResources().getString(R.string.error_occured));
+                    examDetailViewServiceListener.onExamDetailViewError(context.getResources().getString(R.string.error_occured));
                 }
             }
         });
