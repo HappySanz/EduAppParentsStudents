@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements DialogClickListen
     private ArrayAdapter<String> navListAdapter;
     private String[] values = {"PROFILE", "ATTENDANCE", "CLASS TEST & HOMEWORK", "EXAM & RESULT", "TIME TABLE", "CALENDAR", "EVENT", "COMMUNICATION", "SETTINGS", "SIGN OUT"};
     TextView navUserProfileName = null;
-    LinearLayout dashAttendance, dashTimeTable, dashClassTest, dashExam,dashEvent ;
+    LinearLayout dashAttendance, dashTimeTable, dashClassTest, dashExam, dashEvent, dashCommunication;
     private String mCurrentUserProfileUrl = "";
     Context context;
 
@@ -78,24 +78,18 @@ public class MainActivity extends AppCompatActivity implements DialogClickListen
         Log.d(TAG, "initializin the views");
         Log.d(TAG, "initializing view pager");
         navUserProfileName = (TextView) findViewById(R.id.user_profile_name);
+
         dashAttendance = (LinearLayout) findViewById(R.id.attendance);
-        dashTimeTable = (LinearLayout) findViewById(R.id.time_table);
         dashClassTest = (LinearLayout) findViewById(R.id.class_test);
         dashExam = (LinearLayout) findViewById(R.id.exam);
+        dashTimeTable = (LinearLayout) findViewById(R.id.time_table);
         dashEvent = (LinearLayout) findViewById(R.id.events);
+        dashCommunication = (LinearLayout) findViewById(R.id.communication);
 
         dashAttendance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), AttendanceActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        dashTimeTable.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), TimeTableActivity.class);
                 startActivity(intent);
             }
         });
@@ -116,10 +110,26 @@ public class MainActivity extends AppCompatActivity implements DialogClickListen
             }
         });
 
+        dashTimeTable.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), TimeTableActivity.class);
+                startActivity(intent);
+            }
+        });
+
         dashEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), EventsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        dashCommunication.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ParentsCommunicationActivity.class);
                 startActivity(intent);
             }
         });
