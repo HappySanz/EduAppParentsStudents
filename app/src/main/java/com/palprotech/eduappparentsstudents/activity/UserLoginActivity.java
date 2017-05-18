@@ -214,7 +214,7 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
 
                     // User Preference - ProfilePic
                     if ((UserPicUrl != null) && !(UserPicUrl.isEmpty()) && !UserPicUrl.equalsIgnoreCase("null")) {
-                        PreferenceStorage.saveFatherImg(this, UserPicUrl);
+                        PreferenceStorage.saveUserPicture(this, UserPicUrl);
                     }
 
                     // User Preference - Usertype
