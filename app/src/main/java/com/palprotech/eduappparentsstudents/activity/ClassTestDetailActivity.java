@@ -28,7 +28,7 @@ public class ClassTestDetailActivity extends AppCompatActivity implements IClass
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.test_displ);
+        setContentView(R.layout.activity_classtest_details);
         classTest = (ClassTest) getIntent().getSerializableExtra("eventObj");
         initializeViews();
         populateData();
