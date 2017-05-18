@@ -27,10 +27,10 @@ public class AttendanceActivity extends AppCompatActivity {
         calend.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                Toast.makeText(
-                        getBaseContext(),
-                        "Selected Date is\n\n" + dayOfMonth + " / " + month
-                                + " / " + year, Toast.LENGTH_LONG).show();
+//                Toast.makeText(
+//                        getBaseContext(),
+//                        "Selected Date is\n\n" + dayOfMonth + " / " + month
+//                                + " / " + year, Toast.LENGTH_LONG).show();
             }
         });
 

@@ -4,6 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:weightSum="1">
 
     <LinearLayout
@@ -116,6 +117,7 @@
             android:inputType="textEmailAddress"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
+            android:focusableInTouchMode="true"
             android:layout_below="@+id/username"/>
 
 
