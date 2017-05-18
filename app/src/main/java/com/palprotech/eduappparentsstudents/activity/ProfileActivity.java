@@ -59,7 +59,7 @@ public class ProfileActivity extends AppCompatActivity {
         txtUsrName.setText(PreferenceStorage.getName(getApplicationContext()));
         txtUserType.setText(PreferenceStorage.getUserTypeName(getApplicationContext()));
 
-        String url = PreferenceStorage.getUserPicture(this);
+        String url = PreferenceStorage.getFatherImg(this);
         if ((url == null) || (url.isEmpty())) {
            /* if ((loginMode == 1) || (loginMode == 3)) {
                 url = PreferenceStorage.getSocialNetworkProfileUrl(this);

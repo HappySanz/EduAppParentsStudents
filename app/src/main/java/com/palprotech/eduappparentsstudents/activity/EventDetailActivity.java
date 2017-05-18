@@ -42,9 +42,9 @@ public class EventDetailActivity extends AppCompatActivity implements IEventServ
     }
 
     private void initializeViews() {
-        txtEventName = (TextView) findViewById(R.id.txtEventName);
-        txtEventDate = (TextView) findViewById(R.id.txtEventDate);
-        txtEventDetails = (TextView) findViewById(R.id.txtEventDetails);
+        txtEventName = (TextView) findViewById(R.id.eventname);
+        txtEventDate = (TextView) findViewById(R.id.eventdate);
+        txtEventDetails = (TextView) findViewById(R.id.eventdetail);
     }
 
     private void populateData() {
