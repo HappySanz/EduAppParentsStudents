@@ -54,15 +54,14 @@
             android:layout_centerInParent="true"
             android:textAllCaps="true"
             android:textColor="@color/white"
-            android:textSize="40dp" />
+            android:textSize="30dp" />
 
         <ImageView
             android:id="@+id/loc"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:layout_below="@+id/eventname"
-
-            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="125dp"
             android:src="@drawable/eventplaceicon" />
 
         <TextView
