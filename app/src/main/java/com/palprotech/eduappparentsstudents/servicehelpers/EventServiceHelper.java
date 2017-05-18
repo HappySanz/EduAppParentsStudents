@@ -8,7 +8,7 @@ import com.android.volley.Request;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.palprotech.eduappparentsstudents.R;
-import com.palprotech.eduappparentsstudents.activity.ClassTestHomeworkActivity;
+import com.palprotech.eduappparentsstudents.activity.EventsActivity;
 import com.palprotech.eduappparentsstudents.app.AppController;
 import com.palprotech.eduappparentsstudents.serviceinterfaces.IEventServiceListener;
 import com.palprotech.eduappparentsstudents.utils.EduAppConstants;
@@ -25,7 +25,7 @@ import java.io.UnsupportedEncodingException;
 
 public class EventServiceHelper {
 
-    private String TAG = ClassTestHomeworkActivity.class.getSimpleName();
+    private String TAG = EventsActivity.class.getSimpleName();
     private Context context;
     IEventServiceListener eventServiceListener;
 
@@ -40,7 +40,7 @@ public class EventServiceHelper {
     public void makeGetEventServiceCall(String params) {
         Log.d(TAG, "making sign in request" + params);
         final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
-                EduAppConstants.BASE_URL + PreferenceStorage.getInstituteCode(context) + EduAppConstants.GET_EVENT_API, params,
+                EduAppConstants.BASE_URL + PreferenceStorage.getInstituteCode(context) + EduAppConstants.GET_EVENTS_API, params,
                 new com.android.volley.Response.Listener<JSONObject>() {
 
                     @Override

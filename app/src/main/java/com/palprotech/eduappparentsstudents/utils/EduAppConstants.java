@@ -30,7 +30,8 @@ public class EduAppConstants {
     public static final String GET_EXAM_API = "/api/disp_Exams/dispExams/";
     public static final String GET_RESULT_API = "/api/disp_Exammarks/dispMarkdetails/";
 
-    //
+    //EVENTS URL
+    public static  final String GET_EVENTS_API ="/api/disp_Events/dispEvents/";
 
     //Service Params
     public static String PARAM_MESSAGE = "msg";

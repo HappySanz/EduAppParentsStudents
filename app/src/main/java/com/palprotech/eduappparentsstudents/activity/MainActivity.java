@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements DialogClickListen
     private ArrayAdapter<String> navListAdapter;
     private String[] values = {"PROFILE", "ATTENDANCE", "CLASS TEST & HOMEWORK", "EXAM & RESULT", "TIME TABLE", "CALENDAR", "EVENT", "COMMUNICATION", "SETTINGS", "SIGN OUT"};
     TextView navUserProfileName = null;
-    LinearLayout dashAttendance, dashTimeTable, dashClassTest, dashExam;
+    LinearLayout dashAttendance, dashTimeTable, dashClassTest, dashExam,dashEvent ;
     private String mCurrentUserProfileUrl = "";
     Context context;
 
@@ -82,6 +82,7 @@ public class MainActivity extends AppCompatActivity implements DialogClickListen
         dashTimeTable = (LinearLayout) findViewById(R.id.time_table);
         dashClassTest = (LinearLayout) findViewById(R.id.class_test);
         dashExam = (LinearLayout) findViewById(R.id.exam);
+        dashEvent = (LinearLayout) findViewById(R.id.events);
 
         dashAttendance.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,6 +112,14 @@ public class MainActivity extends AppCompatActivity implements DialogClickListen
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ExamsResultActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        dashEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), EventsActivity.class);
                 startActivity(intent);
             }
         });
@@ -232,8 +241,8 @@ public class MainActivity extends AppCompatActivity implements DialogClickListen
             //navigationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(navigationIntent);
         } else if (position == 6) {
-            Intent navigationIntent = new Intent(this, ProfileActivity.class);
-            //navigationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            Intent navigationIntent = new Intent(this, EventsActivity.class);
+            navigationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(navigationIntent);
         } else if (position == 7) {
             Intent navigationIntent = new Intent(this, ProfileActivity.class);

@@ -7,16 +7,49 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/round_btn_plain">
 
         <TextView
             android:id="@+id/txtExamName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Test"
-            android:textColor="@color/white"
-            android:textSize="30dp"
-            android:textStyle="bold" />
+            android:text="Exam Name"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/appColor"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/txtExamDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtExamName"
+            android:text="Exam date"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/appColor"
+            android:textSize="15dp" />
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/date_calender"
+            android:layout_below="@+id/txtExamName"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/select_button"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"/>
     </RelativeLayout>
 
 </LinearLayout>

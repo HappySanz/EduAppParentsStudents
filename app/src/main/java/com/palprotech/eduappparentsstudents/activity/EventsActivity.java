@@ -32,7 +32,7 @@ import java.util.ArrayList;
  */
 
 public class EventsActivity extends AppCompatActivity implements IEventServiceListener, AdapterView.OnItemClickListener{
-    private static final String TAG = "ClassTestHomeworkActivity";
+    private static final String TAG = "EventsActivity";
     ListView loadMoreListView;
     View view;
     EventListAdapter eventListAdapter;
@@ -49,6 +49,9 @@ public class EventsActivity extends AppCompatActivity implements IEventServiceLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events);
+        loadMoreListView = (ListView) findViewById(R.id.listView_events);
+//        loadMoreListView.setOnLoadMoreListener(this);
+        loadMoreListView.setOnItemClickListener(this);
         eventServiceHelper = new EventServiceHelper(this);
         eventServiceHelper.setEventServiceListener(this);
         progressDialogHelper = new ProgressDialogHelper(this);
@@ -71,7 +74,7 @@ public class EventsActivity extends AppCompatActivity implements IEventServiceLi
 
         if (CommonUtils.isNetworkAvailable(this)) {
             progressDialogHelper.showProgressDialog(getString(R.string.progress_loading));
-            new EventsActivity.HttpAsyncTask().execute("");
+            new HttpAsyncTask().execute("");
         } else {
             AlertDialogHelper.showSimpleAlertDialog(this, getString(R.string.no_connectivity));
         }

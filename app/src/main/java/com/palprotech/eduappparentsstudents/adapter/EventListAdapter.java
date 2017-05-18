@@ -75,7 +75,7 @@ public class EventListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        EventListAdapter.ViewHolder holder;
+        ViewHolder holder;
         if (convertView == null) {
             LayoutInflater inflater = ((Activity) context).getLayoutInflater();
             convertView = inflater.inflate(R.layout.events_list_item, parent, false);
@@ -86,7 +86,7 @@ public class EventListAdapter extends BaseAdapter {
             holder.txtEventDate = (TextView) convertView.findViewById(R.id.txtEventDate);
             convertView.setTag(holder);
         } else {
-            holder = (EventListAdapter.ViewHolder) convertView.getTag();
+            holder = (ViewHolder) convertView.getTag();
         }
 
         if(mSearching){
