@@ -8,21 +8,17 @@ import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
 import com.palprotech.eduappparentsstudents.R;
-import com.palprotech.eduappparentsstudents.adapter.ClassTestListAdapter;
 import com.palprotech.eduappparentsstudents.adapter.ExamListAdapter;
-import com.palprotech.eduappparentsstudents.bean.dashboard.ClassTest;
-import com.palprotech.eduappparentsstudents.bean.dashboard.ClassTestList;
 import com.palprotech.eduappparentsstudents.bean.dashboard.ExamList;
 import com.palprotech.eduappparentsstudents.bean.dashboard.Exams;
 import com.palprotech.eduappparentsstudents.helper.AlertDialogHelper;
 import com.palprotech.eduappparentsstudents.helper.ProgressDialogHelper;
-import com.palprotech.eduappparentsstudents.servicehelpers.ClassTestServiceHelper;
 import com.palprotech.eduappparentsstudents.servicehelpers.ExamServiceHelper;
-import com.palprotech.eduappparentsstudents.serviceinterfaces.IClassTestServiceListener;
 import com.palprotech.eduappparentsstudents.serviceinterfaces.IExamAndResultServiceListener;
 import com.palprotech.eduappparentsstudents.utils.CommonUtils;
 import com.palprotech.eduappparentsstudents.utils.EduAppConstants;
@@ -63,6 +59,13 @@ public class ExamsResultActivity extends AppCompatActivity implements IExamAndRe
         progressDialogHelper = new ProgressDialogHelper(this);
 
         callGetExamResultService();
+        ImageView bckbtn = (ImageView) findViewById(R.id.back_res);
+        bckbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     public void callGetExamResultService() {

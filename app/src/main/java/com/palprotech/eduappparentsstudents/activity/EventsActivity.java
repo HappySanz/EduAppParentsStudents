@@ -52,11 +52,12 @@ public class EventsActivity extends AppCompatActivity implements IEventServiceLi
         loadMoreListView = (ListView) findViewById(R.id.listView_events);
 //        loadMoreListView.setOnLoadMoreListener(this);
         loadMoreListView.setOnItemClickListener(this);
+        eventArrayList = new ArrayList<>();
         eventServiceHelper = new EventServiceHelper(this);
         eventServiceHelper.setEventServiceListener(this);
         progressDialogHelper = new ProgressDialogHelper(this);
 
-        callGetFilterService();
+        callGetEventService();
         ImageView bckbtn = (ImageView) findViewById(R.id.back_res);
         bckbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +66,7 @@ public class EventsActivity extends AppCompatActivity implements IEventServiceLi
             }
         });
     }
-    public void callGetFilterService() {
+    public void callGetEventService() {
         /*if(eventsListAdapter != null){
             eventsListAdapter.clearSearchFlag();
         }*/
