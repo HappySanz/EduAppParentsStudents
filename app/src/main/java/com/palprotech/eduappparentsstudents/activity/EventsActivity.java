@@ -1,5 +1,6 @@
 package com.palprotech.eduappparentsstudents.activity;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -31,7 +32,7 @@ import java.util.ArrayList;
  * Created by Narendar on 18/04/17.
  */
 
-public class EventsActivity extends AppCompatActivity implements IEventServiceListener, AdapterView.OnItemClickListener{
+public class EventsActivity extends AppCompatActivity implements IEventServiceListener, AdapterView.OnItemClickListener {
     private static final String TAG = "EventsActivity";
     ListView loadMoreListView;
     View view;
@@ -66,6 +67,7 @@ public class EventsActivity extends AppCompatActivity implements IEventServiceLi
             }
         });
     }
+
     public void callGetEventService() {
         /*if(eventsListAdapter != null){
             eventsListAdapter.clearSearchFlag();
@@ -84,20 +86,20 @@ public class EventsActivity extends AppCompatActivity implements IEventServiceLi
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//        Log.d(TAG, "onEvent list item clicked" + position);
-//        ClassTest classTest = null;
-//        if ((classTestListAdapter != null) && (classTestListAdapter.ismSearching())) {
-//            Log.d(TAG, "while searching");
-//            int actualindex = classTestListAdapter.getActualEventPos(position);
-//            Log.d(TAG, "actual index" + actualindex);
-//            classTest = classTestArrayList.get(actualindex);
-//        } else {
-//            classTest = classTestArrayList.get(position);
-//        }
-//        Intent intent = new Intent(this, EventDetailActivity.class);
-//        intent.putExtra("eventObj", event);
-        // intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-//        startActivity(intent);
+        Log.d(TAG, "onEvent list item clicked" + position);
+        Event event = null;
+        if ((eventListAdapter != null) && (eventListAdapter.ismSearching())) {
+            Log.d(TAG, "while searching");
+            int actualindex = eventListAdapter.getActualEventPos(position);
+            Log.d(TAG, "actual index" + actualindex);
+            event = eventArrayList.get(actualindex);
+        } else {
+            event = eventArrayList.get(position);
+        }
+        Intent intent = new Intent(this, EventDetailActivity.class);
+        intent.putExtra("eventObj", event);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivity(intent);
     }
 
     @Override
