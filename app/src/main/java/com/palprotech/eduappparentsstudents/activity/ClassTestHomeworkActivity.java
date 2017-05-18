@@ -1,6 +1,5 @@
 package com.palprotech.eduappparentsstudents.activity;
 
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -9,6 +8,7 @@ import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
@@ -16,7 +16,6 @@ import com.palprotech.eduappparentsstudents.R;
 import com.palprotech.eduappparentsstudents.adapter.ClassTestListAdapter;
 import com.palprotech.eduappparentsstudents.bean.dashboard.ClassTest;
 import com.palprotech.eduappparentsstudents.bean.dashboard.ClassTestList;
-import com.palprotech.eduappparentsstudents.customview.LoadMoreListView;
 import com.palprotech.eduappparentsstudents.helper.AlertDialogHelper;
 import com.palprotech.eduappparentsstudents.helper.ProgressDialogHelper;
 import com.palprotech.eduappparentsstudents.servicehelpers.ClassTestServiceHelper;
@@ -61,6 +60,13 @@ public class ClassTestHomeworkActivity extends AppCompatActivity implements ICla
         progressDialogHelper = new ProgressDialogHelper(this);
 
         callGetClassTestService();
+        ImageView bckbtn = (ImageView) findViewById(R.id.back_res);
+        bckbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
     }
 
