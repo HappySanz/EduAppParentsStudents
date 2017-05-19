@@ -1,5 +1,6 @@
 package com.palprotech.eduappparentsstudents.activity;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -89,7 +90,7 @@ public class ExamsResultActivity extends AppCompatActivity implements IExamAndRe
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-     /*   Log.d(TAG, "onEvent list item click" + position);
+        Log.d(TAG, "onEvent list item click" + position);
         Exams exams = null;
         if ((examListAdapter != null) && (examListAdapter.ismSearching())) {
             Log.d(TAG, "while searching");
@@ -102,7 +103,7 @@ public class ExamsResultActivity extends AppCompatActivity implements IExamAndRe
         Intent intent = new Intent(this, ExamDetailActivity.class);
         intent.putExtra("eventObj", exams);
         // intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        startActivity(intent); */
+        startActivity(intent);
     }
 
     @Override

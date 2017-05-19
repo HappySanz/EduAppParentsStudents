@@ -94,7 +94,9 @@ public class ExamDetailActivity extends AppCompatActivity implements IExamDetail
             JSONObject jsonObject = new JSONObject();
             try {
                 jsonObject.put(EduAppConstants.PARAM_CLASS_ID, PreferenceStorage.getStudentClassIdPreference(getApplicationContext()));
-                jsonObject.put(EduAppConstants.PARAM_EXAM_ID, ExamId + "");
+                jsonObject.put(EduAppConstants.PARAM_EXAM_ID, ExamId);
+                jsonObject.put(EduAppConstants.PARAM_STUDENT_ID, PreferenceStorage.getStudentEnrollIdPreference(getApplicationContext()));
+
 
 
             } catch (JSONException e) {
