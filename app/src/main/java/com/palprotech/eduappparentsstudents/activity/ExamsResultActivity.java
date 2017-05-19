@@ -22,6 +22,7 @@ import com.palprotech.eduappparentsstudents.servicehelpers.ExamServiceHelper;
 import com.palprotech.eduappparentsstudents.serviceinterfaces.IExamAndResultServiceListener;
 import com.palprotech.eduappparentsstudents.utils.CommonUtils;
 import com.palprotech.eduappparentsstudents.utils.EduAppConstants;
+import com.palprotech.eduappparentsstudents.utils.PreferenceStorage;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -153,7 +154,7 @@ public class ExamsResultActivity extends AppCompatActivity implements IExamAndRe
 
             JSONObject jsonObject = new JSONObject();
             try {
-                jsonObject.put(EduAppConstants.PARAM_CLASS_ID, "1");
+                jsonObject.put(EduAppConstants.PARAM_CLASS_ID, PreferenceStorage.getStudentClassIdPreference(getApplicationContext()));
 
 
             } catch (JSONException e) {

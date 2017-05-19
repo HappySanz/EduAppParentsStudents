@@ -22,6 +22,7 @@ import com.palprotech.eduappparentsstudents.servicehelpers.EventServiceHelper;
 import com.palprotech.eduappparentsstudents.serviceinterfaces.IEventServiceListener;
 import com.palprotech.eduappparentsstudents.utils.CommonUtils;
 import com.palprotech.eduappparentsstudents.utils.EduAppConstants;
+import com.palprotech.eduappparentsstudents.utils.PreferenceStorage;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -153,7 +154,7 @@ public class EventsActivity extends AppCompatActivity implements IEventServiceLi
 
             JSONObject jsonObject = new JSONObject();
             try {
-                jsonObject.put(EduAppConstants.PARAM_CLASS_ID, "1");
+                jsonObject.put(EduAppConstants.PARAM_CLASS_ID, PreferenceStorage.getStudentClassIdPreference(getApplicationContext()));
 
 
             } catch (JSONException e) {

@@ -29,7 +29,7 @@ public class EduAppConstants {
 
     // EXAM & RESULT URL
     public static final String GET_EXAM_API = "/api/disp_Exams/dispExams/";
-    public static final String GET_RESULT_API = "/api/disp_Exammarks/dispMarkdetails/";
+    public static final String GET_RESULT_API = "/api/disp_Examdetails/dispExamdetails/";
 
     // EVENTS URL
     public static final String GET_EVENTS_API ="/api/disp_Events/dispEvents/";
