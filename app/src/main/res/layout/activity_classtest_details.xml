@@ -4,67 +4,93 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/background_grey">
-    <!--<TextView-->
-        <!--android:layout_width="100dp"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="Date"-->
-        <!--android:textSize="30dp"-->
-        <!--android:layout_marginLeft="2dp"-->
-        <!--android:gravity="center"-->
-        <!--android:background="@color/appColor"-->
-        <!--android:textColor="@color/white"/>-->
-    <!--<TextView-->
-        <!--android:layout_width="130dp"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="Subject"-->
-        <!--android:textSize="30dp"-->
-        <!--android:layout_marginLeft="2dp"-->
-        <!--android:gravity=""-->
-        <!--android:background="@color/appColor"-->
-        <!--android:textColor="@color/white"/>-->
-    <!--<TextView-->
-        <!--android:layout_width="150dp"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="Detail"-->
-        <!--android:textSize="30dp"-->
-        <!--android:layout_marginLeft="2dp"-->
-        <!--android:background="@color/appColor"-->
-        <!--android:textColor="@color/white"/>-->
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Date"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:layout_alignParentLeft="true"
+        android:background="@color/appColor"
+        android:textColor="@color/white"/>
+    <TextView
+        android:id="@+id/sub"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:text="Subject"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/date"
+        android:background="@color/appColor"
+        android:textColor="@color/white"/>
+    <TextView
+        android:id="@+id/detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Detail"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/sub"
+        android:background="@color/appColor"
+        android:textColor="@color/white"/>
 
     <TextView
         android:id="@+id/txtHomeWorkDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:background="@color/background_grey"/>
+        android:layout_below="@+id/date"
+        android:layout_alignStart="@+id/date"
+        android:layout_alignLeft="@+id/date"
+        android:layout_alignEnd="@+id/date"
+        android:layout_alignRight="@+id/date"
+        android:gravity="center"
+        android:textColor="@color/appColor"/>
+    <TextView
+        android:id="@+id/txtHomeWorkSubject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/date"
+        android:layout_alignStart="@+id/sub"
+        android:layout_alignLeft="@+id/sub"
+        android:layout_alignEnd="@+id/sub"
+        android:layout_alignRight="@+id/sub"
+        android:gravity="center"
+        android:textColor="@color/appColor"/>
+
     <TextView
         android:id="@+id/txtHomeWorkDetails"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:background="@color/background_grey"
-        android:text="" />
-
-    <TextView
-        android:id="@+id/txtHomeWorkSubject"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:background="@color/background_grey"
-        android:text="" />
+        android:layout_below="@+id/detail"
+        android:layout_alignStart="@+id/detail"
+        android:layout_alignLeft="@+id/detail"
+        android:layout_alignEnd="@+id/detail"
+        android:layout_alignRight="@+id/detail"
+        android:gravity="center"
+        android:textColor="@color/appColor"/>
 
     <TextView
         android:id="@+id/txtHomeWorkMarkStatus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:background="@color/background_grey"
-        android:text="" />
+        android:layout_above="@+id/btnmark" />
 
     <Button
+        android:id="@+id/btnmark"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="View Mark"
+        android:textColor="@color/appColor"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone"
         android:background="@color/transparent"/>
+    </RelativeLayout>
 
 </LinearLayout>

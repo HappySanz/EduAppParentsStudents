@@ -100,6 +100,8 @@ public class ExamListAdapter extends BaseAdapter{
         Exams exam = exams.get(position);
 
         holder.txtExamName.setText(exams.get(position).getExamName());
+//        holder.txtStartDate.setText(exams.get(position).getStartDate());
+//        holder.txtEndDate.setText(exams.get(position).getEndDate());
 
 
         return convertView;
@@ -136,7 +138,7 @@ public class ExamListAdapter extends BaseAdapter{
     }
 
     public class ViewHolder {
-        public TextView txtExamName;
+        public TextView txtExamName,txtEndDate,txtStartDate;
     }
 
     public boolean ismSearching() {

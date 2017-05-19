@@ -34,6 +34,7 @@ import java.util.ArrayList;
  */
 
 public class EventsActivity extends AppCompatActivity implements IEventServiceListener, AdapterView.OnItemClickListener {
+
     private static final String TAG = "EventsActivity";
     ListView loadMoreListView;
     View view;
