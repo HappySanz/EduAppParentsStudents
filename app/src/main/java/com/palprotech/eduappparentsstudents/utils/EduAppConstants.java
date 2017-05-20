@@ -34,6 +34,9 @@ public class EduAppConstants {
     // EVENTS URL
     public static final String GET_EVENTS_API ="/api/disp_Events/dispEvents/";
 
+    //EVENT ORGANISER URL
+    public static final String GET_EVENT_ORGANISER_API = "/api/disp_subEvents/dispsubEvents/";
+
     // COMMUNICATION URL
     public static final String GET_COMMUNICATION_API = "/api/disp_ParentCommunication/dispParentCommunication/";
 

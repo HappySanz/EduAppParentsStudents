@@ -85,6 +85,7 @@ public class CommunicationListAdapter extends BaseAdapter {
 //            holder.txtClassTestTitle = (TextView) convertView.findViewById(R.id.txtClassTestTitle);
             holder.txtCommunicationTitle = (TextView) convertView.findViewById(R.id.txtCommunicationTitle);
             holder.txtCommunicationDate = (TextView) convertView.findViewById(R.id.txtCommunicationDate);
+            holder.txtCommunicationDetail = (TextView) convertView.findViewById(R.id.txtCommunicationDetail);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -104,7 +105,7 @@ public class CommunicationListAdapter extends BaseAdapter {
 //        holder.txtClassTestTitle.setText(classTests.get(position).getHwTitle());
         holder.txtCommunicationTitle.setText(communications.get(position).getCommunicationTitle());
         holder.txtCommunicationDate.setText(communications.get(position).getCommunicationDate());
-
+        holder.txtCommunicationDetail.setText(communications.get(position).getCommunicationDetails());
         return convertView;
     }
 
@@ -137,7 +138,7 @@ public class CommunicationListAdapter extends BaseAdapter {
     }
 
     public class ViewHolder {
-        public TextView txtCommunicationTitle, txtCommunicationDate;
+        public TextView txtCommunicationTitle, txtCommunicationDate,txtCommunicationDetail;
     }
 
     public boolean ismSearching() {

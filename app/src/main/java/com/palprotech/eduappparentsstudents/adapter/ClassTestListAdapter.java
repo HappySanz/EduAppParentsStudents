@@ -81,7 +81,7 @@ public class ClassTestListAdapter extends BaseAdapter{
             convertView = inflater.inflate(R.layout.class_test_list_item, parent, false);
 
             holder = new ViewHolder();
-//            holder.txtClassTestTitle = (TextView) convertView.findViewById(R.id.txtClassTestTitle);
+            holder.txtClassTestTitle = (TextView) convertView.findViewById(R.id.txtClassTestTitle);
             holder.txtClassTestSubject = (TextView) convertView.findViewById(R.id.txtClassTestSubject);
             holder.txtClassTestDate = (TextView) convertView.findViewById(R.id.txtClassTestDate);
             convertView.setTag(holder);

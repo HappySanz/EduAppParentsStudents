@@ -129,6 +129,7 @@
                 android:layout_marginTop="10dp"/>
 
             <Button
+                android:id="@+id/eventorg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/transparent"
@@ -136,8 +137,7 @@
                 android:textColor="@color/appColor"
                 android:textStyle="bold"
                 android:text="View Event Organiser"
-                android:layout_marginRight="15dp"
-                />
+                android:layout_marginRight="15dp"/>
 
         </LinearLayout>
 

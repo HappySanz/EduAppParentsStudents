@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,6 +23,8 @@ public class EventDetailActivity extends AppCompatActivity implements IEventServ
 
     private Event event;
     private TextView txtEventName, txtEventDate, txtEventDetails;
+    private Button btnevent;
+    String eventoran = "0";
 
 
     @Override
@@ -45,12 +48,31 @@ public class EventDetailActivity extends AppCompatActivity implements IEventServ
         txtEventName = (TextView) findViewById(R.id.eventname);
         txtEventDate = (TextView) findViewById(R.id.eventdate);
         txtEventDetails = (TextView) findViewById(R.id.eventdetail);
+        btnevent = (Button) findViewById(R.id.eventorg);
+        eventoran = event.getSub_event_status();
+        if (eventoran.equalsIgnoreCase("1")) {
+            btnevent.setVisibility(View.VISIBLE);
+        }
+        else {
+            btnevent.setVisibility(View.GONE);
+        }
     }
 
     private void populateData() {
+
         txtEventName.setText(event.getEvent_name());
         txtEventDate.setText(event.getEvent_date());
         txtEventDetails.setText(event.getEvent_details());
+//        btnevent.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(EventDetailActivity.this, EventOrganiserActivity.class);
+//                intent.putExtra("eventObj", event);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+//                startActivity(intent);
+//            }
+//        });
     }
 
     @Override

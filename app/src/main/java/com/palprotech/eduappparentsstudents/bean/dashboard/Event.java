@@ -36,6 +36,10 @@ public class Event implements Serializable{
     @Expose
     private String status;
 
+    @SerializedName("sub_event_status")
+    @Expose
+    private String sub_event_status;
+
     @SerializedName("created_at")
     @Expose
     private String created_at;
@@ -122,6 +126,20 @@ public class Event implements Serializable{
      */
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    /**
+     * @return The sub_event_status
+     */
+    public String getSub_event_status() {
+        return sub_event_status;
+    }
+
+    /**
+     * @param sub_event_status The sub_event_status
+     */
+    public void setSub_event_status(String sub_event_status) {
+        this.sub_event_status = sub_event_status;
     }
 
     /**
