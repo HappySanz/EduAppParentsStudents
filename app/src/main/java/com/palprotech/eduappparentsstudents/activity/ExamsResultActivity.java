@@ -19,6 +19,7 @@ import com.palprotech.eduappparentsstudents.bean.dashboard.ExamList;
 import com.palprotech.eduappparentsstudents.bean.dashboard.Exams;
 import com.palprotech.eduappparentsstudents.helper.AlertDialogHelper;
 import com.palprotech.eduappparentsstudents.helper.ProgressDialogHelper;
+import com.palprotech.eduappparentsstudents.interfaces.DialogClickListener;
 import com.palprotech.eduappparentsstudents.servicehelpers.ExamServiceHelper;
 import com.palprotech.eduappparentsstudents.serviceinterfaces.IExamAndResultServiceListener;
 import com.palprotech.eduappparentsstudents.utils.CommonUtils;
@@ -34,7 +35,7 @@ import java.util.ArrayList;
  * Created by Narendar on 18/04/17.
  */
 
-public class ExamsResultActivity extends AppCompatActivity implements IExamAndResultServiceListener, AdapterView.OnItemClickListener{
+public class ExamsResultActivity extends AppCompatActivity implements IExamAndResultServiceListener, AdapterView.OnItemClickListener, DialogClickListener {
 
     private static final String TAG = "ExamsResultActivity";
     ListView loadMoreListView;
@@ -83,7 +84,8 @@ public class ExamsResultActivity extends AppCompatActivity implements IExamAndRe
             //    eventServiceHelper.makeRawRequest(FindAFunConstants.GET_ADVANCE_SINGLE_SEARCH);
             new HttpAsyncTask().execute("");
         } else {
-            AlertDialogHelper.showSimpleAlertDialog(this, getString(R.string.no_connectivity));
+//            AlertDialogHelper.showSimpleAlertDialog(this, getString(R.string.no_connectivity));
+            AlertDialogHelper.showSimpleAlertDialog(this, "No Network connection");
         }
 
     }
@@ -107,8 +109,37 @@ public class ExamsResultActivity extends AppCompatActivity implements IExamAndRe
         startActivity(intent);
     }
 
+    private boolean validateSignInResponse(JSONObject response) {
+        boolean signInsuccess = false;
+        if ((response != null)) {
+            try {
+                String status = response.getString("status");
+                String msg = response.getString(EduAppConstants.PARAM_MESSAGE);
+                Log.d(TAG, "status val" + status + "msg" + msg);
+
+                if ((status != null)) {
+                    if (((status.equalsIgnoreCase("activationError")) || (status.equalsIgnoreCase("alreadyRegistered")) ||
+                            (status.equalsIgnoreCase("notRegistered")) || (status.equalsIgnoreCase("error")))) {
+                        signInsuccess = false;
+                        Log.d(TAG, "Show error dialog");
+                        AlertDialogHelper.showSimpleAlertDialog(this, msg);
+
+                    } else {
+                        signInsuccess = true;
+
+                    }
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return signInsuccess;
+    }
+
     @Override
     public void onExamAndResultResponse(final JSONObject response) {
+        if (validateSignInResponse(response)) {
         Log.d("ajazFilterresponse : ", response.toString());
 
         mHandler.post(new Runnable() {
@@ -126,6 +157,10 @@ public class ExamsResultActivity extends AppCompatActivity implements IExamAndRe
                 }
             }
         });
+        }
+        else {
+            Log.d(TAG, "Error while sign In");
+        }
     }
 
     protected void updateListAdapter(ArrayList<Exams> examsArrayList) {
@@ -148,6 +183,16 @@ public class ExamsResultActivity extends AppCompatActivity implements IExamAndRe
                 AlertDialogHelper.showSimpleAlertDialog(ExamsResultActivity.this, error);
             }
         });
+    }
+
+    @Override
+    public void onAlertPositiveClicked(int tag) {
+
+    }
+
+    @Override
+    public void onAlertNegativeClicked(int tag) {
+
     }
 
     private class HttpAsyncTask extends AsyncTask<String, Void, Void> {

@@ -7,6 +7,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.palprotech.eduappparentsstudents.R;
+import com.palprotech.eduappparentsstudents.interfaces.DialogClickListener;
 import com.palprotech.eduappparentsstudents.utils.PreferenceStorage;
 import com.squareup.picasso.Picasso;
 
@@ -14,7 +15,7 @@ import com.squareup.picasso.Picasso;
  * Created by Narendar on 05/04/17.
  */
 
-public class ProfileActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity implements DialogClickListener {
 
     private ImageView mProfileImage = null;
     private TextView txtUsrName, txtUserType;
@@ -72,5 +73,14 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onAlertPositiveClicked(int tag) {
+
+    }
+
+    @Override
+    public void onAlertNegativeClicked(int tag) {
+
+    }
 }
 

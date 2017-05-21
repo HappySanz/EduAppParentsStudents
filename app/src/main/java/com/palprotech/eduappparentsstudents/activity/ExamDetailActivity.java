@@ -20,6 +20,7 @@ import com.palprotech.eduappparentsstudents.bean.dashboard.ExamDetailsViewList;
 import com.palprotech.eduappparentsstudents.bean.dashboard.Exams;
 import com.palprotech.eduappparentsstudents.helper.AlertDialogHelper;
 import com.palprotech.eduappparentsstudents.helper.ProgressDialogHelper;
+import com.palprotech.eduappparentsstudents.interfaces.DialogClickListener;
 import com.palprotech.eduappparentsstudents.servicehelpers.ExamDetailViewServiceHelper;
 import com.palprotech.eduappparentsstudents.serviceinterfaces.IExamDetailViewServiceListener;
 import com.palprotech.eduappparentsstudents.utils.CommonUtils;
@@ -35,7 +36,7 @@ import java.util.ArrayList;
  * Created by Admin on 18-05-2017.
  */
 
-public class ExamDetailActivity extends AppCompatActivity implements IExamDetailViewServiceListener, AdapterView.OnItemClickListener {
+public class ExamDetailActivity extends AppCompatActivity implements IExamDetailViewServiceListener, AdapterView.OnItemClickListener, DialogClickListener {
 
     private static final String TAG = "ExamDetailActivity";
     ListView loadMoreListView;
@@ -91,8 +92,19 @@ public class ExamDetailActivity extends AppCompatActivity implements IExamDetail
             //    eventServiceHelper.makeRawRequest(FindAFunConstants.GET_ADVANCE_SINGLE_SEARCH);
             new HttpAsyncTask().execute("");
         } else {
-            AlertDialogHelper.showSimpleAlertDialog(this, getString(R.string.no_connectivity));
+//            AlertDialogHelper.showSimpleAlertDialog(this, getString(R.string.no_connectivity));
+            AlertDialogHelper.showSimpleAlertDialog(this, "No Network connection");
         }
+    }
+
+    @Override
+    public void onAlertPositiveClicked(int tag) {
+
+    }
+
+    @Override
+    public void onAlertNegativeClicked(int tag) {
+
     }
 
     private class HttpAsyncTask extends AsyncTask<String, Void, Void> {
@@ -129,8 +141,37 @@ public class ExamDetailActivity extends AppCompatActivity implements IExamDetail
 
     }
 
+    private boolean validateSignInResponse(JSONObject response) {
+        boolean signInsuccess = false;
+        if ((response != null)) {
+            try {
+                String status = response.getString("status");
+                String msg = response.getString(EduAppConstants.PARAM_MESSAGE);
+                Log.d(TAG, "status val" + status + "msg" + msg);
+
+                if ((status != null)) {
+                    if (((status.equalsIgnoreCase("activationError")) || (status.equalsIgnoreCase("alreadyRegistered")) ||
+                            (status.equalsIgnoreCase("notRegistered")) || (status.equalsIgnoreCase("error")))) {
+                        signInsuccess = false;
+                        Log.d(TAG, "Show error dialog");
+                        AlertDialogHelper.showSimpleAlertDialog(this, msg);
+
+                    } else {
+                        signInsuccess = true;
+
+                    }
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return signInsuccess;
+    }
+
     @Override
     public void onExamDetailViewResponse(final JSONObject response) {
+        if (validateSignInResponse(response)) {
         Log.d("ajazFilterresponse : ", response.toString());
 
         mHandler.post(new Runnable() {
@@ -148,6 +189,10 @@ public class ExamDetailActivity extends AppCompatActivity implements IExamDetail
                 }
             }
         });
+    }
+        else {
+        Log.d(TAG, "Error while sign In");
+    }
     }
 
     protected void updateListAdapter(ArrayList<ExamDetailsView> examDetailsViewArrayList) {

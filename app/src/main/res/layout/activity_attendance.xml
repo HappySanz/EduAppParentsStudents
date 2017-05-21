@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -14,7 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/appColor"
-            android:minHeight="?attr/actionBarSize"/>
+            android:minHeight="?attr/actionBarSize" />
 
         <ImageView
             android:id="@+id/back_res"
@@ -25,6 +24,15 @@
             android:paddingLeft="15dp"
             android:src="@drawable/ic_arrow_back_white_48dp" />
 
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_toRightOf="@id/back_res"
+            android:minHeight="?attr/actionBarSize"
+            android:src="@drawable/ab_logo" />
+
         <TextView
             android:id="@+id/tvtitletext"
             android:layout_width="wrap_content"
@@ -33,7 +41,7 @@
             android:fontFamily="sans-serif-medium"
             android:gravity="center"
             android:minHeight="?attr/actionBarSize"
-            android:paddingLeft="10dp"
+            android:padding="5dp"
             android:text="Attendance"
             android:textAllCaps="true"
             android:textColor="@color/white"
@@ -41,11 +49,22 @@
     </RelativeLayout>
 
 
-    <CalendarView
-        android:id="@+id/calendView"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/textView1"
-        android:layout_marginTop="60dp" />
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/calendar1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

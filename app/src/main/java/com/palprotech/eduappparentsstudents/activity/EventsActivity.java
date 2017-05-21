@@ -18,6 +18,7 @@ import com.palprotech.eduappparentsstudents.bean.dashboard.Event;
 import com.palprotech.eduappparentsstudents.bean.dashboard.EventList;
 import com.palprotech.eduappparentsstudents.helper.AlertDialogHelper;
 import com.palprotech.eduappparentsstudents.helper.ProgressDialogHelper;
+import com.palprotech.eduappparentsstudents.interfaces.DialogClickListener;
 import com.palprotech.eduappparentsstudents.servicehelpers.EventServiceHelper;
 import com.palprotech.eduappparentsstudents.serviceinterfaces.IEventServiceListener;
 import com.palprotech.eduappparentsstudents.utils.CommonUtils;
@@ -33,7 +34,7 @@ import java.util.ArrayList;
  * Created by Narendar on 18/04/17.
  */
 
-public class EventsActivity extends AppCompatActivity implements IEventServiceListener, AdapterView.OnItemClickListener {
+public class EventsActivity extends AppCompatActivity implements IEventServiceListener, AdapterView.OnItemClickListener, DialogClickListener {
 
     private static final String TAG = "EventsActivity";
     ListView loadMoreListView;
@@ -81,7 +82,8 @@ public class EventsActivity extends AppCompatActivity implements IEventServiceLi
             progressDialogHelper.showProgressDialog(getString(R.string.progress_loading));
             new HttpAsyncTask().execute("");
         } else {
-            AlertDialogHelper.showSimpleAlertDialog(this, getString(R.string.no_connectivity));
+//            AlertDialogHelper.showSimpleAlertDialog(this, getString(R.string.no_connectivity));
+            AlertDialogHelper.showSimpleAlertDialog(this, "No Network connection");
         }
 
     }
@@ -104,9 +106,37 @@ public class EventsActivity extends AppCompatActivity implements IEventServiceLi
         startActivity(intent);
     }
 
+    private boolean validateSignInResponse(JSONObject response) {
+        boolean signInsuccess = false;
+        if ((response != null)) {
+            try {
+                String status = response.getString("status");
+                String msg = response.getString(EduAppConstants.PARAM_MESSAGE);
+                Log.d(TAG, "status val" + status + "msg" + msg);
+
+                if ((status != null)) {
+                    if (((status.equalsIgnoreCase("activationError")) || (status.equalsIgnoreCase("alreadyRegistered")) ||
+                            (status.equalsIgnoreCase("notRegistered")) || (status.equalsIgnoreCase("error")))) {
+                        signInsuccess = false;
+                        Log.d(TAG, "Show error dialog");
+                        AlertDialogHelper.showSimpleAlertDialog(this, msg);
+
+                    } else {
+                        signInsuccess = true;
+
+                    }
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return signInsuccess;
+    }
+
     @Override
     public void onEventResponse(final JSONObject response) {
-
+        if (validateSignInResponse(response)) {
         Log.d("ajazFilterresponse : ", response.toString());
 
         mHandler.post(new Runnable() {
@@ -124,6 +154,10 @@ public class EventsActivity extends AppCompatActivity implements IEventServiceLi
                 }
             }
         });
+        }
+        else {
+            Log.d(TAG, "Error while sign In");
+        }
     }
 
     protected void updateListAdapter(ArrayList<Event> eventArrayList) {
@@ -146,6 +180,16 @@ public class EventsActivity extends AppCompatActivity implements IEventServiceLi
                 AlertDialogHelper.showSimpleAlertDialog(EventsActivity.this, error);
             }
         });
+    }
+
+    @Override
+    public void onAlertPositiveClicked(int tag) {
+
+    }
+
+    @Override
+    public void onAlertNegativeClicked(int tag) {
+
     }
 
 

@@ -19,6 +19,7 @@ import com.palprotech.eduappparentsstudents.bean.dashboard.Communication;
 import com.palprotech.eduappparentsstudents.bean.dashboard.CommunicationList;
 import com.palprotech.eduappparentsstudents.helper.AlertDialogHelper;
 import com.palprotech.eduappparentsstudents.helper.ProgressDialogHelper;
+import com.palprotech.eduappparentsstudents.interfaces.DialogClickListener;
 import com.palprotech.eduappparentsstudents.servicehelpers.CommunicationServiceHelper;
 import com.palprotech.eduappparentsstudents.serviceinterfaces.ICommunicationServiceListener;
 import com.palprotech.eduappparentsstudents.utils.CommonUtils;
@@ -34,7 +35,7 @@ import java.util.ArrayList;
  * Created by Admin on 18-05-2017.
  */
 
-public class ParentsCommunicationActivity extends AppCompatActivity implements ICommunicationServiceListener, AdapterView.OnItemClickListener {
+public class ParentsCommunicationActivity extends AppCompatActivity implements ICommunicationServiceListener, AdapterView.OnItemClickListener, DialogClickListener {
 
     private static final String TAG = "ParentsCommunication";
     ListView loadMoreListView;
@@ -82,8 +83,19 @@ public class ParentsCommunicationActivity extends AppCompatActivity implements I
             //    eventServiceHelper.makeRawRequest(FindAFunConstants.GET_ADVANCE_SINGLE_SEARCH);
             new HttpAsyncTask().execute("");
         } else {
-            AlertDialogHelper.showSimpleAlertDialog(this, getString(R.string.no_connectivity));
+//            AlertDialogHelper.showSimpleAlertDialog(this, getString(R.string.no_connectivity));
+            AlertDialogHelper.showSimpleAlertDialog(this, "No Network connection");
         }
+
+    }
+
+    @Override
+    public void onAlertPositiveClicked(int tag) {
+
+    }
+
+    @Override
+    public void onAlertNegativeClicked(int tag) {
 
     }
 
@@ -119,26 +131,57 @@ public class ParentsCommunicationActivity extends AppCompatActivity implements I
 
     }
 
+    private boolean validateSignInResponse(JSONObject response) {
+        boolean signInsuccess = false;
+        if ((response != null)) {
+            try {
+                String status = response.getString("status");
+                String msg = response.getString(EduAppConstants.PARAM_MESSAGE);
+                Log.d(TAG, "status val" + status + "msg" + msg);
+
+                if ((status != null)) {
+                    if (((status.equalsIgnoreCase("activationError")) || (status.equalsIgnoreCase("alreadyRegistered")) ||
+                            (status.equalsIgnoreCase("notRegistered")) || (status.equalsIgnoreCase("error")))) {
+                        signInsuccess = false;
+                        Log.d(TAG, "Show error dialog");
+                        AlertDialogHelper.showSimpleAlertDialog(this, msg);
+
+                    } else {
+                        signInsuccess = true;
+
+                    }
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return signInsuccess;
+    }
+
     @Override
     public void onCommunicationResponse(final JSONObject response) {
+        if (validateSignInResponse(response)) {
+            Log.d("ajazFilterresponse : ", response.toString());
 
-        Log.d("ajazFilterresponse : ", response.toString());
-
-        mHandler.post(new Runnable() {
-            @Override
-            public void run() {
-                progressDialogHelper.hideProgressDialog();
+            mHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    progressDialogHelper.hideProgressDialog();
 //                loadMoreListView.onLoadMoreComplete();
 
-                Gson gson = new Gson();
-                CommunicationList communicationList = gson.fromJson(response.toString(), CommunicationList.class);
-                if (communicationList.getCommunication() != null && communicationList.getCommunication().size() > 0) {
-                    totalCount = communicationList.getCount();
-                    isLoadingForFirstTime = false;
-                    updateListAdapter(communicationList.getCommunication());
+                    Gson gson = new Gson();
+                    CommunicationList communicationList = gson.fromJson(response.toString(), CommunicationList.class);
+                    if (communicationList.getCommunication() != null && communicationList.getCommunication().size() > 0) {
+                        totalCount = communicationList.getCount();
+                        isLoadingForFirstTime = false;
+                        updateListAdapter(communicationList.getCommunication());
+                    }
                 }
-            }
-        });
+            });
+        } else {
+            Log.d(TAG, "Error while sign In");
+        }
     }
 
     protected void updateListAdapter(ArrayList<Communication> communicationArrayList) {

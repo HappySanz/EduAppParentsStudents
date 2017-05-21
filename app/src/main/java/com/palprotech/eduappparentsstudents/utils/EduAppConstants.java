@@ -20,6 +20,10 @@ public class EduAppConstants {
     public static final String USER_LOGIN_API = "/api/login/adminlogin/";
     public static final String USER_IMAGE_API = "/assets/parents/profile/";
 
+    // STUDENT ATTENDANCE URL
+
+    public static final String GET_STUDENT_ATTENDANCD_API = "/api/disp_Attendence/dispAttendence/";
+
     // STUDENT TIMETABLE URL
     public static final String GET_STUDENT_TIME_TABLE_API = "/api/stud_timetable/studTimetable/";
 

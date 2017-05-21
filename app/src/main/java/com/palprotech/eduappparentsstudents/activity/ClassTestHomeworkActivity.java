@@ -19,6 +19,7 @@ import com.palprotech.eduappparentsstudents.bean.dashboard.ClassTest;
 import com.palprotech.eduappparentsstudents.bean.dashboard.ClassTestList;
 import com.palprotech.eduappparentsstudents.helper.AlertDialogHelper;
 import com.palprotech.eduappparentsstudents.helper.ProgressDialogHelper;
+import com.palprotech.eduappparentsstudents.interfaces.DialogClickListener;
 import com.palprotech.eduappparentsstudents.servicehelpers.ClassTestServiceHelper;
 import com.palprotech.eduappparentsstudents.serviceinterfaces.IClassTestServiceListener;
 import com.palprotech.eduappparentsstudents.utils.CommonUtils;
@@ -34,7 +35,7 @@ import java.util.ArrayList;
  * Created by Narendar on 07/04/17.
  */
 
-public class ClassTestHomeworkActivity extends AppCompatActivity implements IClassTestServiceListener, AdapterView.OnItemClickListener {
+public class ClassTestHomeworkActivity extends AppCompatActivity implements IClassTestServiceListener, AdapterView.OnItemClickListener,DialogClickListener {
 
     private static final String TAG = "ClassTestHomework";
     ListView loadMoreListView;
@@ -83,7 +84,8 @@ public class ClassTestHomeworkActivity extends AppCompatActivity implements ICla
             //    eventServiceHelper.makeRawRequest(FindAFunConstants.GET_ADVANCE_SINGLE_SEARCH);
             new HttpAsyncTask().execute("");
         } else {
-            AlertDialogHelper.showSimpleAlertDialog(this, getString(R.string.no_connectivity));
+//            AlertDialogHelper.showSimpleAlertDialog(this, getString(R.string.no_connectivity));
+            AlertDialogHelper.showSimpleAlertDialog(this, "No Network connection");
         }
 
     }
@@ -106,9 +108,38 @@ public class ClassTestHomeworkActivity extends AppCompatActivity implements ICla
         startActivity(intent);
     }
 
+    private boolean validateSignInResponse(JSONObject response) {
+        boolean signInsuccess = false;
+        if ((response != null)) {
+            try {
+                String status = response.getString("status");
+                String msg = response.getString(EduAppConstants.PARAM_MESSAGE);
+                Log.d(TAG, "status val" + status + "msg" + msg);
+
+                if ((status != null)) {
+                    if (((status.equalsIgnoreCase("activationError")) || (status.equalsIgnoreCase("alreadyRegistered")) ||
+                            (status.equalsIgnoreCase("notRegistered")) || (status.equalsIgnoreCase("error")))) {
+                        signInsuccess = false;
+                        Log.d(TAG, "Show error dialog");
+                        AlertDialogHelper.showSimpleAlertDialog(this, msg);
+
+                    } else {
+                        signInsuccess = true;
+
+                    }
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return signInsuccess;
+    }
+
     @Override
     public void onClassTestResponse(final JSONObject response) {
 
+        if (validateSignInResponse(response)) {
         Log.d("ajazFilterresponse : ", response.toString());
 
         mHandler.post(new Runnable() {
@@ -126,6 +157,10 @@ public class ClassTestHomeworkActivity extends AppCompatActivity implements ICla
                 }
             }
         });
+        }
+        else {
+            Log.d(TAG, "Error while sign In");
+        }
     }
 
     protected void updateListAdapter(ArrayList<ClassTest> classTestArrayList) {
@@ -148,6 +183,16 @@ public class ClassTestHomeworkActivity extends AppCompatActivity implements ICla
                 AlertDialogHelper.showSimpleAlertDialog(ClassTestHomeworkActivity.this, error);
             }
         });
+    }
+
+    @Override
+    public void onAlertPositiveClicked(int tag) {
+
+    }
+
+    @Override
+    public void onAlertNegativeClicked(int tag) {
+
     }
 
 

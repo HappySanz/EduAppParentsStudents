@@ -1,44 +1,327 @@
 package com.palprotech.eduappparentsstudents.activity;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.palprotech.eduappparentsstudents.R;
+import com.palprotech.eduappparentsstudents.bean.dashboard.Attendance;
+import com.palprotech.eduappparentsstudents.bean.dashboard.AttendanceList;
+import com.palprotech.eduappparentsstudents.customview.customcalendar.CaldroidFragment;
+import com.palprotech.eduappparentsstudents.customview.customcalendar.CaldroidListener;
+import com.palprotech.eduappparentsstudents.helper.AlertDialogHelper;
+import com.palprotech.eduappparentsstudents.helper.ProgressDialogHelper;
+import com.palprotech.eduappparentsstudents.interfaces.DialogClickListener;
+import com.palprotech.eduappparentsstudents.servicehelpers.AttendanceServiceHelper;
+import com.palprotech.eduappparentsstudents.servicehelpers.ClassTestServiceHelper;
+import com.palprotech.eduappparentsstudents.serviceinterfaces.IAttendanceServiceListener;
+import com.palprotech.eduappparentsstudents.utils.CommonUtils;
+import com.palprotech.eduappparentsstudents.utils.EduAppConstants;
+import com.palprotech.eduappparentsstudents.utils.PreferenceStorage;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by Narendar on 05/04/17.
  */
 
-public class AttendanceActivity extends AppCompatActivity {
+public class AttendanceActivity extends AppCompatActivity implements IAttendanceServiceListener,DialogClickListener {
 
-    CalendarView calend;
+    private CaldroidFragment caldroidFragment;
+    private CaldroidFragment dialogCaldroidFragment;
+    private static final String TAG = "ClassTestHomework";
+
+    View view;
+
+    AttendanceServiceHelper attendanceServiceHelper;
+    ArrayList<Attendance> attendanceArrayList;
+    int pageNumber = 0, totalCount = 0;
+    protected ProgressDialogHelper progressDialogHelper;
+    protected boolean isLoadingForFirstTime = true;
+    Handler mHandler = new Handler();
+    private SearchView mSearchView = null;
+    ArrayList<String> dateStrings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attendance);
-        calend = (CalendarView) findViewById(R.id.calendView);
 
-        calend.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-            @Override
-            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-//                Toast.makeText(
-//                        getBaseContext(),
-//                        "Selected Date is\n\n" + dayOfMonth + " / " + month
-//                                + " / " + year, Toast.LENGTH_LONG).show();
+        caldroidFragment = new CaldroidFragment();
+        attendanceServiceHelper = new AttendanceServiceHelper(this);
+        attendanceServiceHelper.setAttendanceServiceListener(this);
+        progressDialogHelper = new ProgressDialogHelper(this);
+        dateStrings = new ArrayList<String>();  // ArrayList of strings
+
+        if (savedInstanceState != null) {
+            caldroidFragment.restoreStatesFromKey(savedInstanceState,
+                    "CALDROID_SAVED_STATE");
+        } else {
+            Bundle args = new Bundle();
+            Calendar cal = Calendar.getInstance();
+            args.putInt(CaldroidFragment.MONTH, cal.get(Calendar.MONTH) + 1);
+            args.putInt(CaldroidFragment.YEAR, cal.get(Calendar.YEAR));
+            args.putBoolean(CaldroidFragment.ENABLE_SWIPE, true);
+            args.putBoolean(CaldroidFragment.SIX_WEEKS_IN_CALENDAR, true);
+
+            caldroidFragment.setArguments(args);
+        }
+
+        FragmentTransaction t = getSupportFragmentManager().beginTransaction();
+        t.replace(R.id.calendar1, caldroidFragment);
+        t.commit();
+
+        callGetAttendanceService();
+
+//        leaveDates();
+
+    }
+
+    public void callGetAttendanceService() {
+        /*if(eventsListAdapter != null){
+            eventsListAdapter.clearSearchFlag();
+        }*/
+        if (attendanceArrayList != null)
+            attendanceArrayList.clear();
+
+        if (CommonUtils.isNetworkAvailable(this)) {
+            progressDialogHelper.showProgressDialog(getString(R.string.progress_loading));
+            //    eventServiceHelper.makeRawRequest(FindAFunConstants.GET_ADVANCE_SINGLE_SEARCH);
+            new HttpAsyncTask().execute("");
+        } else {
+            AlertDialogHelper.showSimpleAlertDialog(this, "No Network connection");
+        }
+
+    }
+
+    @Override
+    public void onAlertPositiveClicked(int tag) {
+
+    }
+
+    @Override
+    public void onAlertNegativeClicked(int tag) {
+
+    }
+
+    private class HttpAsyncTask extends AsyncTask<String, Void, Void> {
+        @Override
+        protected Void doInBackground(String... urls) {
+
+            JSONObject jsonObject = new JSONObject();
+            try {
+                jsonObject.put(EduAppConstants.PARAM_CLASS_ID, PreferenceStorage.getStudentClassIdPreference(getApplicationContext()));
+                jsonObject.put(EduAppConstants.PARAM_STUDENT_ID, PreferenceStorage.getStudentEnrollIdPreference(getApplicationContext()));
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-        });
 
-        ImageView bckbtn = (ImageView) findViewById(R.id.back_res);
-        bckbtn.setOnClickListener(new View.OnClickListener() {
+            progressDialogHelper.showProgressDialog(getString(R.string.progress_loading));
+            attendanceServiceHelper.makeGetAttendanceServiceCall(jsonObject.toString());
+
+            return null;
+        }
+
+        // onPostExecute displays the results of the AsyncTask.
+        @Override
+        protected void onPostExecute(Void result) {
+            progressDialogHelper.cancelProgressDialog();
+        }
+    }
+
+    private void leaveDates() {
+
+
+//        ArrayList<Attendance> dateStrings1 = new ArrayList<Attendance>();
+
+//        dateStrings.add("2017-05-14");
+//
+//        dateStrings.add("2017-05-16");
+//
+//        dateStrings.add("2017-05-18");
+//
+//        dateStrings.add("2017-05-20");
+//
+//        dateStrings.add("2017-05-25");
+
+        ArrayList<Date> dates = new ArrayList<>(dateStrings.size()); // ArrayList of dates
+
+        for (String s : dateStrings) {
+
+            try {
+                Date dateObj = new SimpleDateFormat("yyyy-MM-dd").parse(s);
+
+                dates.add(dateObj);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+
+        for (Date d : dates) {
+            String str = new SimpleDateFormat("yyyy-MM-dd").format(d);
+
+            System.out.println(str);
+        }
+
+        // Customize
+
+        caldroidFragment.setDisableDates(dates);
+        caldroidFragment.refreshView();
+
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        // TODO Auto-generated method stub
+        super.onSaveInstanceState(outState);
+
+        if (caldroidFragment != null) {
+            caldroidFragment.saveStatesToKey(outState, "CALDROID_SAVED_STATE");
+        }
+
+        if (dialogCaldroidFragment != null) {
+            dialogCaldroidFragment.saveStatesToKey(outState,
+                    "DIALOG_CALDROID_SAVED_STATE");
+        }
+    }
+
+    private boolean validateSignInResponse(JSONObject response) {
+        boolean signInsuccess = false;
+        if ((response != null)) {
+            try {
+                String status = response.getString("status");
+                String msg = response.getString(EduAppConstants.PARAM_MESSAGE);
+                Log.d(TAG, "status val" + status + "msg" + msg);
+
+                if ((status != null)) {
+                    if (((status.equalsIgnoreCase("activationError")) || (status.equalsIgnoreCase("alreadyRegistered")) ||
+                            (status.equalsIgnoreCase("notRegistered")) || (status.equalsIgnoreCase("error")))) {
+                        signInsuccess = false;
+                        Log.d(TAG, "Show error dialog");
+                        AlertDialogHelper.showSimpleAlertDialog(this, msg);
+
+                    } else {
+                        signInsuccess = true;
+
+                    }
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return signInsuccess;
+    }
+
+    @Override
+    public void onAttendanceResponse(final JSONObject response) {
+
+        if (validateSignInResponse(response)) {
+
+            Log.d("ajazFilterresponse : ", response.toString());
+
+            String repo = response.toString();
+            try {
+                JSONArray getData = response.getJSONArray("attendenceDetails");
+
+                for (int l = 0; l < getData.length(); l++) {
+                    dateStrings.add(getData.getJSONObject(l).getString("abs_date"));
+                }
+
+                ArrayList<Date> dates = new ArrayList<>(dateStrings.size()); // ArrayList of dates
+
+                for (String s : dateStrings) {
+
+                    try {
+                        Date dateObj = new SimpleDateFormat("yyyy-MM-dd").parse(s);
+
+                        dates.add(dateObj);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                for (Date d : dates) {
+                    String str = new SimpleDateFormat("yyyy-MM-dd").format(d);
+
+                    System.out.println(str);
+                }
+
+                // Customize
+
+                caldroidFragment.setDisableDates(dates);
+                caldroidFragment.refreshView();
+
+//            JSONObject userData = getData.getJSONObject(0);
+            } catch (Exception ex) {
+            }
+
+//        mHandler.post(new Runnable() {
+//            @Override
+//            public void run() {
+//                progressDialogHelper.hideProgressDialog();
+////                loadMoreListView.onLoadMoreComplete();
+//
+//                Gson gson = new Gson();
+//                AttendanceList attendanceList = gson.fromJson(response.toString(), AttendanceList.class);
+//                if (attendanceList.getAttendanceList() != null && attendanceList.getAttendanceList().size() > 0) {
+//                    totalCount = attendanceList.getCount();
+//                    isLoadingForFirstTime = false;
+//                    updateListAdapter(attendanceList.getAttendanceList());
+//                }
+//            }
+//        });
+        }
+        else {
+            Log.d(TAG, "Error while sign In");
+        }
+    }
+
+    protected void updateListAdapter(ArrayList<Attendance> classTestArrayList) {
+        this.attendanceArrayList.addAll(classTestArrayList);
+//        if (classTestListAdapter == null) {
+//            classTestListAdapter = new ClassTestListAdapter(this, this.classTestArrayList);
+//            loadMoreListView.setAdapter(classTestListAdapter);
+//        } else {
+//            classTestListAdapter.notifyDataSetChanged();
+//        }
+    }
+
+    @Override
+    public void onAttendanceError(final String error) {
+
+        mHandler.post(new Runnable() {
             @Override
-            public void onClick(View v) {
-                finish();
+            public void run() {
+                progressDialogHelper.hideProgressDialog();
+//                loadMoreListView.onLoadMoreComplete();
+                AlertDialogHelper.showSimpleAlertDialog(AttendanceActivity.this, error);
             }
         });
     }
