@@ -116,4 +116,7 @@ public class EduAppConstants {
     public static final String PARAM_EXAM_ID = "exam_id";
     public static final String PARAM_STUDENT_ID = "stud_id";
 
+    //Event Organiser
+    public static final String PARAM_EVENT_ID = "event_id";
+
 }

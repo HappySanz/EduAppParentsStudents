@@ -1,5 +1,6 @@
 package com.palprotech.eduappparentsstudents.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -41,7 +42,6 @@ public class EventDetailActivity extends AppCompatActivity implements IEventServ
                 finish();
             }
         });
-
     }
 
     private void initializeViews() {
@@ -56,6 +56,16 @@ public class EventDetailActivity extends AppCompatActivity implements IEventServ
         else {
             btnevent.setVisibility(View.GONE);
         }
+
+        btnevent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), EventOrganiserActivity.class);
+                intent.putExtra("eventId", event.getEvent_id());
+//                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+            }
+        });
     }
 
     private void populateData() {
