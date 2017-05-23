@@ -25,12 +25,33 @@
             android:textSize="20dp" />
 
         <TextView
-            android:id="@+id/txtExamDate"
-            android:layout_width="match_parent"
+            android:id="@+id/txtStartDate"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txtExamName"
             android:text="Exam date"
             android:layout_marginLeft="40dp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/appColor"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/hyphen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/txtStartDate"
+            android:layout_toRightOf="@+id/txtStartDate"
+            android:text=" - "
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/txtEndDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtExamName"
+            android:text="Exam date"
+            android:layout_toRightOf="@+id/hyphen"
             android:layout_marginTop="5dp"
             android:textColor="@color/appColor"
             android:textSize="15dp" />
