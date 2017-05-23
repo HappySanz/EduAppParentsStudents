@@ -7,9 +7,9 @@ import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
+import com.palprotech.eduappparentsstudents.R;
 import com.palprotech.eduappparentsstudents.interfaces.DialogClickListener;
 import com.palprotech.eduappparentsstudents.utils.EduAppConstants;
-import com.palprotech.eduappparentsstudents.R;
 
 public class CompoundAlertDialogFragment extends DialogFragment {
 

@@ -1,33 +1,22 @@
 package com.palprotech.eduappparentsstudents.activity;
 
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.CalendarView;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.gson.Gson;
 import com.palprotech.eduappparentsstudents.R;
 import com.palprotech.eduappparentsstudents.bean.dashboard.Attendance;
-import com.palprotech.eduappparentsstudents.bean.dashboard.AttendanceList;
 import com.palprotech.eduappparentsstudents.customview.customcalendar.CaldroidFragment;
-import com.palprotech.eduappparentsstudents.customview.customcalendar.CaldroidListener;
 import com.palprotech.eduappparentsstudents.helper.AlertDialogHelper;
 import com.palprotech.eduappparentsstudents.helper.ProgressDialogHelper;
 import com.palprotech.eduappparentsstudents.interfaces.DialogClickListener;
 import com.palprotech.eduappparentsstudents.servicehelpers.AttendanceServiceHelper;
-import com.palprotech.eduappparentsstudents.servicehelpers.ClassTestServiceHelper;
 import com.palprotech.eduappparentsstudents.serviceinterfaces.IAttendanceServiceListener;
 import com.palprotech.eduappparentsstudents.utils.CommonUtils;
 import com.palprotech.eduappparentsstudents.utils.EduAppConstants;
@@ -37,13 +26,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 
 /**
  * Created by Narendar on 05/04/17.
@@ -98,6 +85,13 @@ public class AttendanceActivity extends AppCompatActivity implements IAttendance
         callGetAttendanceService();
 
 //        leaveDates();
+        ImageView bckbtn = (ImageView) findViewById(R.id.back_res);
+        bckbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
     }
 

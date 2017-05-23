@@ -10,7 +10,6 @@
         android:id="@+id/img_profile_image"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_alignParentBottom="true"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
         android:src="@drawable/profile_pic" />
@@ -20,8 +19,6 @@
         android:id="@+id/user_profile_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/img_profile_image"
-        android:layout_alignParentBottom="true"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="10dp"
         android:fontFamily="sans-serif"

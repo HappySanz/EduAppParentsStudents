@@ -4,11 +4,11 @@ import android.app.Activity;
 import android.app.DialogFragment;
 import android.content.Context;
 
-import com.palprotech.eduappparentsstudents.interfaces.DialogClickListener;
 import com.palprotech.eduappparentsstudents.R;
 import com.palprotech.eduappparentsstudents.dialogfragments.AlertDialogForFragment;
 import com.palprotech.eduappparentsstudents.dialogfragments.CompoundAlertDialogFragment;
 import com.palprotech.eduappparentsstudents.dialogfragments.SimpleAlertDialogFragment;
+import com.palprotech.eduappparentsstudents.interfaces.DialogClickListener;
 
 public class AlertDialogHelper {
 

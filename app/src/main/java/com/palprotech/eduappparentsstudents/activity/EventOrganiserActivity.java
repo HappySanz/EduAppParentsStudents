@@ -13,9 +13,7 @@ import android.widget.ListView;
 
 import com.google.gson.Gson;
 import com.palprotech.eduappparentsstudents.R;
-import com.palprotech.eduappparentsstudents.adapter.EventListAdapter;
 import com.palprotech.eduappparentsstudents.adapter.EventOrganiserListAdapter;
-import com.palprotech.eduappparentsstudents.bean.dashboard.Event;
 import com.palprotech.eduappparentsstudents.bean.dashboard.EventOrganiser;
 import com.palprotech.eduappparentsstudents.bean.dashboard.EventOrganiserList;
 import com.palprotech.eduappparentsstudents.helper.AlertDialogHelper;
@@ -25,7 +23,6 @@ import com.palprotech.eduappparentsstudents.servicehelpers.EventServiceHelper;
 import com.palprotech.eduappparentsstudents.serviceinterfaces.IEventServiceListener;
 import com.palprotech.eduappparentsstudents.utils.CommonUtils;
 import com.palprotech.eduappparentsstudents.utils.EduAppConstants;
-import com.palprotech.eduappparentsstudents.utils.PreferenceStorage;
 
 import org.json.JSONException;
 import org.json.JSONObject;

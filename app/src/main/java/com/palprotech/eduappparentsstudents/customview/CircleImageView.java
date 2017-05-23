@@ -17,8 +17,9 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
-import android.util.AttributeSet;
 import android.support.v7.widget.AppCompatImageView;
+import android.util.AttributeSet;
+
 import com.palprotech.eduappparentsstudents.R;
 
 public class CircleImageView extends AppCompatImageView {

@@ -27,9 +27,7 @@
                 android:id="@+id/imageView2"
                 android:layout_width="80sp"
                 android:layout_height="80sp"
-                android:layout_alignParentTop="true"
                 android:layout_marginTop="5dp"
-                android:layout_centerHorizontal="true"
                 android:layout_gravity="top|center"
                 android:background="@drawable/attendance" />
 
@@ -55,15 +53,11 @@
                 android:layout_width="80sp"
                 android:layout_height="80sp"
                 android:layout_gravity="top|center"
-                android:layout_alignParentTop="true"
                 android:background="@drawable/classtest" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="@string/class_test"
@@ -91,8 +85,6 @@
             <ImageView
                 android:layout_width="80sp"
                 android:layout_height="80sp"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
                 android:layout_gravity="top|center"
                 android:background="@drawable/exam" />
 
@@ -152,8 +144,6 @@
             <ImageView
                 android:layout_width="80sp"
                 android:layout_height="80sp"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
                 android:layout_gravity="top|center"
                 android:background="@drawable/events" />
 
@@ -179,15 +169,11 @@
                 android:layout_width="80sp"
                 android:layout_height="80sp"
                 android:layout_gravity="top|center"
-                android:layout_alignParentTop="true"
                 android:background="@drawable/communication" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="@string/communication"

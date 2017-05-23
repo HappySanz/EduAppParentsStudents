@@ -4,7 +4,6 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
-
 import com.palprotech.eduappparentsstudents.R;
 
 import java.util.ArrayList;
@@ -12,7 +11,7 @@ import java.util.ArrayList;
 /**
  * Created by crocodile2u on 3/30/15.
  */
-public class CellView extends TextView {
+public class CellView extends android.support.v7.widget.AppCompatTextView {
 
     public static final int STATE_TODAY = R.attr.state_date_today;
     public static final int STATE_SELECTED = R.attr.state_date_selected;

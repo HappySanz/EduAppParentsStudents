@@ -100,7 +100,7 @@ public class ClassTestListAdapter extends BaseAdapter{
 
         ClassTest classTest = classTests.get(position);
 
-//        holder.txtClassTestTitle.setText(classTests.get(position).getHwTitle());
+        holder.txtClassTestTitle.setText(classTests.get(position).getHwTitle());
         holder.txtClassTestSubject.setText(classTests.get(position).getHwSubjectName());
         holder.txtClassTestDate.setText(classTests.get(position).getHwTestDate());
 

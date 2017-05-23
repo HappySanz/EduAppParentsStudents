@@ -6,91 +6,89 @@
     android:background="@color/background_grey">
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    <TextView
-        android:id="@+id/date"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="Date"
-        android:textSize="30dp"
-        android:gravity="center"
-        android:layout_alignParentLeft="true"
-        android:background="@color/appColor"
-        android:textColor="@color/white"/>
-    <TextView
-        android:id="@+id/sub"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:text="Subject"
-        android:textSize="30dp"
-        android:gravity="center"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/date"
-        android:background="@color/appColor"
-        android:textColor="@color/white"/>
-    <TextView
-        android:id="@+id/detail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Detail"
-        android:textSize="30dp"
-        android:gravity="center"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/sub"
-        android:background="@color/appColor"
-        android:textColor="@color/white"/>
 
-    <TextView
-        android:id="@+id/txtHomeWorkDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/date"
-        android:layout_alignStart="@+id/date"
-        android:layout_alignLeft="@+id/date"
-        android:layout_alignEnd="@+id/date"
-        android:layout_alignRight="@+id/date"
-        android:gravity="center"
-        android:textColor="@color/appColor"/>
-    <TextView
-        android:id="@+id/txtHomeWorkSubject"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/date"
-        android:layout_alignStart="@+id/sub"
-        android:layout_alignLeft="@+id/sub"
-        android:layout_alignEnd="@+id/sub"
-        android:layout_alignRight="@+id/sub"
-        android:gravity="center"
-        android:textColor="@color/appColor"/>
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/appColor"
+            android:minHeight="?attr/actionBarSize"/>
 
-    <TextView
-        android:id="@+id/txtHomeWorkDetails"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/detail"
-        android:layout_alignStart="@+id/detail"
-        android:layout_alignLeft="@+id/detail"
-        android:layout_alignEnd="@+id/detail"
-        android:layout_alignRight="@+id/detail"
-        android:gravity="center"
-        android:textColor="@color/appColor"/>
+        <ImageView
+            android:id="@+id/back_res"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:minHeight="?attr/actionBarSize"
+            android:paddingLeft="15dp"
+            android:src="@drawable/ic_arrow_back_white_48dp" />
 
-    <TextView
-        android:id="@+id/txtHomeWorkMarkStatus"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/btnmark" />
-
-    <Button
-        android:id="@+id/btnmark"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="View Mark"
-        android:textColor="@color/appColor"
-        android:layout_alignParentBottom="true"
-        android:visibility="gone"
-        android:background="@color/transparent"/>
+        <TextView
+            android:id="@+id/tvtitletext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:minHeight="?attr/actionBarSize"
+            android:paddingLeft="10dp"
+            android:text=""
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/actionbarTextSize" />
     </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/txthomeworksubject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:textSize="25dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/clstitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/txthomeworksubject"
+            android:text="Topic :"
+            android:textSize="25dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/txtClassTestTitle1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_alignTop="@+id/clstitle"
+            android:layout_toRightOf="@+id/clstitle"/>
+
+        <TextView
+            android:id="@+id/describ"
+            android:layout_below="@+id/txtClassTestTitle1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Description :"
+            android:textSize="25dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/txthomeworkdetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/describ"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"/>
+
+    </RelativeLayout>
 </LinearLayout>
