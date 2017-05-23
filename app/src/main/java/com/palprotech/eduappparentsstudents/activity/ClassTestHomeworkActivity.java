@@ -6,11 +6,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
+import android.support.v7.widget.SwitchCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.palprotech.eduappparentsstudents.R;
@@ -35,7 +38,7 @@ import java.util.ArrayList;
  * Created by Narendar on 07/04/17.
  */
 
-public class ClassTestHomeworkActivity extends AppCompatActivity implements IClassTestServiceListener, AdapterView.OnItemClickListener,DialogClickListener {
+public class ClassTestHomeworkActivity extends AppCompatActivity implements IClassTestServiceListener, AdapterView.OnItemClickListener, DialogClickListener {
 
     private static final String TAG = "ClassTestHomework";
     ListView loadMoreListView;
@@ -48,6 +51,7 @@ public class ClassTestHomeworkActivity extends AppCompatActivity implements ICla
     protected boolean isLoadingForFirstTime = true;
     Handler mHandler = new Handler();
     private SearchView mSearchView = null;
+    private SwitchCompat switcherClassTest, switcherHomeWork;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +73,34 @@ public class ClassTestHomeworkActivity extends AppCompatActivity implements ICla
                 finish();
             }
         });
+
+        switcherClassTest = (SwitchCompat) findViewById(R.id.switch_test);
+        switcherHomeWork = (SwitchCompat) findViewById(R.id.switch_homwork);
+        switcherClassTest.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                Log.v("Switch State=", "" + isChecked);
+                Toast.makeText(getApplicationContext(),"Switch State 1=" + isChecked,Toast.LENGTH_SHORT).show();
+                //
+//                switcherHomeWork.setChecked(true);
+            }
+
+        });
+
+
+        switcherHomeWork.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                Log.v("Switch State=", "" + isChecked);
+                Toast.makeText(getApplicationContext(),"Switch State 2=" + isChecked,Toast.LENGTH_SHORT).show();
+                //
+//                switcherClassTest.setChecked(true);
+            }
+
+        });
+
 
     }
 
@@ -140,25 +172,24 @@ public class ClassTestHomeworkActivity extends AppCompatActivity implements ICla
     public void onClassTestResponse(final JSONObject response) {
 
         if (validateSignInResponse(response)) {
-        Log.d("ajazFilterresponse : ", response.toString());
+            Log.d("ajazFilterresponse : ", response.toString());
 
-        mHandler.post(new Runnable() {
-            @Override
-            public void run() {
-                progressDialogHelper.hideProgressDialog();
+            mHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    progressDialogHelper.hideProgressDialog();
 //                loadMoreListView.onLoadMoreComplete();
 
-                Gson gson = new Gson();
-                ClassTestList classTestsList = gson.fromJson(response.toString(), ClassTestList.class);
-                if (classTestsList.getClassTest() != null && classTestsList.getClassTest().size() > 0) {
-                    totalCount = classTestsList.getCount();
-                    isLoadingForFirstTime = false;
-                    updateListAdapter(classTestsList.getClassTest());
+                    Gson gson = new Gson();
+                    ClassTestList classTestsList = gson.fromJson(response.toString(), ClassTestList.class);
+                    if (classTestsList.getClassTest() != null && classTestsList.getClassTest().size() > 0) {
+                        totalCount = classTestsList.getCount();
+                        isLoadingForFirstTime = false;
+                        updateListAdapter(classTestsList.getClassTest());
+                    }
                 }
-            }
-        });
-        }
-        else {
+            });
+        } else {
             Log.d(TAG, "Error while sign In");
         }
     }
