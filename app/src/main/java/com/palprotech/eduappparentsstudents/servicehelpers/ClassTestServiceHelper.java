@@ -82,10 +82,10 @@ public class ClassTestServiceHelper {
 
     }
 
-    public void makeGetExamServiceCall(String params) {
+    public void makeGetClassTestMarkServiceCall(String params) {
 //        Log.d(TAG, "making sign in request" + params);
         final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
-                EduAppConstants.BASE_URL + PreferenceStorage.getInstituteCode(context) + EduAppConstants.GET_EXAM_API,params,
+                EduAppConstants.BASE_URL + PreferenceStorage.getInstituteCode(context) + EduAppConstants.GET_STUDENT_CLASSTEST_MARK_API,params,
                 new com.android.volley.Response.Listener<JSONObject>() {
 
                     @Override

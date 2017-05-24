@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/background_grey">
+    android:background="@color/background_grey"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/appColor"
-            android:minHeight="?attr/actionBarSize"/>
+            android:minHeight="?attr/actionBarSize" />
 
         <ImageView
             android:id="@+id/back_res"
@@ -51,44 +51,71 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
             android:textSize="25dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/clstitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:layout_below="@+id/txthomeworksubject"
+            android:layout_marginTop="20dp"
             android:text="Topic :"
             android:textSize="25dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txtClassTestTitle1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
             android:layout_alignTop="@+id/clstitle"
-            android:layout_toRightOf="@+id/clstitle"/>
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/clstitle" />
 
         <TextView
             android:id="@+id/describ"
-            android:layout_below="@+id/txtClassTestTitle1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/txtClassTestTitle1"
             android:layout_marginTop="20dp"
             android:text="Description :"
             android:textSize="25dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txthomeworkdetails"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/describ"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp" />
+
+        <LinearLayout
+            android:id="@+id/llMarkView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_below="@+id/describ"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:id="@+id/marks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtClassTestTitle1"
+                android:text="Mark :"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/viewmarks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/describ"
+                android:layout_marginLeft="10dp"
+                android:text="" />
+
+        </LinearLayout>
 
     </RelativeLayout>
 </LinearLayout>

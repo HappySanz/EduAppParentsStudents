@@ -61,6 +61,7 @@
             android:layout_marginLeft="230sp"
             android:layout_marginTop="-25sp"
             android:checked="true"
+            android:clickable="false"
             android:theme="@style/MySwitchTheme" />
 
         <TextView
@@ -79,6 +80,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="230sp"
             android:layout_marginTop="-25sp"
+            android:checked="true"
+            android:clickable="false"
             android:layout_marginBottom="30sp"
             android:theme="@style/MySwitchTheme" />
 
