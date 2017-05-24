@@ -81,7 +81,9 @@ public class ExamDetailViewListAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.exam_detail_view_list_item, parent, false);
 
             holder = new ViewHolder();
-            holder.txtExamName = (TextView) convertView.findViewById(R.id.txtExamName);
+            holder.txtExamDate = (TextView) convertView.findViewById(R.id.txtSubDate);
+            holder.txtSub = (TextView) convertView.findViewById(R.id.txtSubName);
+            holder.txtTime = (TextView) convertView.findViewById(R.id.txtSubTime);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -98,7 +100,9 @@ public class ExamDetailViewListAdapter extends BaseAdapter {
 
         ExamDetailsView examDetailsView = examDetailsViews.get(position);
 
-        holder.txtExamName.setText(examDetailsViews.get(position).getExamName());
+        holder.txtSub.setText(examDetailsViews.get(position).getSubjectName());
+        holder.txtExamDate.setText(examDetailsViews.get(position).getExamDate());
+        holder.txtTime.setText(examDetailsViews.get(position).getTimes());
 
 
         return convertView;
@@ -135,7 +139,7 @@ public class ExamDetailViewListAdapter extends BaseAdapter {
     }
 
     public class ViewHolder {
-        public TextView txtExamName;
+        public TextView txtExamName, txtExamDate, txtSub, txtTime;
     }
 
     public boolean ismSearching() {

@@ -99,13 +99,12 @@ public class ExamListAdapter extends BaseAdapter{
             Log.d("Event List Adapter","getview pos called"+ position);
         }
 
-        String start = getDate(exams.get(position).getFromDate());
-        String end = getDate(exams.get(position).getToDate());
+
         Exams exam = exams.get(position);
 
         holder.txtExamName.setText(exams.get(position).getExamName());
-        holder.txtStartDate.setText(start);
-        holder.txtEndDate.setText(end);
+        holder.txtStartDate.setText(exams.get(position).getFromDate());
+        holder.txtEndDate.setText(exams.get(position).getToDate());
 
 
         return convertView;
