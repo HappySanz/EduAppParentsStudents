@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.palprotech.eduappparentsstudents.R;
 import com.palprotech.eduappparentsstudents.helper.AlertDialogHelper;
@@ -17,7 +18,6 @@ import com.palprotech.eduappparentsstudents.helper.ProgressDialogHelper;
 import com.palprotech.eduappparentsstudents.interfaces.DialogClickListener;
 import com.palprotech.eduappparentsstudents.servicehelpers.SignUpServiceHelper;
 import com.palprotech.eduappparentsstudents.serviceinterfaces.IForgotPasswordServiceListener;
-import com.palprotech.eduappparentsstudents.serviceinterfaces.ISignUpServiceListener;
 import com.palprotech.eduappparentsstudents.utils.AppValidator;
 import com.palprotech.eduappparentsstudents.utils.CommonUtils;
 import com.palprotech.eduappparentsstudents.utils.EduAppConstants;
@@ -51,7 +51,13 @@ public class ChangePasswordActivity extends AppCompatActivity implements View.On
         signUpServiceHelper = new SignUpServiceHelper(this);
         signUpServiceHelper.setForgotPasswordServiceListener(this);
         progressDialogHelper = new ProgressDialogHelper(this);
-
+        ImageView bckbtn = (ImageView) findViewById(R.id.back_res);
+        bckbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
     }
 
