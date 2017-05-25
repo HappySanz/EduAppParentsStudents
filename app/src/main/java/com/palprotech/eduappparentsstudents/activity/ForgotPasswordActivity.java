@@ -50,7 +50,7 @@ public class ForgotPasswordActivity extends AppCompatActivity implements View.On
     private void initializeViews() {
         btnReset = (Button) findViewById(R.id.confirm);
         btnReset.setOnClickListener(this);
-        edtUsername = (EditText) findViewById(R.id.username);
+        edtUsername = (EditText) findViewById(R.id.edtusername);
     }
 
     @Override
@@ -60,9 +60,9 @@ public class ForgotPasswordActivity extends AppCompatActivity implements View.On
                 if (validateFields()) {
                     JSONObject jsonObject = new JSONObject();
                     try {
-                        jsonObject.put(EduAppConstants.PARAMS_FUNC_NAME, "reset_password");
+//                        jsonObject.put(EduAppConstants.PARAMS_FUNC_NAME, "reset_password");
 //                        jsonObject.put(FindAFunConstants.PARAMS_FUNC_NAME, "forgot_password");
-                        jsonObject.put(EduAppConstants.PARAMS_USER_NAME, edtUsername.getText().toString());
+                        jsonObject.put(EduAppConstants.PARAMS_FP_USER_NAME, edtUsername.getText().toString());
 //                        jsonObject.put("user_password", edtLastRememberPassword.getText().toString());
 //                        jsonObject.put("new_password", edtNewPassword.getText().toString());
 //                        jsonObject.put("retype_password", edtRetypePassword.getText().toString());
@@ -85,19 +85,6 @@ public class ForgotPasswordActivity extends AppCompatActivity implements View.On
             AlertDialogHelper.showSimpleAlertDialog(this, this.getResources().getString(R.string.enter_user_name));
             return false;
         }
-       /* else if (!FindAFunValidator.checkNullString(this.edtLastRememberPassword.getText().toString().trim())) {
-            AlertDialogHelper.showSimpleAlertDialog(this, this.getResources().getString(R.string.enter_password));
-            return false;
-        } else if (!FindAFunValidator.checkNullString(this.edtNewPassword.getText().toString().trim())) {
-            AlertDialogHelper.showSimpleAlertDialog(this, this.getResources().getString(R.string.enter_password));
-            return false;
-        } else if (!FindAFunValidator.checkNullString(this.edtRetypePassword.getText().toString().trim())) {
-            AlertDialogHelper.showSimpleAlertDialog(this, this.getResources().getString(R.string.enter_password));
-            return false;
-        }else if (!this.edtNewPassword.getText().toString().trim().contentEquals(this.edtRetypePassword.getText().toString().trim())) {
-            AlertDialogHelper.showSimpleAlertDialog(this, this.getResources().getString(R.string.password_mismatch));
-            return false;
-        } */
         else {
             return true;
         }
@@ -124,7 +111,7 @@ public class ForgotPasswordActivity extends AppCompatActivity implements View.On
 
                                         @Override
                                         public void onClick(DialogInterface arg0, int arg1) {
-                                            Intent intent = new Intent(ForgotPasswordActivity.this, DashboardActivity.class);
+                                            Intent intent = new Intent(ForgotPasswordActivity.this, SplashScreenActivity.class);
                                             startActivity(intent);
                                             finish();
                                         }

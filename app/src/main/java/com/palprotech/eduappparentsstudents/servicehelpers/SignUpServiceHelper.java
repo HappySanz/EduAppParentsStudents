@@ -89,9 +89,9 @@ public class SignUpServiceHelper {
     }
 
     public void makeForgotPasswordServiceCall(String params) {
-        Log.d(TAG,"making forgot password request"+ params);
+        Log.d(TAG, "making forgot password request" + params);
         final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
-                EduAppConstants.FORGOT_PASSWORD, params,
+                EduAppConstants.BASE_URL + PreferenceStorage.getInstituteCode(context) + EduAppConstants.FORGOT_PASSWORD, params,
                 new com.android.volley.Response.Listener<JSONObject>() {
 
                     @Override
@@ -104,7 +104,7 @@ public class SignUpServiceHelper {
             @Override
             public void onErrorResponse(VolleyError error) {
                 if (error.networkResponse != null && error.networkResponse.data != null) {
-                    Log.d(TAG,"error during sign up"+ error.getLocalizedMessage());
+                    Log.d(TAG, "error during sign up" + error.getLocalizedMessage());
 
                     try {
                         String responseBody = new String(error.networkResponse.data, "utf-8");

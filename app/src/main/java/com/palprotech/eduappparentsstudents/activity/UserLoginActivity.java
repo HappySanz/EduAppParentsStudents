@@ -39,7 +39,7 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
 
     private EditText inputUsername, inputPassword;
     private Button btnLogin;
-    private TextView txtInsName;
+    private TextView txtInsName, txtForgotPassword;
     private ImageView mProfileImage = null;
 
     @Override
@@ -56,6 +56,8 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
         inputPassword = (EditText) findViewById(R.id.inputPassword);
         mProfileImage = (ImageView) findViewById(R.id.image_institute_pic);
         txtInsName = (TextView) findViewById(R.id.txtInstituteName);
+        txtForgotPassword = (TextView) findViewById(R.id.txtForgotPassword);
+        txtForgotPassword.setOnClickListener(this);
         txtInsName.setText(PreferenceStorage.getInstituteName(getApplicationContext()));
 
         btnLogin = (Button) findViewById(R.id.btnLogin);
@@ -74,7 +76,6 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
         if (((url != null) && !(url.isEmpty()))) {
             Picasso.with(this).load(url).placeholder(R.drawable.profile_pic).error(R.drawable.profile_pic).into(mProfileImage);
         }
-
     }
 
 
@@ -96,6 +97,11 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
 
                 progressDialogHelper.showProgressDialog(getString(R.string.progress_loading));
                 signUpServiceHelper.makeUserLoginServiceCall(jsonObject.toString());
+            }
+            if (v == txtForgotPassword) {
+                Intent intent = new Intent(this, ForgotPasswordActivity.class);
+                startActivity(intent);
+                finish();
             }
 
         } else {
@@ -147,7 +153,7 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
             longInfo(str.substring(4000));
         } else
             Log.d("Data To", str);
-        String New ;
+        String New;
     }
 
     @Override

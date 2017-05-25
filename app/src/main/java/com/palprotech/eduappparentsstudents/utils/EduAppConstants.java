@@ -60,6 +60,9 @@ public class EduAppConstants {
     public static final String PARAMS_USER_NAME = "username";
     public static final String PARAMS_PASSWORD = "password";
 
+    // Forgot Password
+    public static final String PARAMS_FP_USER_NAME = "user_name";
+
     // Alert Dialog Constants
     public static String ALERT_DIALOG_TITLE = "alertDialogTitle";
     public static String ALERT_DIALOG_MESSAGE = "alertDialogMessage";

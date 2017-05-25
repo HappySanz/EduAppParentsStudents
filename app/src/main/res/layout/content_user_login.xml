@@ -52,12 +52,12 @@
         android:textColorHint="#7767368c" />
 
     <TextView
+        android:id="@+id/txtForgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="-45dp"
         android:paddingLeft="120dp"
-        android:visibility="gone"
         android:text="Forgot Password?"
         android:textColor="@color/appColor"/>
 
