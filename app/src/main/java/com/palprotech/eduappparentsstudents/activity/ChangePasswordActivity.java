@@ -12,6 +12,7 @@ import com.palprotech.eduappparentsstudents.helper.AlertDialogHelper;
 import com.palprotech.eduappparentsstudents.helper.ProgressDialogHelper;
 import com.palprotech.eduappparentsstudents.interfaces.DialogClickListener;
 import com.palprotech.eduappparentsstudents.servicehelpers.SignUpServiceHelper;
+import com.palprotech.eduappparentsstudents.serviceinterfaces.IForgotPasswordServiceListener;
 import com.palprotech.eduappparentsstudents.serviceinterfaces.ISignUpServiceListener;
 import com.palprotech.eduappparentsstudents.utils.AppValidator;
 import com.palprotech.eduappparentsstudents.utils.CommonUtils;
@@ -24,7 +25,7 @@ import org.json.JSONObject;
  * Created by Admin on 25-05-2017.
  */
 
-public class ChangePasswordActivity extends AppCompatActivity implements View.OnClickListener, ISignUpServiceListener, DialogClickListener {
+public class ChangePasswordActivity extends AppCompatActivity implements View.OnClickListener, IForgotPasswordServiceListener, DialogClickListener {
 
     EditText edtUserName, edtPassword;
     Button btnConfirm;
@@ -78,22 +79,22 @@ public class ChangePasswordActivity extends AppCompatActivity implements View.On
     }
 
     @Override
-    public void onSignUp(JSONObject response) {
-
-    }
-
-    @Override
-    public void onSignUpError(String error) {
-
-    }
-
-    @Override
     public void onAlertPositiveClicked(int tag) {
 
     }
 
     @Override
     public void onAlertNegativeClicked(int tag) {
+
+    }
+
+    @Override
+    public void onForgotPassword(JSONObject response) {
+
+    }
+
+    @Override
+    public void onForgotPasswordError(String error) {
 
     }
 }
