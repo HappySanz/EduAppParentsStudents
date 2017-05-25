@@ -40,116 +40,118 @@
             android:textSize="@dimen/actionbarTextSize" />
     </RelativeLayout>
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="20dp">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/background_grey"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp">
 
-        <TextView
-            android:id="@+id/clstitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:text="Topic :"
-            android:textSize="23sp"
-            android:textStyle="bold"
-            android:paddingLeft="10dp"
-            android:textColor="@color/appColor"/>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/txtClassTestTitle1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="5dp"
-            android:layout_alignTop="@+id/clstitle"
-            android:layout_marginLeft="10dp"
-            android:gravity="bottom"
-            android:textColor="@color/black"
-            android:textSize="18dp"
-            android:layout_toRightOf="@+id/clstitle" />
 
-        <TextView
-            android:id="@+id/describ"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txtClassTestTitle1"
-            android:layout_marginTop="20dp"
-            android:paddingLeft="10dp"
-            android:text="Description :"
-            android:textSize="23sp"
-            android:textColor="@color/appColor"
-            android:textStyle="bold" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="30dp"
+                android:background="@color/background_grey">
 
-        <TextView
-            android:id="@+id/txthomeworkdetails"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/describ"
-            android:textColor="@color/black"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="50dp"
-            android:textSize="15sp"/>
+                <TextView
+                    android:id="@+id/clstitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:paddingLeft="10dp"
+                    android:text="Topic :"
+                    android:textColor="@color/appColor"
+                    android:textSize="23sp"
+                    android:textStyle="bold" />
 
-        <LinearLayout
-            android:id="@+id/llMarkView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:layout_below="@+id/txthomeworkdetails"
-            android:layout_marginTop="20dp">
+                <TextView
+                    android:id="@+id/txtClassTestTitle1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/clstitle"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/clstitle"
+                    android:gravity="bottom"
+                    android:paddingTop="5dp"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/describ"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtClassTestTitle1"
+                    android:layout_marginTop="20dp"
+                    android:paddingLeft="10dp"
+                    android:text="Description :"
+                    android:textColor="@color/appColor"
+                    android:textSize="23sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txthomeworkdetails"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/describ"
+                    android:layout_marginBottom="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <LinearLayout
+                    android:id="@+id/llMarkView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txthomeworkdetails"
+                    android:layout_marginTop="20dp"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/marks"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:text="MARKS :"
+                        android:textColor="@color/appColor"
+                        android:textSize="23sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/viewmarks"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
 
             <TextView
-                android:id="@+id/marks"
+                android:id="@+id/txthomeworksubject"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:text="MARKS :"
-                android:paddingLeft="10dp"
-                android:textSize="23sp"
-                android:textColor="@color/appColor"/>
-
-            <TextView
-                android:id="@+id/viewmarks"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:background="@color/appColor"
                 android:gravity="center"
-                android:layout_marginLeft="10dp"
-                android:textSize="15sp"/>
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="25dp"
+                android:textStyle="bold" />
 
-        </LinearLayout>
-
-    </RelativeLayout>
+        </FrameLayout>
     </ScrollView>
-
-
-        <TextView
-            android:id="@+id/txthomeworksubject"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:gravity="center"
-            android:layout_gravity="center_horizontal"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:textSize="25dp"
-            android:textAllCaps="true"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:background="@color/appColor"/>
-
-    </FrameLayout>
 </LinearLayout>
