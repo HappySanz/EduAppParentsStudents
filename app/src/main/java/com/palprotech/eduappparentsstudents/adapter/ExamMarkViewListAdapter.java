@@ -13,29 +13,29 @@ import com.makeramen.roundedimageview.RoundedTransformationBuilder;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.palprotech.eduappparentsstudents.R;
 import com.palprotech.eduappparentsstudents.app.AppController;
-import com.palprotech.eduappparentsstudents.bean.dashboard.ExamDetailsView;
+import com.palprotech.eduappparentsstudents.bean.dashboard.ExamMark;
 import com.squareup.picasso.Transformation;
 
 import java.util.ArrayList;
 
 /**
- * Created by Admin on 18-05-2017.
+ * Created by Admin on 25-05-2017.
  */
 
-public class ExamDetailViewListAdapter extends BaseAdapter {
+public class ExamMarkViewListAdapter extends BaseAdapter {
 
-    private static final String TAG = ExamDetailViewListAdapter.class.getName();
+    private static final String TAG = ExamMarkViewListAdapter.class.getName();
     private final Transformation transformation;
     private Context context;
-    private ArrayList<ExamDetailsView> examDetailsViews;
+    private ArrayList<ExamMark> examMarks;
     private boolean mSearching = false;
     private boolean mAnimateSearch = false;
     private ArrayList<Integer> mValidSearchIndices = new ArrayList<Integer>();
     private ImageLoader imageLoader = AppController.getInstance().getUniversalImageLoader();
 
-    public ExamDetailViewListAdapter(Context context, ArrayList<ExamDetailsView> examDetailsViews) {
+    public ExamMarkViewListAdapter(Context context, ArrayList<ExamMark> examMarks) {
         this.context = context;
-        this.examDetailsViews = examDetailsViews;
+        this.examMarks = examMarks;
 
         transformation = new RoundedTransformationBuilder()
                 .cornerRadiusDp(0)
@@ -55,16 +55,16 @@ public class ExamDetailViewListAdapter extends BaseAdapter {
 
         } else {
             // Log.d(TAG,"Normal count size");
-            return examDetailsViews.size();
+            return examMarks.size();
         }
     }
 
     @Override
     public Object getItem(int position) {
         if (mSearching) {
-            return examDetailsViews.get(mValidSearchIndices.get(position));
+            return examMarks.get(mValidSearchIndices.get(position));
         } else {
-            return examDetailsViews.get(position);
+            return examMarks.get(position);
         }
     }
 
@@ -78,12 +78,12 @@ public class ExamDetailViewListAdapter extends BaseAdapter {
         ViewHolder holder;
         if (convertView == null) {
             LayoutInflater inflater = ((Activity) context).getLayoutInflater();
-            convertView = inflater.inflate(R.layout.exam_detail_view_list_item, parent, false);
+            convertView = inflater.inflate(R.layout.exam_mark_view_list_item, parent, false);
 
             holder = new ViewHolder();
-            holder.txtExamDate = (TextView) convertView.findViewById(R.id.txtSubDate);
-            holder.txtSub = (TextView) convertView.findViewById(R.id.txtSubName);
-            holder.txtTime = (TextView) convertView.findViewById(R.id.txtSubTime);
+            holder.txtExamSubject = (TextView) convertView.findViewById(R.id.txtExamSubject);
+            holder.txtMark = (TextView) convertView.findViewById(R.id.txtMark);
+
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -98,11 +98,11 @@ public class ExamDetailViewListAdapter extends BaseAdapter {
             Log.d("Event List Adapter", "getview pos called" + position);
         }
 
-        ExamDetailsView examDetailsView = examDetailsViews.get(position);
+        ExamMark examMark = examMarks.get(position);
 
-        holder.txtSub.setText(examDetailsViews.get(position).getSubjectName());
-        holder.txtExamDate.setText(examDetailsViews.get(position).getExamDate());
-        holder.txtTime.setText(examDetailsViews.get(position).getTimes());
+        holder.txtExamSubject.setText(examMarks.get(position).getSubjectName());
+        holder.txtMark.setText(examMarks.get(position).getMarks());
+
 
 
         return convertView;
@@ -113,8 +113,8 @@ public class ExamDetailViewListAdapter extends BaseAdapter {
         mAnimateSearch = false;
         Log.d("EventListAdapter", "serach for event" + eventName);
         mValidSearchIndices.clear();
-        for (int i = 0; i < examDetailsViews.size(); i++) {
-            String homeWorkTitle = examDetailsViews.get(i).getSubjectName();
+        for (int i = 0; i < examMarks.size(); i++) {
+            String homeWorkTitle = examMarks.get(i).getSubjectName();
             if ((homeWorkTitle != null) && !(homeWorkTitle.isEmpty())) {
                 if (homeWorkTitle.toLowerCase().contains(eventName.toLowerCase())) {
                     mValidSearchIndices.add(i);
@@ -139,7 +139,7 @@ public class ExamDetailViewListAdapter extends BaseAdapter {
     }
 
     public class ViewHolder {
-        public TextView txtExamName, txtExamDate, txtSub, txtTime;
+        public TextView txtExamName, txtExamSubject, txtMark;
     }
 
     public boolean ismSearching() {

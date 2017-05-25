@@ -11,12 +11,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.palprotech.eduappparentsstudents.R;
-import com.palprotech.eduappparentsstudents.adapter.ExamDetailViewListAdapter;
-import com.palprotech.eduappparentsstudents.bean.dashboard.ExamDetailsView;
+import com.palprotech.eduappparentsstudents.adapter.ExamMarkViewListAdapter;
 import com.palprotech.eduappparentsstudents.bean.dashboard.ExamDetailsViewList;
+import com.palprotech.eduappparentsstudents.bean.dashboard.ExamMark;
+import com.palprotech.eduappparentsstudents.bean.dashboard.ExamMarkList;
 import com.palprotech.eduappparentsstudents.bean.dashboard.Exams;
 import com.palprotech.eduappparentsstudents.helper.AlertDialogHelper;
 import com.palprotech.eduappparentsstudents.helper.ProgressDialogHelper;
@@ -27,23 +29,24 @@ import com.palprotech.eduappparentsstudents.utils.CommonUtils;
 import com.palprotech.eduappparentsstudents.utils.EduAppConstants;
 import com.palprotech.eduappparentsstudents.utils.PreferenceStorage;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 
 /**
- * Created by Admin on 18-05-2017.
+ * Created by Admin on 25-05-2017.
  */
 
-public class ExamDetailActivity extends AppCompatActivity implements IExamDetailViewServiceListener, AdapterView.OnItemClickListener, DialogClickListener {
+public class ExamMarksActivity extends AppCompatActivity implements IExamDetailViewServiceListener, AdapterView.OnItemClickListener, DialogClickListener {
 
-    private static final String TAG = "ExamDetailActivity";
+    private static final String TAG = "ExamMarksActivity";
     ListView loadMoreListView;
     View view;
-    ExamDetailViewListAdapter examDetailViewListAdapter;
+    ExamMarkViewListAdapter examMarkViewListAdapter;
     ExamDetailViewServiceHelper examDetailViewServiceHelper;
-    ArrayList<ExamDetailsView> examDetailsViewArrayList;
+    ArrayList<ExamMark> examMarkArrayList;
     int pageNumber = 0, totalCount = 0;
     protected ProgressDialogHelper progressDialogHelper;
     protected boolean isLoadingForFirstTime = true;
@@ -51,19 +54,20 @@ public class ExamDetailActivity extends AppCompatActivity implements IExamDetail
     private SearchView mSearchView = null;
     private Exams exams;
     String ExamId;
-
+    TextView txtTotal;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_exam_detail);
+        setContentView(R.layout.activity_exam_marks);
         loadMoreListView = (ListView) findViewById(R.id.listView_events);
 //        loadMoreListView.setOnLoadMoreListener(this);
         loadMoreListView.setOnItemClickListener(this);
-        examDetailsViewArrayList = new ArrayList<>();
+        examMarkArrayList = new ArrayList<>();
         examDetailViewServiceHelper = new ExamDetailViewServiceHelper(this);
         examDetailViewServiceHelper.setExamDetailViewServiceListener(this);
         progressDialogHelper = new ProgressDialogHelper(this);
+        txtTotal = (TextView) findViewById(R.id.txtTotal);
         exams = (Exams) getIntent().getSerializableExtra("eventObj");
 
         callGetExamDetailViewService();
@@ -74,7 +78,6 @@ public class ExamDetailActivity extends AppCompatActivity implements IExamDetail
                 finish();
             }
         });
-
     }
 
     private void callGetExamDetailViewService() {
@@ -84,8 +87,8 @@ public class ExamDetailActivity extends AppCompatActivity implements IExamDetail
         /*if(eventsListAdapter != null){
             eventsListAdapter.clearSearchFlag();
         }*/
-        if (examDetailsViewArrayList != null)
-            examDetailsViewArrayList.clear();
+        if (examMarkArrayList != null)
+            examMarkArrayList.clear();
 
         if (CommonUtils.isNetworkAvailable(this)) {
             progressDialogHelper.showProgressDialog(getString(R.string.progress_loading));
@@ -98,43 +101,17 @@ public class ExamDetailActivity extends AppCompatActivity implements IExamDetail
     }
 
     @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+    }
+
+    @Override
     public void onAlertPositiveClicked(int tag) {
 
     }
 
     @Override
     public void onAlertNegativeClicked(int tag) {
-
-    }
-
-    private class HttpAsyncTask extends AsyncTask<String, Void, Void> {
-        @Override
-        protected Void doInBackground(String... urls) {
-
-            JSONObject jsonObject = new JSONObject();
-            try {
-                jsonObject.put(EduAppConstants.PARAM_CLASS_ID, PreferenceStorage.getStudentClassIdPreference(getApplicationContext()));
-                jsonObject.put(EduAppConstants.PARAM_EXAM_ID, ExamId);
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            progressDialogHelper.showProgressDialog(getString(R.string.progress_loading));
-            examDetailViewServiceHelper.makeGetExamDetailViewServiceCall(jsonObject.toString());
-
-            return null;
-        }
-
-        // onPostExecute displays the results of the AsyncTask.
-        @Override
-        protected void onPostExecute(Void result) {
-            progressDialogHelper.cancelProgressDialog();
-        }
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
     }
 
@@ -169,36 +146,41 @@ public class ExamDetailActivity extends AppCompatActivity implements IExamDetail
     @Override
     public void onExamDetailViewResponse(final JSONObject response) {
         if (validateSignInResponse(response)) {
-        Log.d("ajazFilterresponse : ", response.toString());
+            Log.d("ajazFilterresponse : ", response.toString());
+            try {
+                String totalMark = response.getString("totalMarks");
+                txtTotal.setText( totalMark);
 
-        mHandler.post(new Runnable() {
-            @Override
-            public void run() {
-                progressDialogHelper.hideProgressDialog();
+            } catch (Exception ex) {
+            }
+
+            mHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    progressDialogHelper.hideProgressDialog();
 //                loadMoreListView.onLoadMoreComplete();
 
-                Gson gson = new Gson();
-                ExamDetailsViewList examDetailsViewList = gson.fromJson(response.toString(), ExamDetailsViewList.class);
-                if (examDetailsViewList.getExamDetailView() != null && examDetailsViewList.getExamDetailView().size() > 0) {
-                    totalCount = examDetailsViewList.getCount();
-                    isLoadingForFirstTime = false;
-                    updateListAdapter(examDetailsViewList.getExamDetailView());
+                    Gson gson = new Gson();
+                    ExamMarkList examMarkList = gson.fromJson(response.toString(), ExamMarkList.class);
+                    if (examMarkList.getExamMarkView() != null && examMarkList.getExamMarkView().size() > 0) {
+                        totalCount = examMarkList.getCount();
+                        isLoadingForFirstTime = false;
+                        updateListAdapter(examMarkList.getExamMarkView());
+                    }
                 }
-            }
-        });
-    }
-        else {
-        Log.d(TAG, "Error while sign In");
-    }
+            });
+        } else {
+            Log.d(TAG, "Error while sign In");
+        }
     }
 
-    protected void updateListAdapter(ArrayList<ExamDetailsView> examDetailsViewArrayList) {
-        this.examDetailsViewArrayList.addAll(examDetailsViewArrayList);
-        if (examDetailViewListAdapter == null) {
-            examDetailViewListAdapter = new ExamDetailViewListAdapter(this, this.examDetailsViewArrayList);
-            loadMoreListView.setAdapter(examDetailViewListAdapter);
+    protected void updateListAdapter(ArrayList<ExamMark> examDetailsViewArrayList) {
+        this.examMarkArrayList.addAll(examDetailsViewArrayList);
+        if (examMarkViewListAdapter == null) {
+            examMarkViewListAdapter = new ExamMarkViewListAdapter(this, this.examMarkArrayList);
+            loadMoreListView.setAdapter(examMarkViewListAdapter);
         } else {
-            examDetailViewListAdapter.notifyDataSetChanged();
+            examMarkViewListAdapter.notifyDataSetChanged();
         }
     }
 
@@ -209,10 +191,35 @@ public class ExamDetailActivity extends AppCompatActivity implements IExamDetail
             public void run() {
                 progressDialogHelper.hideProgressDialog();
 //                loadMoreListView.onLoadMoreComplete();
-                AlertDialogHelper.showSimpleAlertDialog(ExamDetailActivity.this, error);
+                AlertDialogHelper.showSimpleAlertDialog(ExamMarksActivity.this, error);
             }
         });
     }
+
+    private class HttpAsyncTask extends AsyncTask<String, Void, Void> {
+        @Override
+        protected Void doInBackground(String... urls) {
+
+            JSONObject jsonObject = new JSONObject();
+            try {
+                jsonObject.put(EduAppConstants.PARAM_EXAM_ID, ExamId);
+                jsonObject.put(EduAppConstants.PARAM_STUDENT_ID, PreferenceStorage.getStudentEnrollIdPreference(getApplicationContext()));
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            progressDialogHelper.showProgressDialog(getString(R.string.progress_loading));
+            examDetailViewServiceHelper.makeGetExamMarkViewServiceCall(jsonObject.toString());
+
+            return null;
+        }
+
+        // onPostExecute displays the results of the AsyncTask.
+        @Override
+        protected void onPostExecute(Void result) {
+            progressDialogHelper.cancelProgressDialog();
+        }
+    }
 }
-
-

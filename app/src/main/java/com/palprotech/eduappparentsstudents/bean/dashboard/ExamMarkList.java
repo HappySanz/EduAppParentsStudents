@@ -6,16 +6,17 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 
 /**
- * Created by Admin on 18-05-2017.
+ * Created by Admin on 25-05-2017.
  */
 
-public class ExamDetailsViewList {
+public class ExamMarkList {
+
     @SerializedName("count")
     @Expose
     private int count;
-    @SerializedName("examDetails")
+    @SerializedName("marksDetails")
     @Expose
-    private ArrayList<ExamDetailsView> examDetails = new ArrayList<ExamDetailsView>();
+    private ArrayList<ExamMark> marksDetails = new ArrayList<ExamMark>();
 
     /**
      * @return The count
@@ -32,16 +33,16 @@ public class ExamDetailsViewList {
     }
 
     /**
-     * @return The examDetails
+     * @return The marksDetails
      */
-    public ArrayList<ExamDetailsView> getExamDetailView() {
-        return examDetails;
+    public ArrayList<ExamMark> getExamMarkView() {
+        return marksDetails;
     }
 
     /**
-     * @param examDetails The examDetails
+     * @param marksDetails The marksDetails
      */
-    public void setEvents(ArrayList<ExamDetailsView> examDetails) {
-        this.examDetails = examDetails;
+    public void setEvents(ArrayList<ExamMark> marksDetails) {
+        this.marksDetails = marksDetails;
     }
 }
