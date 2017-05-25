@@ -44,7 +44,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="20dp">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -69,11 +72,11 @@
             android:id="@+id/txtClassTestTitle1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingTop="5dp"
             android:layout_alignTop="@+id/clstitle"
             android:layout_marginLeft="10dp"
-            android:gravity="center"
+            android:gravity="bottom"
             android:textColor="@color/black"
-            android:layout_alignBottom="@+id/clstitle"
             android:textSize="18dp"
             android:layout_toRightOf="@+id/clstitle" />
 
@@ -97,6 +100,7 @@
             android:textColor="@color/black"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="50dp"
             android:textSize="15sp"/>
 
         <LinearLayout
@@ -129,6 +133,8 @@
         </LinearLayout>
 
     </RelativeLayout>
+    </ScrollView>
+
 
         <TextView
             android:id="@+id/txthomeworksubject"
