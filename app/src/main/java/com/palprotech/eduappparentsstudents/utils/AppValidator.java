@@ -12,4 +12,10 @@ public class AppValidator {
         else
             return value.trim().length() > 0;
     }
+
+    public static boolean checkStringMinLength(int minValue, String value) {
+        if (value == null)
+            return false;
+        return value.trim().length() >= minValue;
+    }
 }

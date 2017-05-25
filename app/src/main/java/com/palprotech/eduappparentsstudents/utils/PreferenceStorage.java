@@ -303,6 +303,39 @@ public class PreferenceStorage {
         return studentPrefSectionName;
     }
 
+    // Forgot Password
+    // Forgot Password Status Check
+    public static String getForgotPasswordStatus(Context context) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        String url = sharedPreferences.getString(EduAppConstants.KEY_FORGOT_PASSWORD_STATUS, "");
+        return url;
+    }
+
+    public static void saveForgotPasswordStatus(Context context, String url) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(EduAppConstants.KEY_FORGOT_PASSWORD_STATUS, url);
+        editor.commit();
+    }
+
+    // Forgot Password Enabled Check
+    public static String getForgotPasswordStatusEnable(Context context) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        String url = sharedPreferences.getString(EduAppConstants.KEY_FORGOT_PASSWORD_STATUS, "");
+        return url;
+    }
+
+    public static void saveForgotPasswordStatusEnable(Context context, String url) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(EduAppConstants.KEY_FORGOT_PASSWORD_STATUS, url);
+        editor.commit();
+    }
+
 
     ////////////////////////////////////
 

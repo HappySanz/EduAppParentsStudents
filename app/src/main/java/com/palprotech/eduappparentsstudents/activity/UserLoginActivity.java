@@ -194,6 +194,7 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
                     String UserPicUrl = PreferenceStorage.getUserDynamicAPI(this) + EduAppConstants.USER_IMAGE_API + UserImage;
                     String UserType = userData.getString("user_type");
                     String UserTypeName = userData.getString("user_type_name");
+                    String forgotPasswordStatus = userData.getString("password_status");
 
                     String StudentPreferenceEnrollId = studentData.getString("enroll_id");
                     String StudentPreferenceAdmissionId = studentData.getString("admission_id");
@@ -230,6 +231,11 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
                     // User Preference - UsertypeName
                     if ((UserTypeName != null) && !(UserTypeName.isEmpty()) && !UserTypeName.equalsIgnoreCase("null")) {
                         PreferenceStorage.saveUserTypeName(this, UserTypeName);
+                    }
+
+                    // Forgot Password Reset Status
+                    if ((forgotPasswordStatus != null) && !(forgotPasswordStatus.isEmpty()) && !forgotPasswordStatus.equalsIgnoreCase("null")) {
+                        PreferenceStorage.saveForgotPasswordStatus(this, forgotPasswordStatus);
                     }
 //
 //
@@ -287,10 +293,17 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
                 e.printStackTrace();
             }
 
-            Intent intent = new Intent(this, MainActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-            finish();
+            if (PreferenceStorage.getForgotPasswordStatus(getApplicationContext()).equalsIgnoreCase("1")) {
+                Intent intent = new Intent(this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+            } else {
+                Intent intent = new Intent(this, ResetPasswordActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+            }
 
         } else {
             Log.d(TAG, "Error while sign In");

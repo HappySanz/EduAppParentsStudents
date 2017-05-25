@@ -26,6 +26,9 @@
     <string name="forgot_content">We will send a code to your registered EMAIL or MOBILE, using which you can login to create a new password.</string>
     <string name="sign_in">Sign In</string>
     <string name="enter_user_name">User name cannot be empty</string>
+    <string name="enter_password">Password cannot be empty</string>
+    <string name="min_pass_length">Short passwords are easy to guess! Try one with at least 8 characters...</string>
+    <string name="password_mismatch">Password mismatch</string>
 
 
     <!--Dashboard-->

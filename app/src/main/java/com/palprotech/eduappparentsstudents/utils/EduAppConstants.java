@@ -22,6 +22,7 @@ public class EduAppConstants {
 
     //FORGOT PASSWORD URL
     public static final String FORGOT_PASSWORD = "/api/forgot_password/forgotPassword/";
+    public static final String RESET_PASSWORD = "/api/reset_Password/resetPassword/";
 
     // STUDENT ATTENDANCE URL
 
@@ -40,7 +41,7 @@ public class EduAppConstants {
     public static final String GET_EXAM_MARK_API = "/api/disp_Exammarks/dispMarkdetails/";
 
     // EVENTS URL
-    public static final String GET_EVENTS_API ="/api/disp_Events/dispEvents/";
+    public static final String GET_EVENTS_API = "/api/disp_Events/dispEvents/";
 
     //EVENT ORGANISER URL
     public static final String GET_EVENT_ORGANISER_API = "/api/disp_subEvents/dispsubEvents/";
@@ -62,6 +63,7 @@ public class EduAppConstants {
 
     // Forgot Password
     public static final String PARAMS_FP_USER_NAME = "user_name";
+    public static final String PARAMS_FP_USER_ID = "user_id";
 
     // Alert Dialog Constants
     public static String ALERT_DIALOG_TITLE = "alertDialogTitle";
@@ -86,6 +88,7 @@ public class EduAppConstants {
     public static final String KEY_USER_IMAGE = "user_pic";
     public static final String KEY_USER_TYPE = "user_type";
     public static final String KEY_USER_TYPE_NAME = "user_type_name";
+    public static final String KEY_FORGOT_PASSWORD_STATUS = "forgot_password_status";
 
     // Student Preferences Data
     public static final String KEY_STUDENT_ENROLL_ID_PREFERENCES = "student_enroll_id";

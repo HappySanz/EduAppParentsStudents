@@ -32,9 +32,15 @@ public class SplashScreenActivity extends AppCompatActivity {
 
                 if (PreferenceStorage.getInstituteName(getApplicationContext()) != null && AppValidator.checkNullString(PreferenceStorage.getInstituteName(getApplicationContext()))) {
                     String userName = PreferenceStorage.getUserName(getApplicationContext());
+                    String isResetOver = PreferenceStorage.getForgotPasswordStatusEnable(getApplicationContext());
                     String instituteName = PreferenceStorage.getInstituteName(getApplicationContext());
 
-                    if (AppValidator.checkNullString(userName) && AppValidator.checkNullString(instituteName)) {
+                    if (isResetOver.equalsIgnoreCase("no")) {
+                        Intent intent = new Intent(getApplicationContext(), ResetPasswordActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                    else if (AppValidator.checkNullString(userName) && AppValidator.checkNullString(instituteName)) {
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(intent);
                         finish();
