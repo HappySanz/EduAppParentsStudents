@@ -103,10 +103,21 @@ public class ExamsResultActivity extends AppCompatActivity implements IExamAndRe
         } else {
             exams = examsArrayList.get(position);
         }
-        Intent intent = new Intent(this, ExamDetailActivity.class);
-        intent.putExtra("eventObj", exams);
-        // intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        startActivity(intent);
+
+        String isMarkStatus = exams.getMarkStatus();
+
+        if (isMarkStatus.equalsIgnoreCase("1")) {
+            Intent intent = new Intent(this, ExamMarksActivity.class);
+            intent.putExtra("eventObj", exams);
+            // intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            startActivity(intent);
+        } else {
+            Intent intent = new Intent(this, ExamDetailActivity.class);
+            intent.putExtra("eventObj", exams);
+            // intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            startActivity(intent);
+        }
+
     }
 
     private boolean validateSignInResponse(JSONObject response) {
@@ -140,25 +151,24 @@ public class ExamsResultActivity extends AppCompatActivity implements IExamAndRe
     @Override
     public void onExamAndResultResponse(final JSONObject response) {
         if (validateSignInResponse(response)) {
-        Log.d("ajazFilterresponse : ", response.toString());
+            Log.d("ajazFilterresponse : ", response.toString());
 
-        mHandler.post(new Runnable() {
-            @Override
-            public void run() {
-                progressDialogHelper.hideProgressDialog();
+            mHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    progressDialogHelper.hideProgressDialog();
 //                loadMoreListView.onLoadMoreComplete();
 
-                Gson gson = new Gson();
-                ExamList examList = gson.fromJson(response.toString(), ExamList.class);
-                if (examList.getExams() != null && examList.getExams().size() > 0) {
-                    totalCount = examList.getCount();
-                    isLoadingForFirstTime = false;
-                    updateListAdapter(examList.getExams());
+                    Gson gson = new Gson();
+                    ExamList examList = gson.fromJson(response.toString(), ExamList.class);
+                    if (examList.getExams() != null && examList.getExams().size() > 0) {
+                        totalCount = examList.getCount();
+                        isLoadingForFirstTime = false;
+                        updateListAdapter(examList.getExams());
+                    }
                 }
-            }
-        });
-        }
-        else {
+            });
+        } else {
             Log.d(TAG, "Error while sign In");
         }
     }

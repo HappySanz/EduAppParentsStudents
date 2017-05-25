@@ -12,11 +12,11 @@
         android:background="@color/black">
 
         <TextView
-            android:id="@+id/txtSubDate"
+            android:id="@+id/txtExamSubject"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_weight="0.33"
+            android:layout_weight="0.50"
             android:background="@color/white"
             android:text="2017-05-23"
             android:textColor="@color/black"
@@ -25,14 +25,14 @@
             android:layout_marginTop="2dp"/>
 
         <TextView
-            android:id="@+id/txtSubTime"
+            android:id="@+id/txtMark"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:text="12-12-2012"
             android:textColor="@color/black"
             android:gravity="center"
-            android:layout_weight="0.33"
+            android:layout_weight="0.50"
             android:paddingBottom="5dp"
             android:layout_marginLeft="2dp"
             android:layout_marginTop="2dp"/>
@@ -47,6 +47,7 @@
             android:textColor="@color/black"
             android:paddingBottom="5dp"
             android:gravity="center"
+            android:visibility="gone"
             android:layout_marginLeft="2dp"
             android:layout_marginTop="2dp"/>
 
@@ -68,13 +69,13 @@
 
 </LinearLayout>
 
-<!--<RelativeLayout-->
-<!--android:layout_width="match_parent"-->
-<!--android:layout_height="wrap_content"-->
-<!--android:layout_marginTop="10dp"-->
-<!--android:background="@drawable/round_btn_plain">-->
+    <!--<RelativeLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="10dp"-->
+    <!--android:background="@drawable/round_btn_plain">-->
 
-<!--<TextView-->
+    <!--<TextView-->
     <!--android:id="@+id/txtExamName"-->
     <!--android:layout_width="match_parent"-->
     <!--android:layout_height="wrap_content"-->
@@ -87,7 +88,7 @@
     <!--android:textColor="@color/appColor"-->
     <!--android:textSize="20dp" />-->
 
-<!--<TextView-->
+    <!--<TextView-->
     <!--android:id="@+id/txtExamDate"-->
     <!--android:layout_width="match_parent"-->
     <!--android:layout_height="wrap_content"-->
@@ -98,7 +99,7 @@
     <!--android:textColor="@color/appColor"-->
     <!--android:textSize="15dp" />-->
 
-<!--<ImageView-->
+    <!--<ImageView-->
     <!--android:layout_width="25dp"-->
     <!--android:layout_height="25dp"-->
     <!--android:src="@drawable/date_calender"-->
@@ -106,11 +107,11 @@
     <!--android:layout_marginLeft="10dp"-->
     <!--android:layout_marginBottom="10dp"/>-->
 
-<!--<ImageView-->
+    <!--<ImageView-->
     <!--android:layout_width="wrap_content"-->
     <!--android:layout_height="wrap_content"-->
     <!--android:src="@drawable/select_button"-->
     <!--android:layout_alignParentRight="true"-->
     <!--android:layout_centerVertical="true"-->
     <!--android:layout_marginRight="20dp"/>-->
-<!--</RelativeLayout>-->
+    <!--</RelativeLayout>-->
