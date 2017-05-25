@@ -23,6 +23,7 @@ public class EduAppConstants {
     //FORGOT PASSWORD URL
     public static final String FORGOT_PASSWORD = "/api/forgot_password/forgotPassword/";
     public static final String RESET_PASSWORD = "/api/reset_Password/resetPassword/";
+    public static final String CHANGE_PASSWORD = "/api/change_Password/changePassword/";
 
     // STUDENT ATTENDANCE URL
 
@@ -64,6 +65,9 @@ public class EduAppConstants {
     // Forgot Password
     public static final String PARAMS_FP_USER_NAME = "user_name";
     public static final String PARAMS_FP_USER_ID = "user_id";
+
+    // Change Password
+    public static final String PARAMS_CP_CURRENT_PASSWORD = "old_password";
 
     // Alert Dialog Constants
     public static String ALERT_DIALOG_TITLE = "alertDialogTitle";
