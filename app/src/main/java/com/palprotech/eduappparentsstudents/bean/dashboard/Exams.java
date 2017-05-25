@@ -27,6 +27,12 @@ public class Exams implements Serializable{
     @Expose
     private String to_date;
 
+    @SerializedName("MarkStatus")
+    @Expose
+    private String MarkStatus;
+
+
+
 
     /**
      * @return The hw_id
@@ -82,6 +88,20 @@ public class Exams implements Serializable{
      */
     public void setToDate(String to_date) {
         this.to_date = to_date;
+    }
+
+    /**
+     * @return The MarkStatus
+     */
+    public String getMarkStatus() {
+        return MarkStatus;
+    }
+
+    /**
+     * @param MarkStatus The MarkStatus
+     */
+    public void setMarkStatus(String MarkStatus) {
+        this.MarkStatus = MarkStatus;
     }
 
 }

@@ -113,6 +113,7 @@ public class EduAppConstants {
     public static final String PARAM_CLASS_ID = "class_id";
     public static final String PARAM_HOMEWORK_ID = "hw_id";
     public static final String PARM_ENROLL_ID = "entroll_id";
+    public static final String PARM_HOME_WORK_TYPE = "hw_type";
 
     //Exam
     public static final String PARAM_EXAM_ID = "exam_id";

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.SwitchCompat;
@@ -13,6 +14,8 @@ import android.widget.AdapterView;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -52,7 +55,9 @@ public class ClassTestHomeworkActivity extends AppCompatActivity implements ICla
     protected boolean isLoadingForFirstTime = true;
     Handler mHandler = new Handler();
     private SearchView mSearchView = null;
-    private SwitchCompat switcherClassTest, switcherHomeWork;
+    private RadioGroup radioClassHome;
+    private String isHomeWorkType = "HT";
+//    private SwitchCompat switcherClassTest, switcherHomeWork;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +70,7 @@ public class ClassTestHomeworkActivity extends AppCompatActivity implements ICla
         classTestServiceHelper = new ClassTestServiceHelper(this);
         classTestServiceHelper.setClassTestServiceListener(this);
         progressDialogHelper = new ProgressDialogHelper(this);
+        radioClassHome = (RadioGroup) findViewById(R.id.radioClassHome);
 
         callGetClassTestService();
         ImageView bckbtn = (ImageView) findViewById(R.id.back_res);
@@ -75,9 +81,30 @@ public class ClassTestHomeworkActivity extends AppCompatActivity implements ICla
             }
         });
 
-        switcherClassTest = (SwitchCompat) findViewById(R.id.switch_test);
-        switcherHomeWork = (SwitchCompat) findViewById(R.id.switch_homwork);
-        switcherClassTest.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        radioClassHome.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                switch (checkedId) {
+                    case R.id.radioClassTest:
+//                        RadioButton value = Integer.parseInt(((RadioButton) findViewById(R.id.radioClassTest).getText()) * 3);
+                        Toast.makeText(getApplicationContext(), "Class Test", Toast.LENGTH_SHORT).show();
+                        isHomeWorkType = "HT";
+                        callGetClassTestService();
+                        break;
+                    case R.id.radioHomeWork:
+//                        RadioButton value1 = Integer.parseInt(((RadioButton) findViewById(R.id.radioClassHome).getText()) * 3);
+                        Toast.makeText(getApplicationContext(), "Home Work", Toast.LENGTH_SHORT).show();
+                        isHomeWorkType = "HW";
+                        callGetClassTestService();
+                        break;
+
+                }
+            }
+        });
+
+//        switcherClassTest = (SwitchCompat) findViewById(R.id.switch_test);
+//        switcherHomeWork = (SwitchCompat) findViewById(R.id.switch_homwork);
+       /* switcherClassTest.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -100,7 +127,7 @@ public class ClassTestHomeworkActivity extends AppCompatActivity implements ICla
 //                switcherClassTest.setChecked(true);
             }
 
-        });
+        }); */
 
 
     }
@@ -236,6 +263,7 @@ public class ClassTestHomeworkActivity extends AppCompatActivity implements ICla
             JSONObject jsonObject = new JSONObject();
             try {
                 jsonObject.put(EduAppConstants.PARAM_CLASS_ID, PreferenceStorage.getStudentClassIdPreference(getApplicationContext()));
+                jsonObject.put(EduAppConstants.PARM_HOME_WORK_TYPE, isHomeWorkType);
 
 
             } catch (JSONException e) {

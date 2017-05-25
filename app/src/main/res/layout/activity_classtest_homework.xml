@@ -13,7 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/appColor"
-            android:minHeight="?attr/actionBarSize"/>
+            android:minHeight="?attr/actionBarSize" />
 
         <ImageView
             android:id="@+id/back_res"
@@ -39,53 +39,91 @@
             android:textSize="@dimen/actionbarTextSize" />
     </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="150dp"
         android:background="@color/background_grey"
+        android:gravity="center"
         android:orientation="vertical">
 
-        <TextView
+        <!--
+        <LinearLayout
+            android:id="@+id/lllist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="120sp"
+                android:layout_marginTop="30sp"
+                android:text="@string/class_t"
+                android:textColor="@color/appColor"
+                android:textSize="20sp" />
+
+            <android.support.v7.widget.SwitchCompat
+                android:id="@+id/switch_test"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="230sp"
+                android:layout_marginTop="-25sp"
+                android:checked="true"
+                android:clickable="false"
+                android:theme="@style/MySwitchTheme" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="120sp"
+                android:layout_marginTop="30sp"
+                android:text="@string/homework"
+                android:textColor="@color/appColor"
+                android:textSize="20sp" />
+
+
+            <android.support.v7.widget.SwitchCompat
+                android:id="@+id/switch_homwork"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30sp"
+                android:layout_marginLeft="230sp"
+                android:layout_marginTop="-25sp"
+                android:checked="true"
+                android:clickable="false"
+                android:theme="@style/MySwitchTheme" />
+        </LinearLayout> -->
+
+        <RadioGroup
+            android:id="@+id/radioClassHome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="120sp"
-            android:layout_marginTop="30sp"
-            android:text="@string/class_t"
-            android:textColor="@color/appColor"
-            android:textSize="20sp" />
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center">
 
-        <android.support.v7.widget.SwitchCompat
-            android:id="@+id/switch_test"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="230sp"
-            android:layout_marginTop="-25sp"
-            android:checked="true"
-            android:clickable="false"
-            android:theme="@style/MySwitchTheme" />
+            <RadioButton
+                android:id="@+id/radioClassTest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Class Test"
+                android:textSize="20sp"
+                android:checked="true"
+                android:theme="@style/MySwitchTheme"
+                android:textColor="@color/appColor" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="120sp"
-            android:layout_marginTop="30sp"
-            android:text="@string/homework"
-            android:textColor="@color/appColor"
-            android:textSize="20sp" />
+            <RadioButton
+                android:id="@+id/radioHomeWork"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:theme="@style/MySwitchTheme"
+                android:textSize="20sp"
+                android:text="Home Work "
+                android:textColor="@color/appColor" />
 
+        </RadioGroup>
 
-        <android.support.v7.widget.SwitchCompat
-            android:id="@+id/switch_homwork"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="230sp"
-            android:layout_marginTop="-25sp"
-            android:checked="true"
-            android:clickable="false"
-            android:layout_marginBottom="30sp"
-            android:theme="@style/MySwitchTheme" />
-
-    </LinearLayout>
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
