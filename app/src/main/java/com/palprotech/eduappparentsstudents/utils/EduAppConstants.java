@@ -20,6 +20,9 @@ public class EduAppConstants {
     public static final String USER_LOGIN_API = "/api/login/adminlogin/";
     public static final String USER_IMAGE_API = "/assets/parents/profile/";
 
+    //FORGOT PASSWORD URL
+    public static final String FORGOT_PASSWORD = "/api/forgot_password/forgotPassword/";
+
     // STUDENT ATTENDANCE URL
 
     public static final String GET_STUDENT_ATTENDANCD_API = "/api/disp_Attendence/dispAttendence/";

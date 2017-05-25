@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_grey"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -40,28 +40,30 @@
             android:textSize="@dimen/actionbarTextSize" />
     </RelativeLayout>
 
-    <RelativeLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/txthomeworksubject"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
-            android:textSize="25dp"
-            android:textStyle="bold" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_grey"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp">
 
         <TextView
             android:id="@+id/clstitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txthomeworksubject"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="50dp"
             android:text="Topic :"
-            android:textSize="25dp"
-            android:textStyle="bold" />
+            android:textSize="23sp"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            android:textColor="@color/appColor"/>
 
         <TextView
             android:id="@+id/txtClassTestTitle1"
@@ -69,7 +71,10 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/clstitle"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:layout_alignBottom="@+id/clstitle"
+            android:textSize="18dp"
             android:layout_toRightOf="@+id/clstitle" />
 
         <TextView
@@ -78,8 +83,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/txtClassTestTitle1"
             android:layout_marginTop="20dp"
+            android:paddingLeft="10dp"
             android:text="Description :"
-            android:textSize="25dp"
+            android:textSize="23sp"
+            android:textColor="@color/appColor"
             android:textStyle="bold" />
 
         <TextView
@@ -87,35 +94,56 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/describ"
+            android:textColor="@color/black"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="10dp"
+            android:textSize="15sp"/>
 
         <LinearLayout
             android:id="@+id/llMarkView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
-            android:layout_below="@+id/describ"
+            android:layout_below="@+id/txthomeworkdetails"
             android:layout_marginTop="20dp">
 
             <TextView
                 android:id="@+id/marks"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/txtClassTestTitle1"
-                android:text="Mark :"
-                android:textSize="25dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:text="MARKS :"
+                android:paddingLeft="10dp"
+                android:textSize="23sp"
+                android:textColor="@color/appColor"/>
 
             <TextView
                 android:id="@+id/viewmarks"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/describ"
+                android:textColor="@color/black"
+                android:gravity="center"
                 android:layout_marginLeft="10dp"
-                android:text="" />
+                android:textSize="15sp"/>
 
         </LinearLayout>
 
     </RelativeLayout>
+
+        <TextView
+            android:id="@+id/txthomeworksubject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:textSize="25dp"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:background="@color/appColor"/>
+
+    </FrameLayout>
 </LinearLayout>
