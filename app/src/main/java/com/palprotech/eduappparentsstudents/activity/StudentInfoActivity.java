@@ -101,7 +101,7 @@ public class StudentInfoActivity extends AppCompatActivity {
             db.close();
             txtstudname.setText(StudentName);
             txtstudid.setText(StudentId);
-            txtadmissid.setText(AdmissionId);
+            txtadmissid.setText(AdmissionNo);
             txtclass.setText(Class);
             txtsec.setText("-"+Section);
 
