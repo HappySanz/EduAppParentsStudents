@@ -44,7 +44,7 @@ public class StudentInfoActivity extends AppCompatActivity {
         setContentView(R.layout.student_info_activity);
         db = new SQLiteHelper(getApplicationContext());
         vecStudent = new Vector<String>();
-        spnStudentInfo = (Spinner) findViewById(R.id.studselect);
+        spnStudentInfo = (Spinner) findViewById(R.id.eventtypespinner);
         txtstudname = (TextView) findViewById(R.id.txtstudname);
         txtstudid = (TextView) findViewById(R.id.txtstudid);
         txtadmissid = (TextView) findViewById(R.id.txtadmissid);
@@ -169,10 +169,10 @@ public class StudentInfoActivity extends AppCompatActivity {
 //            lsStudent.add("Select");
             lsStudent.addAll(ts);
             db.close();
-            adptStudent = new ArrayAdapter<String>(getApplicationContext(),
-                    android.R.layout.simple_spinner_item, lsStudent);
-            adptStudent.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            spnStudentInfo.setAdapter(adptStudent);
+            ArrayAdapter<String> dataAdapter3 = new ArrayAdapter<String>(this, R.layout.spinner_item_ns, lsStudent);
+//            adptStudent = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, lsStudent);
+//            adptStudent.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spnStudentInfo.setAdapter(dataAdapter3);
             spnStudentInfo.setWillNotDraw(false);
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "Error company lookup", Toast.LENGTH_LONG).show();

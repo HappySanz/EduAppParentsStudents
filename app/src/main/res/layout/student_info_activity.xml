@@ -12,9 +12,24 @@
 
         <Spinner
             android:id="@+id/studselect"
+            style="@style/AppTheme"
             android:layout_width="150dp"
             android:layout_height="50dp"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:spinnerMode="dialog"
+            android:visibility="gone" />
+
+        <Spinner
+            android:id="@+id/eventtypespinner"
+            style="@style/spinner_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="sans-serif"
+            android:spinnerMode="dropdown"
+            android:overlapAnchor="false"
+            android:textColor="@color/text_gray"
+            android:textSize="15sp" />
 
         <com.palprotech.eduappparentsstudents.customview.CircleImageView
             android:id="@+id/stud_pic"
