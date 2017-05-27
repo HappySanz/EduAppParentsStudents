@@ -166,7 +166,7 @@ int getLength = getData.length();
                         cell.setBackgroundColor(Color.WHITE);//argb(255,104,53,142)
 
                         b.setText(name);
-                        b.setTextSize(15.0f);
+                        b.setTextSize(13.0f);
                         b.setTypeface(null, Typeface.BOLD);
                         b.setAllCaps(true);
                         b.setTextColor(Color.parseColor("#FF68358E"));
