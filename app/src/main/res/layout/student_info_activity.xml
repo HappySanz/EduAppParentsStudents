@@ -62,15 +62,40 @@
         android:textColor="@color/appColor"/>
 
     <TextView
-        android:id="@+id/txtclassandsec"
+        android:id="@+id/txtclass"
         android:layout_below="@+id/txtadmissid"
         android:layout_width="wrap_content"
+        android:layout_alignLeft="@+id/txtadmissid"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
-        android:hint="CLASS &amp; SECTION"
+        android:hint="CLASS"
         android:textSize="20dp"
         android:textColor="@color/appColor"/>
+
+        <TextView
+            android:id="@+id/txtsec"
+            android:layout_below="@+id/txtadmissid"
+            android:layout_toRightOf="@id/txtclass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:hint="SECTION"
+            android:textSize="20dp"
+            android:textColor="@color/appColor"/>
+
+        <Button
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/txtsec"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:text="Continue"
+            android:background="@drawable/round_btn"
+            android:textColor="@color/colour_pick"/>
 
     </RelativeLayout>
 
