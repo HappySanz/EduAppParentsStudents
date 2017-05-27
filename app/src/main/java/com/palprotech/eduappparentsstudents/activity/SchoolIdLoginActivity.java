@@ -1,7 +1,6 @@
 package com.palprotech.eduappparentsstudents.activity;
 
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -9,7 +8,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.palprotech.eduappparentsstudents.R;
 import com.palprotech.eduappparentsstudents.helper.AlertDialogHelper;
@@ -50,11 +48,6 @@ public class SchoolIdLoginActivity extends AppCompatActivity implements View.OnC
         signUpServiceHelper = new SignUpServiceHelper(this);
         signUpServiceHelper.setSignUpServiceListener(this);
         progressDialogHelper = new ProgressDialogHelper(this);
-
-        TextView tx = (TextView)findViewById(R.id.appnameee);
-        Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/Rancho-Regular.ttf");
-        tx.setTypeface(custom_font);
-
     }
 
     @Override
