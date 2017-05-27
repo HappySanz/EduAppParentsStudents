@@ -106,20 +106,20 @@
                 android:id="@+id/radioClassTest"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Class Test"
-                android:textSize="20sp"
                 android:checked="true"
-                android:theme="@style/MySwitchTheme"
-                android:textColor="@color/appColor" />
+                android:text="Class Test"
+                android:textColor="@color/appColor"
+                android:textSize="20sp"
+                android:theme="@style/MySwitchTheme" />
 
             <RadioButton
                 android:id="@+id/radioHomeWork"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:theme="@style/MySwitchTheme"
-                android:textSize="20sp"
                 android:text="Home Work "
-                android:textColor="@color/appColor" />
+                android:textColor="@color/appColor"
+                android:textSize="20sp"
+                android:theme="@style/MySwitchTheme" />
 
         </RadioGroup>
 

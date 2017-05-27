@@ -58,19 +58,19 @@
         android:layout_marginRight="5dp"
         android:layout_marginTop="20dp"
         android:layout_weight="1"
-        android:scrollbars="horizontal|vertical"
-        android:fadeScrollbars="false">
+        android:fadeScrollbars="false"
+        android:scrollbars="horizontal|vertical">
 
         <HorizontalScrollView
             android:id="@+id/horizon"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent">
+
             <LinearLayout
                 android:id="@+id/layout_timetable"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
-            </LinearLayout>
+                android:orientation="vertical"></LinearLayout>
         </HorizontalScrollView>
     </ScrollView>
 

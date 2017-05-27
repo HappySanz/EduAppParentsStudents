@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:gravity="center_vertical"
     android:layout_height="match_parent"
     android:background="@color/background_grey"
+    android:gravity="center_vertical"
     android:orientation="vertical">
 
     <LinearLayout
@@ -18,8 +18,8 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_marginLeft="15dp"
-            android:layout_weight="0.50"
             android:layout_marginRight="10dp"
+            android:layout_weight="0.50"
             android:background="@drawable/round_btn_plain"
             android:orientation="vertical">
 
@@ -27,8 +27,8 @@
                 android:id="@+id/imageView2"
                 android:layout_width="80sp"
                 android:layout_height="80sp"
-                android:layout_marginTop="5dp"
                 android:layout_gravity="top|center"
+                android:layout_marginTop="5dp"
                 android:background="@drawable/attendance" />
 
             <TextView
@@ -77,8 +77,8 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_marginLeft="15dp"
-            android:layout_weight="0.50"
             android:layout_marginRight="10dp"
+            android:layout_weight="0.50"
             android:background="@drawable/round_btn_plain"
             android:orientation="vertical">
 
@@ -109,15 +109,15 @@
             <ImageView
                 android:layout_width="90sp"
                 android:layout_height="90sp"
-                android:layout_marginTop="-5dp"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginTop="-5dp"
                 android:background="@drawable/timetable" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginTop="1dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="1dp"
                 android:gravity="center"
                 android:text="@string/time_table"
                 android:textSize="14sp" />
@@ -136,8 +136,8 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_marginLeft="15dp"
-            android:layout_weight="0.50"
             android:layout_marginRight="10dp"
+            android:layout_weight="0.50"
             android:background="@drawable/round_btn_plain"
             android:orientation="vertical">
 

@@ -103,7 +103,7 @@ public class StudentInfoActivity extends AppCompatActivity {
             txtstudid.setText(StudentId);
             txtadmissid.setText(AdmissionId);
             txtclass.setText(Class);
-            txtsec.setText(Section);
+            txtsec.setText("-"+Section);
 
             //
 //

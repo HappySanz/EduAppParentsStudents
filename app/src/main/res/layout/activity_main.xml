@@ -41,8 +41,8 @@
             android:layout_gravity="start"
             android:layout_weight="1"
             android:background="@color/transparent"
-            android:dividerHeight="-0.0025dp"
             android:divider="@color/transparent"
+            android:dividerHeight="-0.0025dp"
             android:scrollbars="vertical" />
 
     </LinearLayout>
