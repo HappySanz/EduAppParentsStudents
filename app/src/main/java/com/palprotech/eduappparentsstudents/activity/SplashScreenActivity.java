@@ -1,11 +1,13 @@
 package com.palprotech.eduappparentsstudents.activity;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.palprotech.eduappparentsstudents.R;
 import com.palprotech.eduappparentsstudents.utils.AppValidator;
@@ -24,7 +26,9 @@ public class SplashScreenActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-
+        TextView tx = (TextView)findViewById(R.id.splash);
+        Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/Rancho-Regular.ttf");
+        tx.setTypeface(custom_font);
         new Handler().postDelayed(new Runnable() {
 
             @Override
