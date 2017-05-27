@@ -11,7 +11,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
 import com.palprotech.eduappparentsstudents.R;
+import com.palprotech.eduappparentsstudents.bean.database.SQLiteHelper;
 import com.palprotech.eduappparentsstudents.helper.AlertDialogHelper;
 import com.palprotech.eduappparentsstudents.helper.ProgressDialogHelper;
 import com.palprotech.eduappparentsstudents.interfaces.DialogClickListener;
@@ -25,6 +27,8 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.HashMap;
 
 /**
  * Created by Admin on 22-03-2017.
@@ -41,6 +45,7 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
     private Button btnLogin;
     private TextView txtInsName, txtForgotPassword;
     private ImageView mProfileImage = null;
+    SQLiteHelper database;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -59,7 +64,7 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
         txtForgotPassword = (TextView) findViewById(R.id.txtForgotPassword);
         txtForgotPassword.setOnClickListener(this);
         txtInsName.setText(PreferenceStorage.getInstituteName(getApplicationContext()));
-
+        database = new SQLiteHelper(getApplicationContext());
         btnLogin = (Button) findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(this);
 
@@ -174,6 +179,37 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
                 JSONArray getStudentData = response.getJSONArray("enrollDetails");
                 JSONObject studentData = getStudentData.getJSONObject(0);
 
+                try {
+//                    JSONArray json = new JSONArray(getStudentData);
+                    database.deleteLocal();
+
+                    for (int i = 0; i < getStudentData.length(); i++) {
+                        HashMap<String, String> map = new HashMap<String, String>();
+                        JSONObject jsonobj = getStudentData.getJSONObject(i);
+
+
+                        System.out.println("enroll_id : " + i + " = " + jsonobj.getString("enroll_id"));
+                        System.out.println("admission_id : " + i + " = " + jsonobj.getString("admission_id"));
+                        System.out.println("admisn_no : " + i + " = " + jsonobj.getString("admisn_no"));
+                        System.out.println("class_id : " + i + " = " + jsonobj.getString("class_id"));
+                        System.out.println("name : " + i + " = " + jsonobj.getString("name"));
+                        System.out.println("class_name : " + i + " = " + jsonobj.getString("class_name"));
+                        System.out.println("sec_name : " + i + " = " + jsonobj.getString("sec_name"));
+
+                        String v1 = jsonobj.getString("enroll_id"),
+                                v2 = jsonobj.getString("admission_id"),
+                                v3 = jsonobj.getString("admisn_no"),
+                                v4 = jsonobj.getString("class_id"),
+                                v5 = jsonobj.getString("name"),
+                                v6 = jsonobj.getString("class_name"),
+                                v7 = jsonobj.getString("sec_name");
+
+                        database.student_details_insert(v1, v2, v3, v4, v5, v6, v7);
+                    }
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+
                 JSONArray getParentData = response.getJSONArray("parentProfile");
                 JSONObject parentData = getParentData.getJSONObject(0);
 
@@ -237,49 +273,49 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
                     if ((forgotPasswordStatus != null) && !(forgotPasswordStatus.isEmpty()) && !forgotPasswordStatus.equalsIgnoreCase("null")) {
                         PreferenceStorage.saveForgotPasswordStatus(this, forgotPasswordStatus);
                     }
+////
+////
+//                    // Student Preference - EnrollId
+//                    if ((StudentPreferenceEnrollId != null) && !(StudentPreferenceEnrollId.isEmpty()) && !StudentPreferenceEnrollId.equalsIgnoreCase("null")) {
+//                        PreferenceStorage.saveStudentEnrollIdPreference(this, StudentPreferenceEnrollId);
+//                    }
+//                    // Student Preference - AdmissionId
+//                    if ((StudentPreferenceAdmissionId != null) && !(StudentPreferenceAdmissionId.isEmpty()) && !StudentPreferenceAdmissionId.equalsIgnoreCase("null")) {
+//                        PreferenceStorage.saveStudentAdmissionIdPreference(this, StudentPreferenceAdmissionId);
+//                    }
 //
+//                    // Student Preference - AdmissionNo
+//                    if ((StudentPreferenceAdmissionNo != null) && !(StudentPreferenceAdmissionNo.isEmpty()) && !StudentPreferenceAdmissionNo.equalsIgnoreCase("null")) {
+//                        PreferenceStorage.saveStudentAdmissionNoPreference(this, StudentPreferenceAdmissionNo);
+//                    }
 //
-                    // Student Preference - EnrollId
-                    if ((StudentPreferenceEnrollId != null) && !(StudentPreferenceEnrollId.isEmpty()) && !StudentPreferenceEnrollId.equalsIgnoreCase("null")) {
-                        PreferenceStorage.saveStudentEnrollIdPreference(this, StudentPreferenceEnrollId);
-                    }
-                    // Student Preference - AdmissionId
-                    if ((StudentPreferenceAdmissionId != null) && !(StudentPreferenceAdmissionId.isEmpty()) && !StudentPreferenceAdmissionId.equalsIgnoreCase("null")) {
-                        PreferenceStorage.saveStudentAdmissionIdPreference(this, StudentPreferenceAdmissionId);
-                    }
-
-                    // Student Preference - AdmissionNo
-                    if ((StudentPreferenceAdmissionNo != null) && !(StudentPreferenceAdmissionNo.isEmpty()) && !StudentPreferenceAdmissionNo.equalsIgnoreCase("null")) {
-                        PreferenceStorage.saveStudentAdmissionNoPreference(this, StudentPreferenceAdmissionNo);
-                    }
-
-                    // Student Preference - ClassId
-                    if ((StudentPreferenceClassId != null) && !(StudentPreferenceClassId.isEmpty()) && !StudentPreferenceClassId.equalsIgnoreCase("null")) {
-                        PreferenceStorage.saveStudentClassIdPreference(this, StudentPreferenceClassId);
-                    }
-
-                    // Student Preference - Name
-                    if ((StudentPreferenceName != null) && !(StudentPreferenceName.isEmpty()) && !StudentPreferenceName.equalsIgnoreCase("null")) {
-                        PreferenceStorage.saveStudentNamePreference(this, StudentPreferenceName);
-                    }
-
-                    // Student Preference - ClassName
-                    if ((StudentPreferenceClassName != null) && !(StudentPreferenceClassName.isEmpty()) && !StudentPreferenceClassName.equalsIgnoreCase("null")) {
-                        PreferenceStorage.saveStudentClassNamePreference(this, StudentPreferenceClassName);
-                    }
-
-                    // Student Preference - SectionName
-                    if ((StudentPreferenceSectionName != null) && !(StudentPreferenceSectionName.isEmpty()) && !StudentPreferenceSectionName.equalsIgnoreCase("null")) {
-                        PreferenceStorage.saveStudentSectionNamePreference(this, StudentPreferenceSectionName);
-                    }
+//                    // Student Preference - ClassId
+//                    if ((StudentPreferenceClassId != null) && !(StudentPreferenceClassId.isEmpty()) && !StudentPreferenceClassId.equalsIgnoreCase("null")) {
+//                        PreferenceStorage.saveStudentClassIdPreference(this, StudentPreferenceClassId);
+//                    }
 //
+//                    // Student Preference - Name
+//                    if ((StudentPreferenceName != null) && !(StudentPreferenceName.isEmpty()) && !StudentPreferenceName.equalsIgnoreCase("null")) {
+//                        PreferenceStorage.saveStudentNamePreference(this, StudentPreferenceName);
+//                    }
 //
-                    // Parents Preference - Father'sPhone
+//                    // Student Preference - ClassName
+//                    if ((StudentPreferenceClassName != null) && !(StudentPreferenceClassName.isEmpty()) && !StudentPreferenceClassName.equalsIgnoreCase("null")) {
+//                        PreferenceStorage.saveStudentClassNamePreference(this, StudentPreferenceClassName);
+//                    }
+//
+//                    // Student Preference - SectionName
+//                    if ((StudentPreferenceSectionName != null) && !(StudentPreferenceSectionName.isEmpty()) && !StudentPreferenceSectionName.equalsIgnoreCase("null")) {
+//                        PreferenceStorage.saveStudentSectionNamePreference(this, StudentPreferenceSectionName);
+//                    }
+////
+////
+                    // Parents Preference - Father's Phone
                     if ((FatherPhone != null) && !(FatherPhone.isEmpty()) && !FatherPhone.equalsIgnoreCase("null")) {
                         PreferenceStorage.saveHomePhone(this, FatherPhone);
                     }
 
-                    // Parents Preference - Father'sMail
+                    // Parents Preference - Father's Mail
                     if ((FatherMail != null) && !(FatherMail.isEmpty()) && !FatherMail.equalsIgnoreCase("null")) {
                         PreferenceStorage.saveEmail(this, FatherMail);
                     }
@@ -294,7 +330,7 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
             }
 
             if (PreferenceStorage.getForgotPasswordStatus(getApplicationContext()).equalsIgnoreCase("1")) {
-                Intent intent = new Intent(this, MainActivity.class);
+                Intent intent = new Intent(this, StudentInfoActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 finish();

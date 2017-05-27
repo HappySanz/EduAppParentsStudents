@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements DialogClickListen
     boolean doubleBackToExitPressedOnce = false;
     private ImageView imgNavProfileImage;
     private ArrayAdapter<String> navListAdapter;
-    private String[] values = {"PROFILE", "ATTENDANCE", "CLASS TEST & HOMEWORK", "EXAM & RESULT", "TIME TABLE", "EVENT", "COMMUNICATION","SETTINGS", "SIGN OUT"};
+    private String[] values = {"PROFILE", "ATTENDANCE", "CLASS TEST & HOMEWORK", "EXAM & RESULT", "TIME TABLE", "EVENT", "COMMUNICATION", "STUDENT INFO", "SETTINGS", "SIGN OUT"};
     TextView navUserProfileName = null;
     LinearLayout dashAttendance, dashTimeTable, dashClassTest, dashExam, dashEvent, dashCommunication;
     private String mCurrentUserProfileUrl = "";
@@ -254,18 +254,15 @@ public class MainActivity extends AppCompatActivity implements DialogClickListen
             Intent navigationIntent = new Intent(this, ParentsCommunicationActivity.class);
             navigationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(navigationIntent);
-        }
- else if (position == 7) {
-            Intent navigationIntent = new Intent(this, ChangePasswordActivity.class);
+        } else if (position == 7) {
+            Intent navigationIntent = new Intent(this, StudentInfoActivity.class);
             navigationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(navigationIntent);
-        }
-// else if (position == 8) {
-//            Intent navigationIntent = new Intent(this, ProfileActivity.class);
-//            //navigationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//            startActivity(navigationIntent);
-//        }
-        else if (position == 8) {
+        } else if (position == 8) {
+            Intent navigationIntent = new Intent(this, ChangePasswordActivity.class);
+            //navigationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(navigationIntent);
+        } else if (position == 9) {
             Log.d(TAG, "Perform Logout");
             doLogout();
         }

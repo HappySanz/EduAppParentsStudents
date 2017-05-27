@@ -1,100 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_grey">
+    android:background="@color/background_grey"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <Spinner
-        android:id="@+id/studselect"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:layout_centerHorizontal="true"/>
+        <Spinner
+            android:id="@+id/studselect"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true" />
 
         <com.palprotech.eduappparentsstudents.customview.CircleImageView
-            android:layout_below="@+id/studselect"
             android:id="@+id/stud_pic"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:layout_marginTop="50dp"
+            android:layout_below="@+id/studselect"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
             android:fitsSystemWindows="true"
             android:scaleType="centerCrop"
-            android:src="@drawable/profile_pic"/>
+            android:src="@drawable/profile_pic" />
 
-    <TextView
-        android:id="@+id/txtstudname"
-        android:layout_below="@id/stud_pic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:hint="NAME"
-        android:textSize="20dp"
-        android:textColor="@color/appColor"/>
+        <TextView
+            android:id="@+id/txtstudname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/stud_pic"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:hint="NAME"
+            android:textColor="@color/appColor"
+            android:textSize="20dp" />
 
-    <TextView
-        android:id="@+id/txtstudid"
-        android:layout_below="@+id/txtstudname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_centerHorizontal="true"
-        android:hint="STUDENT ID"
-        android:textSize="20dp"
-        android:textColor="@color/appColor"/>
+        <TextView
+            android:id="@+id/txtstudid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtstudname"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:hint="STUDENT ID"
+            android:textColor="@color/appColor"
+            android:textSize="20dp" />
 
-    <TextView
-        android:id="@+id/txtadmissid"
-        android:layout_below="@+id/txtstudid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
-        android:hint="ADMISSION ID"
-        android:textSize="20dp"
-        android:textColor="@color/appColor"/>
+        <TextView
+            android:id="@+id/txtadmissid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtstudid"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:hint="ADMISSION ID"
+            android:textColor="@color/appColor"
+            android:textSize="20dp" />
 
-    <TextView
-        android:id="@+id/txtclass"
-        android:layout_below="@+id/txtadmissid"
-        android:layout_width="wrap_content"
-        android:layout_alignLeft="@+id/txtadmissid"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
-        android:hint="CLASS"
-        android:textSize="20dp"
-        android:textColor="@color/appColor"/>
+        <TextView
+            android:id="@+id/txtclass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/txtadmissid"
+            android:layout_below="@+id/txtadmissid"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:hint="CLASS"
+            android:textColor="@color/appColor"
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/txtsec"
-            android:layout_below="@+id/txtadmissid"
-            android:layout_toRightOf="@id/txtclass"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/txtadmissid"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="5dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/txtclass"
             android:hint="SECTION"
-            android:textSize="20dp"
-            android:textColor="@color/appColor"/>
+            android:textColor="@color/appColor"
+            android:textSize="20dp" />
 
         <Button
+            android:id="@+id/btnContinue"
             android:layout_width="120dp"
             android:layout_height="40dp"
             android:layout_below="@id/txtsec"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="50dp"
-            android:text="Continue"
             android:background="@drawable/round_btn"
-            android:textColor="@color/colour_pick"/>
+            android:text="Continue"
+            android:textColor="@color/colour_pick" />
 
     </RelativeLayout>
 
