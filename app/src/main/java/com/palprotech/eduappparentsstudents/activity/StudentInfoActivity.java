@@ -73,6 +73,42 @@ public class StudentInfoActivity extends AppCompatActivity {
         btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //
+                // Student Preference - EnrollId
+                if ((StudentId != null) && !(StudentId.isEmpty()) && !StudentId.equalsIgnoreCase("null")) {
+                    PreferenceStorage.saveStudentEnrollIdPreference(getApplicationContext(), StudentId);
+                }
+                // Student Preference - AdmissionId
+                if ((AdmissionId != null) && !(AdmissionId.isEmpty()) && !AdmissionId.equalsIgnoreCase("null")) {
+                    PreferenceStorage.saveStudentAdmissionIdPreference(getApplicationContext(), AdmissionId);
+                }
+
+                // Student Preference - AdmissionNo
+                if ((AdmissionNo != null) && !(AdmissionNo.isEmpty()) && !AdmissionNo.equalsIgnoreCase("null")) {
+                    PreferenceStorage.saveStudentAdmissionNoPreference(getApplicationContext(), AdmissionNo);
+                }
+
+                // Student Preference - ClassId
+                if ((ClassId != null) && !(ClassId.isEmpty()) && !ClassId.equalsIgnoreCase("null")) {
+                    PreferenceStorage.saveStudentClassIdPreference(getApplicationContext(), ClassId);
+                }
+
+                // Student Preference - Name
+                if ((StudentName != null) && !(StudentName.isEmpty()) && !StudentName.equalsIgnoreCase("null")) {
+                    PreferenceStorage.saveStudentNamePreference(getApplicationContext(), StudentName);
+                }
+
+                // Student Preference - ClassName
+                if ((Class != null) && !(Class.isEmpty()) && !Class.equalsIgnoreCase("null")) {
+                    PreferenceStorage.saveStudentClassNamePreference(getApplicationContext(), Class);
+                }
+
+                // Student Preference - SectionName
+                if ((Section != null) && !(Section.isEmpty()) && !Section.equalsIgnoreCase("null")) {
+                    PreferenceStorage.saveStudentSectionNamePreference(getApplicationContext(), Section);
+                }
+//
+//
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
@@ -106,42 +142,7 @@ public class StudentInfoActivity extends AppCompatActivity {
             txtsec.setText("-"+Section);
 
             //
-//
-            // Student Preference - EnrollId
-            if ((StudentId != null) && !(StudentId.isEmpty()) && !StudentId.equalsIgnoreCase("null")) {
-                PreferenceStorage.saveStudentEnrollIdPreference(this, StudentId);
-            }
-            // Student Preference - AdmissionId
-            if ((AdmissionId != null) && !(AdmissionId.isEmpty()) && !AdmissionId.equalsIgnoreCase("null")) {
-                PreferenceStorage.saveStudentAdmissionIdPreference(this, AdmissionId);
-            }
 
-            // Student Preference - AdmissionNo
-            if ((AdmissionNo != null) && !(AdmissionNo.isEmpty()) && !AdmissionNo.equalsIgnoreCase("null")) {
-                PreferenceStorage.saveStudentAdmissionNoPreference(this, AdmissionNo);
-            }
-
-            // Student Preference - ClassId
-            if ((ClassId != null) && !(ClassId.isEmpty()) && !ClassId.equalsIgnoreCase("null")) {
-                PreferenceStorage.saveStudentClassIdPreference(this, ClassId);
-            }
-
-            // Student Preference - Name
-            if ((StudentName != null) && !(StudentName.isEmpty()) && !StudentName.equalsIgnoreCase("null")) {
-                PreferenceStorage.saveStudentNamePreference(this, StudentName);
-            }
-
-            // Student Preference - ClassName
-            if ((Class != null) && !(Class.isEmpty()) && !Class.equalsIgnoreCase("null")) {
-                PreferenceStorage.saveStudentClassNamePreference(this, Class);
-            }
-
-            // Student Preference - SectionName
-            if ((Section != null) && !(Section.isEmpty()) && !Section.equalsIgnoreCase("null")) {
-                PreferenceStorage.saveStudentSectionNamePreference(this, Section);
-            }
-//
-//
 
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "Get Student Details", Toast.LENGTH_LONG).show();

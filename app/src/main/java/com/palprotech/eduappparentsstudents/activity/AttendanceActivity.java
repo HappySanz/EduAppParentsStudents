@@ -218,7 +218,7 @@ public class AttendanceActivity extends AppCompatActivity implements IAttendance
                             (status.equalsIgnoreCase("notRegistered")) || (status.equalsIgnoreCase("error")))) {
                         signInsuccess = false;
                         Log.d(TAG, "Show error dialog");
-                        AlertDialogHelper.showSimpleAlertDialog(this, msg);
+//                        AlertDialogHelper.showSimpleAlertDialog(this, msg);
 
                     } else {
                         signInsuccess = true;

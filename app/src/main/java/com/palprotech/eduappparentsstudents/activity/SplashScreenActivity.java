@@ -33,6 +33,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                     String userName = PreferenceStorage.getUserName(getApplicationContext());
                     String isResetOver = PreferenceStorage.getForgotPasswordStatusEnable(getApplicationContext());
                     String instituteName = PreferenceStorage.getInstituteName(getApplicationContext());
+                    String studentName = PreferenceStorage.getStudentNamePreference(getApplicationContext());
 
                     if (isResetOver.equalsIgnoreCase("no")) {
                         Intent intent = new Intent(getApplicationContext(), ResetPasswordActivity.class);
@@ -61,6 +62,14 @@ public class SplashScreenActivity extends AppCompatActivity {
                         //this.overridePendingTransition(R.anim.push_up_in, R.anim.push_up_out);
                         finish();
                     }
+//                    else if(AppValidator.checkNullString(studentName)){
+//                        Log.d(TAG, "No preferences, so launch preferences activity");
+//                        Intent intent = new Intent(getApplicationContext(), StudentInfoActivity.class);
+//                        //intent.putExtra("selectedCity", userName);
+//                        startActivity(intent);
+//                        //this.overridePendingTransition(R.anim.push_up_in, R.anim.push_up_out);
+//                        finish();
+//                    }
                 } else {
                     Intent i = new Intent(SplashScreenActivity.this, SchoolIdLoginActivity.class);
                     startActivity(i);
